@@ -1,3 +1,22 @@
-.example-spacer {
-  flex: 1 1 auto;
+.menu {
+  background-color: #f0e2ef;
+  border-bottom: 2px solid #826a80;
+}
+
+.text_home {
+    color: rgb(90, 71, 88);
+      font-style: italic;
+  }
+
+  hr {
+      color: rgb(107, 97, 106);
+  }
+  .icon-header{
+    width: 40px;
+  }
+
+  .icono-cambio-color {
+    font-size: 25px;
+    color: #745a72;
+    cursor: pointer;
 }

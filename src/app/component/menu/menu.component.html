@@ -1,10 +1,9 @@
 
 <p>
-  <mat-toolbar>
-   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <img [src]="logo | imagen">
-
-  </button>
+  <mat-toolbar class="menu">
+    <div class="col-md-3 ">
+      <img class="icon-header" [src]="logo | imagen">
+    </div>
   <span>My App</span>
   <span class="example-spacer"></span>
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
@@ -15,22 +14,3 @@
  </button>
 </mat-toolbar>
 </p>
-
-
-
-  <section class="src-components-comunes-header-titulo">
-    <div class="text-center row">
-
-      <div class="col-md-3 ">
-      </div>
-
-      <div class="col-md-6 ">        
-      </div>
-
-      <div class="col-md-3 ">        
-      </div>
-
-
-    </div>
-
-  </section>
