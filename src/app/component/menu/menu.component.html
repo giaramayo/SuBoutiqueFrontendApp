@@ -1,16 +1,14 @@
+<nav class="menu color-menu">
 
-<p>
-  <mat-toolbar class="menu">
-    <div class="col-md-3 ">
-      <img class="icon-header" [src]="logo | imagen">
-    </div>
-  <span>My App</span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-   <mat-icon>share</mat-icon>
- </button>
-</mat-toolbar>
-</p>
+    <ul class="menu-items" *ngIf="active">
+        <li class="logo"> <img class="icon-header" [src]="logo | imagen"></li>
+        <li class="item" ><a href="/home">Paciente</a></li>
+        <li class="item" ><a href="/home">Productos</a></li>
+        <li class="item" *ngIf="active"><a href="/home">Turnos</a></li>
+        <li class="item" *ngIf="active"><a href="/home">Tratamiente °    ! ome">Estadisticas</a></li>
+        <li class="item" *ngIf="active"><a href="/home">Sing up</a></li>
+        <li class="toggle"><a (click)="openMenu()"><span class="bars"></span></a></li>
+    </ul>
+    
+
+</nav>

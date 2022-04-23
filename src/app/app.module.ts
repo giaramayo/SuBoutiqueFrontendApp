@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { MenuComponent } from './component/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

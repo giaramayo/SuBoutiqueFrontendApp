@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MainComponent } from './main/main.component';
+import { HomeComponent } from './home/home.component';
 
 import { ComponentRoutingModule } from './component-routing.module';
 
 import { MaterialModule } from './material/material.module';
-import { MenuComponent } from './menu/menu.component'
+
 import { ImagenPipe } from '../pipes/imagen.pipe';
+import { InicioPacienteComponent } from './paciente/inicio-paciente/inicio-paciente.component';
+import { MenuComponent } from './menu/menu.component'
 
 @NgModule({
   declarations: [
-    MainComponent,
-    MenuComponent,
-    ImagenPipe
+    HomeComponent,
+    ImagenPipe,
+    InicioPacienteComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
