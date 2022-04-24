@@ -5,7 +5,6 @@ interface AuthResponse {
   router?: string;
 };
 
-
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -15,36 +14,49 @@ interface AuthResponse {
 export class MenuComponent implements OnInit {
 
   public logo: string;
-  public active: boolean;
-  public dataHeader: AuthResponse[] = [
-    {
-      name  :'Paciente',
-      router:'./paciente'
-    },
-    {
-      name  :'Producto',
-      router:'./paciente'
-    },
-    {
-      name  :'Paciente',
-      router:'./paciente'
-    },
-    {
-      name  :'Paciente',
-      router:'./paciente'
-    }
-  ];
+  public mostrarSNV: boolean;
+  public optionsMenu: AuthResponse[];
 
   constructor() { 
-    this.logo = 'nombreCm'
-    this.active = true;
+    this.logo = 'nombreCm';
+    this.mostrarSNV = false;
+    this.optionsMenu = [
+      {
+        name  :'Inicio',
+        router:'/'
+      },
+      {
+        name  :'Paciente',
+        router:'./paciente'
+      },
+      {
+        name  :'Productos',
+        router:'./paciente'
+      },
+      {
+        name  :'Turnos',
+        router:'./paciente'
+      },
+      {
+        name  :'Tratamientos',
+        router:'./paciente'
+      },
+      {
+        name  :'Estadisticas',
+        router:'./paciente'
+      },
+      {
+        name  :'Sing up',
+        router:'./paciente'
+      }
+    ];
   }
 
   ngOnInit(): void {
   }
 
-  openMenu() {
-    this.active = !this.active;
+  openSidenav(){
+    this.mostrarSNV = !this.mostrarSNV;
   }
 
 }

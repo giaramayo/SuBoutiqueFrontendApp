@@ -1,14 +1,17 @@
 <nav class="menu color-menu">
 
-    <ul class="menu-items" *ngIf="active">
-        <li class="logo"> <img class="icon-header" [src]="logo | imagen"></li>
-        <li class="item" ><a href="/home">Paciente</a></li>
-        <li class="item" ><a href="/home">Productos</a></li>
-        <li class="item" *ngIf="active"><a href="/home">Turnos</a></li>
-        <li class="item" *ngIf="active"><a href="/home">Tratamiente °    ! ome">Estadisticas</a></li>
-        <li class="item" *ngIf="active"><a href="/home">Sing up</a></li>
-        <li class="toggle"><a (click)="openMenu()"><span class="bars"></span></a></li>
+    <ul class="menu-items">
+        <li class="logo">
+            <img class="icon-header" [src]="logo | imagen">
+        </li>
+        <li [class]="mostrarSNV ? 'item responsive active' : 'item responsive'" *ngFor="let opt of optionsMenu">
+            <a (click)="openSidenav()" routerLink="{{opt.router}}">{{opt.name}}</a>
+        </li>
+        <li class="item" *ngFor="let opt of optionsMenu">
+            <a routerLink="{{opt.router}}">{{opt.name}}</a>
+        </li>
+        <li class="toggle">
+            <a (click)="openSidenav()"><span class="bars"></span></a>
+        </li>
     </ul>
-    
-
 </nav>
