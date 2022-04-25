@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-interface AuthResponse {
+interface OptionMenu {
   name: string;
   router?: string;
 };
@@ -15,7 +15,7 @@ export class MenuComponent implements OnInit {
 
   public logo: string;
   public mostrarSNV: boolean;
-  public optionsMenu: AuthResponse[];
+  public optionsMenu: OptionMenu[];
 
   constructor() { 
     this.logo = 'nombreCm';
@@ -26,7 +26,7 @@ export class MenuComponent implements OnInit {
         router:'/'
       },
       {
-        name  :'Paciente',
+        name  :'Pacientes',
         router:'./paciente'
       },
       {

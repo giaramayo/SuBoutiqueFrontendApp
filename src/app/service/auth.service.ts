@@ -5,8 +5,9 @@ import { of, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
+import { Paciente } from '../interfaces/paciente.interfaces';
+import { Login } from '../interfaces/interfaces';
 
-import { AuthResponse, Usuario } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ import { AuthResponse, Usuario } from '../interfaces/interfaces';
 export class AuthService {
 
   private baseUrl: string = environment.baseUrl;
-  private _usuario!: Usuario;
+  private _usuario!: Paciente;
 
   get usuario() {
     return { ...this._usuario };
@@ -29,7 +30,7 @@ export class AuthService {
     const url  = `${ this.baseUrl }/auth/new`;
     const body = { email, password, name };
 
-    return this.http.post<AuthResponse>( url, body )
+    return this.http.post<Login>( url, body )
       .pipe(
         tap( ({ ok, token }) => {
           if ( ok ) {
@@ -49,7 +50,7 @@ export class AuthService {
     const url  = `${ this.baseUrl }/auth`;
     const body = { email, password };
 
-    return this.http.post<AuthResponse>( url, body )
+    return this.http.post<Login>( url, body )
       .pipe(
         tap( resp => {
           if ( resp.ok ) {
@@ -61,31 +62,6 @@ export class AuthService {
       );
   }
 
-
-
-
-  validarToken(): Observable<boolean> {
-
-    const url = `${ this.baseUrl }/auth/renew`;
-    const headers = new HttpHeaders()
-      .set('x-token', localStorage.getItem('token') || '' );
-
-    return this.http.get<AuthResponse>( url, { headers } )
-        .pipe(
-          map( resp => {
-            localStorage.setItem('token', resp.token! );
-            this._usuario = {
-              name: resp.name!,
-              uid: resp.uid!,
-              email: resp.email!
-            }
-
-            return resp.ok;
-          }),
-          catchError( err => of(false) )
-        );
-
-  }
 
   logout() {
     localStorage.clear();

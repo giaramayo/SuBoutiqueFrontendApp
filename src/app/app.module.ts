@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ImagenPipe } from './pipes/imagen.pipe';
+import { MaterialModule } from './modules/material/material.module';
+import { PacienteInicioComponent } from './component/paciente-inicio/paciente-inicio.component';
 
 @NgModule({
   declarations: [
@@ -14,12 +16,14 @@ import { ImagenPipe } from './pipes/imagen.pipe';
     AppComponent,
     MenuComponent,
     ErrorPageComponent,
+    PacienteInicioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
