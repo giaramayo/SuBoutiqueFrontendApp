@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ImagenPipe } from './pipes/imagen.pipe';
 import { MaterialModule } from './modules/material/material.module';
-import { PacienteInicioComponent } from './component/paciente-inicio/paciente-inicio.component';
+import { PacienteComponent } from './pages/paciente/paciente.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { PacienteInicioComponent } from './component/paciente-inicio/paciente-in
     AppComponent,
     MenuComponent,
     ErrorPageComponent,
-    PacienteInicioComponent
+    PacienteComponent
   ],
   imports: [
     BrowserModule,

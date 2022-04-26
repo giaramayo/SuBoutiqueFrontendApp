@@ -6,6 +6,11 @@
         </li>
         <li [class]="mostrarSNV ? 'item responsive active' : 'item responsive'" *ngFor="let opt of optionsMenu">
             <a (click)="openSidenav()" routerLink="{{opt.router}}">{{opt.name}}</a>
+            <ul>
+                <li>
+                    <a (click)="openSidenav()" routerLink="">d</a>
+                </li>
+            </ul>
         </li>
         <li class="item" *ngFor="let opt of optionsMenu">
             <a routerLink="{{opt.router}}">{{opt.name}}</a>

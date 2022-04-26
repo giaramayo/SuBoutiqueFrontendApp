@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -18,7 +19,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,
     MatTabsModule,
     MatListModule,
-    MatMenuModule
-      ]
+    MatMenuModule,
+    MatCardModule
+  ]
 })
 export class MaterialModule { }

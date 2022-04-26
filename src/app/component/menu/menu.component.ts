@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 interface OptionMenu {
   name: string;
   router?: string;
@@ -23,27 +24,27 @@ export class MenuComponent implements OnInit {
     this.optionsMenu = [
       {
         name  :'Inicio',
-        router:'/'
+        router:'/',
       },
       {
         name  :'Pacientes',
-        router:'./paciente'
+        router:'./paciente',
       },
       {
         name  :'Productos',
-        router:'./paciente'
+        router:'./paciente',
       },
       {
         name  :'Turnos',
-        router:'./paciente'
+        router:'./paciente',
       },
       {
         name  :'Tratamientos',
-        router:'./paciente'
+        router:'./paciente',
       },
       {
         name  :'Estadisticas',
-        router:'./paciente'
+        router:'./paciente',
       },
       {
         name  :'Sing up',
