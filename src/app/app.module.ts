@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ImagenPipe } from './pipes/imagen.pipe';
 import { MaterialModule } from './modules/material/material.module';
 import { PacienteComponent } from './pages/paciente/paciente.component';
+import { CardComponent } from './component/card/card.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PacienteComponent } from './pages/paciente/paciente.component';
     AppComponent,
     MenuComponent,
     ErrorPageComponent,
-    PacienteComponent
+    PacienteComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

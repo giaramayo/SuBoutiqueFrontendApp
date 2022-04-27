@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 
 interface OptionMenu {
@@ -12,7 +12,7 @@ interface OptionMenu {
   styleUrls: ['./menu.component.css']
 })
 
-export class MenuComponent implements OnInit {
+export class MenuComponent  {
 
   public logo: string;
   public mostrarSNV: boolean;
@@ -51,9 +51,6 @@ export class MenuComponent implements OnInit {
         router:'./paciente'
       }
     ];
-  }
-
-  ngOnInit(): void {
   }
 
   openSidenav(){

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Card } from 'src/app/interfaces/card.interfaces';
 
 @Component({
   selector: 'app-paciente-inicio',
@@ -7,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PacienteComponent implements OnInit {
 
-  public imagenNom: string;
+  public tarjetas: Card[];
 
   constructor() {
-    this.imagenNom = 'imag1'
+    this.tarjetas = [
+      {
+        titulo: 'Lista de Pacientes',
+        router: './paciente/listas',
+        imagen: 'imag1'
+      },
+      {
+        titulo: 'Lista de Pacientes',
+        router: './paciente/listas',
+        imagen: 'logoR'
+      }
+    ];
    }
 
   ngOnInit(): void {

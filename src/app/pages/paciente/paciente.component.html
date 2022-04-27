@@ -3,28 +3,27 @@
 <h1 class="txt-titulo" >
   Gestion de Pacientes
 </h1>
+<mat-divider></mat-divider>
 
+<!-- <ng-template > -->
+     <div fxLayout="row wrap"
+          fxLayout.xs="column"
+          fxLayoutAlign="center"
+          fxLayoutGap="20px">
 
-<mat-card>
-  <mat-card-header>
-      <mat-card-title> Lista de Pacientes</mat-card-title>
-      <!-- <mat-card-subtitle> {{ heroe.alter_ego }} </mat-card-subtitle> -->
-  </mat-card-header>
+     <div fxFlex="20"
+          fxFlex.lg="15"
+          fxFlex.sm="30"
+          *ngFor="let tarjeta of tarjetas">
 
-  <img mat-card-image [src]="imagenNom | imagen">
+          <mat-card>
+               <mat-card-header>
+                    <mat-card-title>{{tarjeta.titulo}}</mat-card-title>
+                    <img *ngIf="tarjeta.imagen" mat-card-image src="{{ tarjeta.imagen | imagen }}">
+               </mat-card-header>
+               </mat-card>
 
-  <mat-card-actions>
-      <!-- <button mat-button 
-              color="warn"
-              [routerLink]="['/heroes', heroe.id ]">
-          Leer más...
-      </button>
-
-      <button mat-button 
-              color="info"
-              [routerLink]="['/heroes/editar', heroe.id ]">
-          Editar
-      </button> -->
-  </mat-card-actions>
-
-</mat-card>
+          <!-- <app-card [infoCard]="tarjeta"></app-card> -->
+     </div>
+     </div>
+<!-- </ng-template> -->
