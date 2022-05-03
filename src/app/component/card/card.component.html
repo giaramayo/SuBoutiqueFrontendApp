@@ -1,11 +1,14 @@
-<!-- <mat-card>
+<mat-card class="card">
     <mat-card-header>
         <mat-card-title> 
-            <a routerLink="{{infoCard.router}}">{{infoCard.titulo}}</a>
+            <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon> -->
+            <img *ngIf="infoCard.imagen" mat-card-image src="{{ infoCard.imagen | imagen }}">
+
         </mat-card-title>
     </mat-card-header>
   
-    <img *ngIf="infoCard.imagen" mat-card-image src="{{ infoCard.imagen | imagen }}">
-  
+    <mat-card-actions align="end">
+        <button mat-button>Lista de Pacientes</button>
+    </mat-card-actions>
   </mat-card>
-   -->
+  

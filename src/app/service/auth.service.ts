@@ -15,7 +15,7 @@ import { Login } from '../interfaces/interfaces';
 
 export class AuthService {
 
-  private baseUrl: string = environment.baseUrl;
+  private baseUrl: string = environment.nodeURL;
   private _usuario!: Paciente;
 
   get usuario() {

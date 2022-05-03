@@ -10,6 +10,7 @@ import { ImagenPipe } from './pipes/imagen.pipe';
 import { MaterialModule } from './modules/material/material.module';
 import { PacienteComponent } from './pages/paciente/paciente.component';
 import { CardComponent } from './component/card/card.component';
+import { ListaPacienteComponent } from './component/lista-paciente/lista-paciente.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CardComponent } from './component/card/card.component';
     MenuComponent,
     ErrorPageComponent,
     PacienteComponent,
-    CardComponent
+    CardComponent,
+    ListaPacienteComponent
   ],
   imports: [
     BrowserModule,
