@@ -1,34 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from 'src/app/interfaces/card.interfaces';
+import { FormControl, FormGroup} from '@angular/forms';
+
 import { PacienteService } from 'src/app/service/paciente.service';
-import { Paciente } from '../../interfaces/paciente.interfaces';
 
 @Component({
   selector: 'app-paciente-inicio',
   templateUrl: './paciente.component.html',
-  styleUrls: ['./paciente.component.css']
+  styleUrls: ['./paciente.component.scss']
 })
 
 export class PacienteComponent implements OnInit {
 
-  public tarjetas: Card[];
   public pacientes: any;
+  public pacienteForm: FormGroup;
 
-  constructor(private pacienteService: PacienteService) {
-    this.tarjetas = [
-      {
-        titulo: 'Lista de Pacientes',
-        router: './paciente/listas',
-        imagen: 'imag1'
-      },
-      {
-        titulo: 'Lista de Pacientes',
-        router: './paciente/listas',
-        imagen: 'imag1'
-      }
-    ];
 
-    
+  constructor(private pacienteService: PacienteService) {    
+        this.pacienteForm = new FormGroup({
+          nombre:  new FormControl(""),
+          apellido: new FormControl(""),
+          dni: new FormControl("")
+      });
+
    }
 
   ngOnInit(): void {
@@ -45,6 +38,8 @@ export class PacienteComponent implements OnInit {
           console.log('error...')
         });
   }
+
+
 
 
 }

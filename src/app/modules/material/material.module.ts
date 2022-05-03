@@ -11,6 +11,11 @@ import {MatCardModule} from '@angular/material/card';
 
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -25,6 +30,12 @@ import {MatTableModule} from '@angular/material/table';
     MatCardModule,
     MatGridListModule,
     MatTableModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule,
+    MatPaginatorModule
   ]
 })
 
