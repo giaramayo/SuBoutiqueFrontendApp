@@ -14,6 +14,9 @@ import { ListaPacienteComponent } from './component/lista-paciente/lista-pacient
 import { MatButtonLoadingDirective } from './directive/mat-button-loading.directive';
 import {MatProgressSpinner, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { PacienteAgregarComponent } from './pages/paciente-agregar/paciente-agregar.component';
+import { TratamientoComponent } from './pages/tratamiento/tratamiento.component';
+import { TurnoComponent } from './pages/turno/turno.component';
+import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { PacienteAgregarComponent } from './pages/paciente-agregar/paciente-agre
     CardComponent,
     ListaPacienteComponent,
     MatButtonLoadingDirective,
-    PacienteAgregarComponent
+    PacienteAgregarComponent,
+    TratamientoComponent,
+    TurnoComponent,
+    EstadisticasComponent
   ],
   imports: [
     BrowserModule,

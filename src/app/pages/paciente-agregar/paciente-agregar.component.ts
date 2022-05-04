@@ -37,7 +37,9 @@ export class PacienteAgregarComponent  {
     this.router.navigateByUrl(this.routerVolver);
   }
 
- 
+  guardar(){
+    console.log('guargando datos...')
+  } 
 
 
 }

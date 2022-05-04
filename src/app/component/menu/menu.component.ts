@@ -36,15 +36,15 @@ export class MenuComponent  {
       // },
       {
         name  :'Turnos',
-        router:'./paciente',
+        router:'./turnos',
       },
       {
         name  :'Tratamientos',
-        router:'./paciente',
+        router:'./tratamientos',
       },
       {
         name  :'Estadisticas',
-        router:'./paciente',
+        router:'./estadisticas',
       },
       {
         name  :'Sing up',

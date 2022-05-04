@@ -2,3 +2,8 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.txt-titulo {
+    text-align: center;
+    color: #8d7a8c;
+}
