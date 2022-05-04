@@ -18,6 +18,7 @@ import { TratamientoComponent } from './pages/tratamiento/tratamiento.component'
 import { TurnoComponent } from './pages/turno/turno.component';
 import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
 import { ListaTratamientoComponent } from './component/lista-tratamiento/lista-tratamiento.component';
+import { DialogModificarTratamientoComponent } from './component/dialog-modificar-tratamiento/dialog-modificar-tratamiento.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ListaTratamientoComponent } from './component/lista-tratamiento/lista-t
     TratamientoComponent,
     TurnoComponent,
     EstadisticasComponent,
-    ListaTratamientoComponent
+    ListaTratamientoComponent,
+    DialogModificarTratamientoComponent
   ],
   imports: [
     BrowserModule,

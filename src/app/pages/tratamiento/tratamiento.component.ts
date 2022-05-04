@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-tratamiento',
@@ -8,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class TratamientoComponent implements OnInit {
 
   public tratamientos: any;
+  public tratamientoForm: FormGroup;
+  public botonFiltroLoading: boolean;
 
-  constructor() { }
+  constructor() { 
+    this.botonFiltroLoading = false;
+    this.tratamientoForm = new FormGroup({
+      descripcion:  new FormControl("")
+   });
+  }
 
   ngOnInit(): void {
     this.tratamientos = [{
@@ -17,6 +25,14 @@ export class TratamientoComponent implements OnInit {
       duracion: 1,
       precio: 111
     }]
+  }
+
+  buscar() {
+
+  }
+
+  agregar() {
+    
   }
 
 }
