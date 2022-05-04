@@ -11,6 +11,8 @@ import { MaterialModule } from './modules/material/material.module';
 import { PacienteComponent } from './pages/paciente/paciente.component';
 import { CardComponent } from './component/card/card.component';
 import { ListaPacienteComponent } from './component/lista-paciente/lista-paciente.component';
+import { MatButtonLoadingDirective } from './directive/mat-button-loading.directive';
+import {MatProgressSpinner, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -20,16 +22,19 @@ import { ListaPacienteComponent } from './component/lista-paciente/lista-pacient
     ErrorPageComponent,
     PacienteComponent,
     CardComponent,
-    ListaPacienteComponent
+    ListaPacienteComponent,
+    MatButtonLoadingDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
+  entryComponents: [MatProgressSpinner],
   bootstrap: [AppComponent]
 })
 

@@ -13,14 +13,18 @@ export class PacienteComponent implements OnInit {
 
   public pacientes: any;
   public pacienteForm: FormGroup;
+  public botonFiltroLoading: boolean;
 
 
-  constructor(private pacienteService: PacienteService) {    
-        this.pacienteForm = new FormGroup({
-          nombre:  new FormControl(""),
-          apellido: new FormControl(""),
-          dni: new FormControl("")
-      });
+  constructor(private pacienteService: PacienteService) {  
+
+    this.botonFiltroLoading = false;
+
+     this.pacienteForm = new FormGroup({
+        nombre:  new FormControl(""),
+        apellido: new FormControl(""),
+        dni: new FormControl("")
+     });
 
    }
 
@@ -39,7 +43,18 @@ export class PacienteComponent implements OnInit {
         });
   }
 
+  buscarPacientes(){
+    this.botonFiltroLoading = true;
 
+    // this.pacienteService.getFiltrarPaciente(
+    //   this.pacienteForm.get('nombre').value,
+    //   this.pacienteForm.get('apellido').value,
+    //   this.pacienteForm.get('dni').value
+    // ).subscribe(response => {
+    //   console.log(response);
+    // });
+
+  }
 
 
 }

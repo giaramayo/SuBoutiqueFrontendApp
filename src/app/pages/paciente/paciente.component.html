@@ -21,9 +21,9 @@
       </mat-form-field>
       <mat-form-field appearance="fill" color="accent">
         <mat-label>DNI</mat-label>
-        <input matInput type="text" formControlName="dni">
+        <input matInput type="number" formControlName="dni">
       </mat-form-field>
-      <button mat-flat-button color="primary">
+      <button mat-flat-button color="primary" (click)="buscarPacientes()" [loading]="botonFiltroLoading">
         <mat-icon aria-hidden="false">search</mat-icon>
         Filtrar
       </button>

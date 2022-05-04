@@ -19,5 +19,8 @@ export class PacienteService {
     return this.http.get(this.pacienteURL)
   }
 
+  getFiltrarPaciente( nombre: string, apellido: string, dni: number ) : Observable<any>{
+    return this.http.get(this.pacienteURL + '/buscar/' + apellido + '/' + {nombre});
+  }
 
 }

@@ -16,6 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -35,8 +36,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
-    MatPaginatorModule
-  ]
+    MatPaginatorModule,
+  ],
+  entryComponents: [MatProgressSpinner]
 })
 
 export class MaterialModule { }
