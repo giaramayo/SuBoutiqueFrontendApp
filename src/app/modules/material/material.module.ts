@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -37,6 +39,9 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
     FormsModule,
     MatInputModule,
     MatPaginatorModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    
   ],
   entryComponents: [MatProgressSpinner]
 })

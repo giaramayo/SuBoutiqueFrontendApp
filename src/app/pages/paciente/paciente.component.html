@@ -27,17 +27,17 @@
         <mat-icon aria-hidden="false">search</mat-icon>
         Filtrar
       </button>
-      <button mat-flat-button color="accent">
+      <button mat-flat-button color="accent" (click)="agregar()">
         <mat-icon aria-hidden="false">add</mat-icon>
         Agregar
       </button>
     </div>
-
 
     <section>
       <app-lista-paciente [dataSource]="pacientes"></app-lista-paciente>
     </section>
 
   </div>
+
 
 </div>
