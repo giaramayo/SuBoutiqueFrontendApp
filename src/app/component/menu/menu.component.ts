@@ -30,10 +30,10 @@ export class MenuComponent  {
         name  :'Pacientes',
         router:'./paciente',
       },
-      {
-        name  :'Productos',
-        router:'./paciente',
-      },
+      // {
+      //   name  :'Productos',
+      //   router:'./paciente',
+      // },
       {
         name  :'Turnos',
         router:'./paciente',
