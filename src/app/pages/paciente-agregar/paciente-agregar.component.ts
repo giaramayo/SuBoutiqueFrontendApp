@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PacienteService } from '../../service/paciente.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-paciente-agregar',
@@ -9,11 +10,14 @@ import { PacienteService } from '../../service/paciente.service';
 export class PacienteAgregarComponent  {
 
   public disabledOK : boolean;
+  public routerVolver: string;
+  public step :number;
 
-  step = 0;
-
-   constructor( private pacienteService: PacienteService ) {
+   constructor( private pacienteService: PacienteService,
+                private router: Router ) {
       this.disabledOK = true;
+      this.step = 0;
+      this.routerVolver = "/paciente"
     }
 
   setStep(index: number) {
@@ -26,6 +30,11 @@ export class PacienteAgregarComponent  {
 
   prevStep() {
     this.step--;
+  }
+
+
+  volver(){
+    this.router.navigateByUrl(this.routerVolver);
   }
 
  
