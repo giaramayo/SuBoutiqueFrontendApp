@@ -17,6 +17,7 @@ import { PacienteAgregarComponent } from './pages/paciente-agregar/paciente-agre
 import { TratamientoComponent } from './pages/tratamiento/tratamiento.component';
 import { TurnoComponent } from './pages/turno/turno.component';
 import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
+import { ListaTratamientoComponent } from './component/lista-tratamiento/lista-tratamiento.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EstadisticasComponent } from './pages/estadisticas/estadisticas.compone
     PacienteAgregarComponent,
     TratamientoComponent,
     TurnoComponent,
-    EstadisticasComponent
+    EstadisticasComponent,
+    ListaTratamientoComponent
   ],
   imports: [
     BrowserModule,
