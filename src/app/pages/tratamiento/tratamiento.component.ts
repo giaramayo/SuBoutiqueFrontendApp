@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogModificarTratamientoComponent } from '../../component/dialog-modificar-tratamiento/dialog-modificar-tratamiento.component';
 
 @Component({
   selector: 'app-tratamiento',
@@ -12,7 +14,7 @@ export class TratamientoComponent implements OnInit {
   public tratamientoForm: FormGroup;
   public botonFiltroLoading: boolean;
 
-  constructor() { 
+  constructor(public dialog: MatDialog) { 
     this.botonFiltroLoading = false;
     this.tratamientoForm = new FormGroup({
       descripcion:  new FormControl("")
@@ -31,8 +33,23 @@ export class TratamientoComponent implements OnInit {
 
   }
 
-  agregar() {
-    
+  agregar(){
+    const nuevo = {
+      descripcion: '',
+      duracion: 0,
+      precio: 0,
+      titulo: 'Agregar Tratamiento'
+    }
+
+    const dialogRef = this.dialog.open(DialogModificarTratamientoComponent, {
+      width: '270px',
+      data: nuevo
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+//       element = result;
+    });
   }
 
 }

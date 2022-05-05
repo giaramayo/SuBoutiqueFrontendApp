@@ -16,15 +16,22 @@ export class ListaTratamientoComponent {
   constructor(public dialog: MatDialog) { }
 
   modificar( element: any){
-    const dialogRef = this.dialog.open(DialogModificarTratamientoComponent, element);
+    
+    element.titulo = 'Modificar Tratamiento';
+
+    const dialogRef = this.dialog.open(DialogModificarTratamientoComponent, {
+      width: '270px',
+      data: element
+    });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      console.log('The dialog was closed', result);
+       element = result;
     });
   }
 
   eliminar( element: any){
-
+    
   }
 
 
