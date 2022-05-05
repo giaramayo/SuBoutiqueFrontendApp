@@ -1,10 +1,43 @@
+div{
 
-  .row{
-    padding: 15px 25px;
+  .calendario-piker{
+    display: block;
+  }
+  .calendario-card{
+    display: none;
   }
 
+}
 
-  .calendar-card {
-    width: 300px;
+@media all and (min-width: 769px) {
+  div{
+    .calendario-piker{
+      display: none;
+    }
+    .calendario-card{
+      display: block;
+    }
 
+    .row-turno{
+      display: flex;
+      flex-direction: row-reverse;
+       padding: 15px 25px;
+    }
+
+    .calendar-card {
+      width: 30%;
+    }
+    .dia-select {
+      width: 70%;
+    }
+
+    .card {
+      margin: 1vh;
+      button{
+        width: 100%;
+      }
+    }
+   
   }
+}
+
