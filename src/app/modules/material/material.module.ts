@@ -19,8 +19,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   exports: [
@@ -42,7 +42,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatPaginatorModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   entryComponents: [MatProgressSpinner]
 })

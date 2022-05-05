@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-turno',
   templateUrl: './turno.component.html',
   styleUrls: ['./turno.component.scss']
 })
-export class TurnoComponent implements OnInit {
+export class TurnoComponent {
 
-  constructor() { }
+  public selected?: Date | null;
+  public hoy: Date;
 
-  ngOnInit(): void {
+  constructor() { 
+    this.hoy = new Date();
   }
+
 
 }

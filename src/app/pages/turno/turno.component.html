@@ -1,4 +1,4 @@
-<br>
+ <br>
 
 <div class="container">
 
@@ -9,10 +9,18 @@
   <br>
 
   <div class="row">
-    
-   
+
+    <mat-card class="calendar-card">
+      <mat-calendar [minDate]="hoy" [(selected)]="selected" color="accent"></mat-calendar>
+    </mat-card>
+
+    <!-- <p>Selected date: {{selected}}</p>     -->
+  
 
   </div>
 
 
-</div>
+</div> 
+
+
+

@@ -1,5 +1,6 @@
 import { Component, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Tratamiento } from '../../interfaces/tratamiento.interfaces';
 
 @Component({
   selector: 'app-dialog-modificar-tratamiento',
@@ -9,11 +10,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DialogModificarTratamientoComponent {
 
   public tratamiento: any;
+  public titulo: string;
 
   constructor(
     public dialogRef: MatDialogRef<DialogModificarTratamientoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any ) {
+    @Inject(MAT_DIALOG_DATA) public data: Tratamiento ) {
     this.tratamiento = data;
+    this.titulo = data.id ? 'Modificar Tratamiento' : 'Agregar Tratamiento'
   }
 
   cerrar(): void {

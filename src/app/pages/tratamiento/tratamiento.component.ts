@@ -23,6 +23,7 @@ export class TratamientoComponent implements OnInit {
 
   ngOnInit(): void {
     this.tratamientos = [{
+      id: 11111,
       descripcion: 'ddd',
       duracion: 1,
       precio: 111
