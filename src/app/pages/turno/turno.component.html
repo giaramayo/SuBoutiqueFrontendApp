@@ -32,17 +32,19 @@
     <div class="dia-select card">
       <br>
       <mat-accordion>
-        <mat-expansion-panel (opened)="abrirPanel = true"
-                             (closed)="abrirPanel = false">
+        <mat-expansion-panel (opened)="abrirPanel = true" (closed)="abrirPanel = false"
+             *ngFor="let turno of turnos" >
           <mat-expansion-panel-header>
             <mat-panel-title>
-              Self aware panel
+              {{turno.fechaHora  | date:'dd/MM/yyyy hh:MM'}}
             </mat-panel-title>
             <mat-panel-description>
-              Currently I am 
+              {{turno.tratamiento.nombre}}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <mat-icon aria-hidden="false">person</mat-icon>
+          <p>{{turno | json}}</p>
+
         </mat-expansion-panel>
       </mat-accordion>
 
