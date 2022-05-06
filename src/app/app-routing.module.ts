@@ -11,12 +11,12 @@ import { TurnoComponent } from './pages/turno/turno.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)   },
-  { path: '', component: HomeComponent },
   { path: 'paciente', component: PacienteComponent},
   { path: 'paciente/agregar', component: PacienteAgregarComponent},
   { path: 'tratamientos', component: TratamientoComponent},
   { path: 'turnos', component: TurnoComponent},
   { path: 'estadisticas', component: EstadisticasComponent},
+  { path: '', component: HomeComponent },
   { path: '**', component: ErrorPageComponent }
 ];
 
