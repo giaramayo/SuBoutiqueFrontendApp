@@ -19,6 +19,7 @@ import { TurnoComponent } from './pages/turno/turno.component';
 import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
 import { ListaTratamientoComponent } from './component/lista-tratamiento/lista-tratamiento.component';
 import { DialogModificarTratamientoComponent } from './component/dialog-modificar-tratamiento/dialog-modificar-tratamiento.component';
+import { GraficoComponent } from './component/grafico/grafico.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DialogModificarTratamientoComponent } from './component/dialog-modifica
     TurnoComponent,
     EstadisticasComponent,
     ListaTratamientoComponent,
-    DialogModificarTratamientoComponent
+    DialogModificarTratamientoComponent,
+    GraficoComponent
   ],
   imports: [
     BrowserModule,
