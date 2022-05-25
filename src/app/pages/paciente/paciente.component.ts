@@ -41,10 +41,7 @@ export class PacienteComponent implements OnInit {
     this.pacienteService.getPacientes()
         .subscribe( response => {
           console.log(response);
-          this.pacientes = response;
-        },
-        () => {
-          console.log('error...')
+       //   this.pacientes = response;
         });
   }
 
