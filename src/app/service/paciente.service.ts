@@ -19,6 +19,9 @@ export class PacienteService {
     return this.http.get(this.pacienteURL)
   }
 
+  eliminar(documento: number): Observable<any> {
+    return this.http.delete(this.pacienteURL + '/borrar/' + documento)
+  }
 
  // postFiltrarPaciente( nombre: string, apellido: string, dni: number ) : Observable<any>{
  //   let params = new HttpParams().set('nombre', nombre).set('apellido', apellido).set('dni', dni);
