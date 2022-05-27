@@ -1,0 +1,12 @@
+<h2 class="txt-titulo" mat-dialog-title>{{data.titulo}}</h2>
+<mat-divider></mat-divider>
+<br>
+<mat-dialog-content class="mat-typography">
+    <h4>{{data.msj}}</h4>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()"> Cancelar </button>
+  <button mat-button color="accent" (click)="confirmar()"> Confirmar </button>
+</mat-dialog-actions>

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { DialogModificarTratamientoComponent } from '../dialog-modificar-tratamiento/dialog-modificar-tratamiento.component';
 import { TratamientoService } from '../../service/tratamiento.service';
+import { ConfirmacionComponent } from '../confirmacion/confirmacion.component';
 
 @Component({
   selector: 'app-lista-tratamiento',
@@ -18,14 +19,11 @@ export class ListaTratamientoComponent {
               private tratamientoService: TratamientoService) { }
 
   modificar( element: any){
-    
     element.titulo = 'Modificar Tratamiento';
-
     const dialogRef = this.dialog.open(DialogModificarTratamientoComponent, {
       width: '270px',
       data: element
     });
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
         this.getTratamientos();
@@ -39,16 +37,28 @@ export class ListaTratamientoComponent {
   }
 
   eliminar( element: any){
-    console.log(element);
-    this.tratamientoService.eliminar(element._id)
-      .subscribe(resp => {
-        console.log(resp);
-      },
-      () => undefined,
-      () => {
-        this.getTratamientos();
-      })
+    const dialogRef = this.dialog.open(ConfirmacionComponent, {
+      width: '270px',
+      data: {
+          msj: "¿Esta seguro que desea eliminar \"" + element.descripcion + "\"?",
+          titulo: "Eliminar"
+        }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result)
+        this.elimitarTratamiento(element._id)
+    });
+  }
 
+  elimitarTratamiento(id: number) {
+      this.tratamientoService.eliminar(id)
+        .subscribe(resp => {
+          console.log(resp);
+        },
+        () => undefined,
+        () => {
+          this.getTratamientos();
+        });
   }
 
 

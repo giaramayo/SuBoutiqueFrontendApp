@@ -20,8 +20,8 @@ import { EstadisticasComponent } from './pages/estadisticas/estadisticas.compone
 import { ListaTratamientoComponent } from './component/lista-tratamiento/lista-tratamiento.component';
 import { DialogModificarTratamientoComponent } from './component/dialog-modificar-tratamiento/dialog-modificar-tratamiento.component';
 import { GraficoComponent } from './component/grafico/grafico.component';
-import { DialogComponent } from './component/dialog/dialog.component';
 import { NumberPipe } from './pipes/number.pipe';
+import { ConfirmacionComponent } from './component/confirmacion/confirmacion.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { NumberPipe } from './pipes/number.pipe';
     ListaTratamientoComponent,
     DialogModificarTratamientoComponent,
     GraficoComponent,
-    DialogComponent
+    ConfirmacionComponent
   ],
   imports: [
     BrowserModule,
