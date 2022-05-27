@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { DialogModificarTratamientoComponent } from '../dialog-modificar-tratamiento/dialog-modificar-tratamiento.component';
+import { TratamientoService } from '../../service/tratamiento.service';
 
 @Component({
   selector: 'app-lista-tratamiento',
@@ -13,7 +14,8 @@ export class ListaTratamientoComponent {
   @Input() dataSource: any;
   public displayedColumns: string[] = ['descripcion', 'duracion', 'precio', 'modif', 'elim' ];
   
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+              private tratamientoService: TratamientoService) { }
 
   modificar( element: any){
     
@@ -26,12 +28,27 @@ export class ListaTratamientoComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-       element = result;
+        this.getTratamientos();
+    });
+  }
+
+  getTratamientos(){
+    this.tratamientoService.getAll().subscribe( resp => {
+      this.dataSource = resp;
     });
   }
 
   eliminar( element: any){
-    
+    console.log(element);
+    this.tratamientoService.eliminar(element._id)
+      .subscribe(resp => {
+        console.log(resp);
+      },
+      () => undefined,
+      () => {
+        this.getTratamientos();
+      })
+
   }
 
 

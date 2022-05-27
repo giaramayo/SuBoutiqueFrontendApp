@@ -56,8 +56,13 @@ export class TratamientoComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-//       element = result;
+      if(result)
+        this.getTratamientos();
     });
+  }
+
+  validar(): boolean {
+    return!this.tratamientoForm.get('descripcion')?.value;
   }
 
 }

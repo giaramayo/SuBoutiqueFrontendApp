@@ -15,7 +15,10 @@
         <mat-label>Descripción</mat-label>
         <input matInput type="text" formControlName="descripcion">
       </mat-form-field>
-      <button mat-flat-button color="primary" (click)="buscar()" [loading]="botonFiltroLoading">
+      <button mat-flat-button color="primary"
+       (click)="buscar()" 
+        [loading]="botonFiltroLoading"
+        [disabled]="validar()">
         <mat-icon aria-hidden="false">search</mat-icon>
         Filtrar
       </button>

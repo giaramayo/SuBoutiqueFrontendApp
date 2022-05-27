@@ -1,7 +1,7 @@
 
 
 export interface Tratamiento {
-    id              : number;
+    _id              : number;
     descripcion     : string;
     duracion        : number;
     precio          : number;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
@@ -23,6 +23,28 @@ export class TratamientoService {
     return this.http.get(this.tratamientoURL + '/filtrar/' + nombre);
   }
 
+  modificar(tratamiento: any): Observable<any> {
+    let body = {
+      _id: tratamiento._id, 
+      descripcion: tratamiento.descripcion,
+      duracion: tratamiento.duracion,
+      precio: tratamiento.precio
+    }
+    return this.http.put(this.tratamientoURL + '/modificar/' + tratamiento._id, body);
+  }
+
+  crear(tratamiento: any): Observable<any> {
+    let body = {
+      descripcion: tratamiento.descripcion,
+      duracion: tratamiento.duracion,
+      precio: tratamiento.precio
+    }
+    return this.http.post(this.tratamientoURL + '/crear', body);
+  }
+
+  eliminar(id: number): Observable<any>{
+    return this.http.delete(this.tratamientoURL + '/borrar/' + id);
+  }
   
 
 

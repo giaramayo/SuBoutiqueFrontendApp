@@ -2,35 +2,37 @@
 <mat-divider></mat-divider>
 <br>
 <mat-dialog-content class="mat-typography">
-  
-  <div class="form-dialog" >
-
-    <mat-form-field   color="accent">
+  <div class="form" [formGroup]="formTratamiento">
+    <mat-form-field class="form-field">
       <mat-label>Descripción</mat-label>
-      <input matInput [(ngModel)]="tratamiento.descripcion">
+      <input matInput type="text" [(ngModel)]="tratamiento.descripcion" formControlName="descripcion">
+        <mat-error *ngIf="formTratamiento.get('descripcion')?.invalid">
+          Este campo es requerido
+        </mat-error>
     </mat-form-field>
-
-    <mat-form-field color="accent">
+    <mat-form-field class="form-field">
       <mat-label>Duración</mat-label>
-      <input matInput [(ngModel)]="tratamiento.duracion">
+      <input matInput type="number" min="1" [(ngModel)]="tratamiento.duracion" formControlName="duracion">
+        <mat-error *ngIf="formTratamiento.get('duracion')?.invalid">
+          Este campo es requerido (mayor a 0)
+        </mat-error>
     </mat-form-field>
-
-    <mat-form-field  color="accent">
+    <mat-form-field class="form-field">
       <mat-label>Precio</mat-label>
-      <input matInput [(ngModel)]="tratamiento.precio">
+      <input matInput type="number" min="1" [(ngModel)]="tratamiento.precio" formControlName="precio">
+        <mat-error *ngIf="formTratamiento.get('precio')?.invalid">
+          Este campo es requerido (mayor a 0)
+        </mat-error>
     </mat-form-field>
-
   </div>
-  
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="cerrar()">
-    <!-- <mat-icon aria-hidden="false">close</mat-icon> -->
     Cancelar
   </button>
-  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Guardar</button> -->
-  <button mat-button color="accent" (click)="guardar()">
-    <!-- <mat-icon aria-hidden="false">check</mat-icon> -->
+  <button mat-button color="accent" 
+  [disabled]="formTratamiento.invalid"
+  (click)="guardar()">
     Guardar
   </button>
 </mat-dialog-actions>
