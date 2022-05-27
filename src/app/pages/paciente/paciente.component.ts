@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
-
 import { PacienteService } from 'src/app/service/paciente.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-paciente-inicio',
@@ -17,7 +17,6 @@ export class PacienteComponent implements OnInit {
   public pacienteForm: FormGroup;
   public botonFiltroLoading: boolean;
   public routerAgregar: string;
-
 
   constructor( private _snackBar: MatSnackBar,
                private pacienteService: PacienteService,
@@ -38,32 +37,37 @@ export class PacienteComponent implements OnInit {
   }
 
   getPacientes() {
-    this.pacienteService.getPacientes()
-        .subscribe( response => {
-          console.log(response);
-       //   this.pacientes = response;
+    this.pacienteService.getPacientes().subscribe( resp => {
+          this.pacientes = resp;
         });
   }
 
   buscarPacientes(){
     this.botonFiltroLoading = true;
-
-    this.pacienteService.getFiltrarPaciente(
+    this.pacientes.filter()
+   /*
+    this.pacienteService.postFiltrarPaciente(
       this.pacienteForm.get('nombre')?.value,
       this.pacienteForm.get('apellido')?.value,
       this.pacienteForm.get('dni')?.value
-    ).subscribe(response => {
-      console.log(response);
+    ).subscribe(resp => {
+      console.log(resp);
+      this.pacientes = resp;
     },
     error => {
       this.botonFiltroLoading = false;
-      console.log(error.error.error);
-      this.openSnackBar('dasd', 'Dance');
+      this.openSnackBar(error.error.error, '');
     },
     () => {
       this.botonFiltroLoading = false;
     });
+*/
+  }
 
+  validar(): boolean {
+    return!( this.pacienteForm.get('nombre')?.value 
+          || this.pacienteForm.get('apellido')?.value
+          || this.pacienteForm.get('dni')?.value);
   }
 
   openSnackBar(message: string, action: string) {
@@ -84,5 +88,7 @@ export class PacienteComponent implements OnInit {
 
   //   return !email.match(EMAIL_REGEX);
   // }
+
+
 
 }

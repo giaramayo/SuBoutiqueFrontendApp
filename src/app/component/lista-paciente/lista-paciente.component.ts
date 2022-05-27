@@ -11,7 +11,7 @@ import { Component, Input} from '@angular/core';
 export class ListaPacienteComponent  {
 
   @Input() dataSource: any;
-  public displayedColumns: string[] = ['dni', 'nomApe', 'fecha', 'tel', 'dom', 'modif', 'detalle', 'elim' ];
+  public displayedColumns: string[] = ['dni', 'nomApe', 'fecha', 'tel', 'modif', 'detalle', 'elim' ];
   
   constructor() {
   }

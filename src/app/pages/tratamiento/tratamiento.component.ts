@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { TratamientoService } from 'src/app/service/tratamiento.service';
 import { DialogModificarTratamientoComponent } from '../../component/dialog-modificar-tratamiento/dialog-modificar-tratamiento.component';
 
 @Component({
@@ -14,7 +15,8 @@ export class TratamientoComponent implements OnInit {
   public tratamientoForm: FormGroup;
   public botonFiltroLoading: boolean;
 
-  constructor(public dialog: MatDialog) { 
+  constructor(public dialog: MatDialog,
+              private tratamientoService: TratamientoService) { 
     this.botonFiltroLoading = false;
     this.tratamientoForm = new FormGroup({
       descripcion:  new FormControl("")
@@ -22,15 +24,20 @@ export class TratamientoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tratamientos = [{
-      id: 11111,
-      descripcion: 'ddd',
-      duracion: 1,
-      precio: 111
-    }]
+    this.getTratamientos();
+  }
+
+  getTratamientos(){
+    this.tratamientoService.getAll().subscribe( resp => {
+      this.tratamientos = resp;
+    });
   }
 
   buscar() {
+    this.tratamientoService.getFiltrar(this.tratamientoForm.get('descripcion')?.value)
+    .subscribe( resp => {
+      this.tratamientos = resp;
+    })
 
   }
 

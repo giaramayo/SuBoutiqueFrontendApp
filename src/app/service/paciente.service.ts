@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
@@ -19,10 +19,10 @@ export class PacienteService {
     return this.http.get(this.pacienteURL)
   }
 
-//  router.get( `${route}/buscar/:apellido/:nombre/:documento`, pacienteController.getPacientePorNyAyD )
 
-  getFiltrarPaciente( nombre: string, apellido: string, dni: number ) : Observable<any>{
-    return this.http.get(this.pacienteURL + '/buscar/' + apellido + '/' + nombre + '/' + dni);
-  }
+ // postFiltrarPaciente( nombre: string, apellido: string, dni: number ) : Observable<any>{
+ //   let params = new HttpParams().set('nombre', nombre).set('apellido', apellido).set('dni', dni);
+ //   return this.http.post(this.pacienteURL + '/filtrar', {params});
+ // }
 
 }

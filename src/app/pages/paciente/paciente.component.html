@@ -1,7 +1,6 @@
 <br>
 
 <div class="container">
-
   <h1 class="txt-titulo">
     Pacientes
   </h1>
@@ -21,7 +20,10 @@
         <mat-label>DNI</mat-label>
         <input matInput type="number" formControlName="dni">
       </mat-form-field>
-      <button mat-flat-button color="primary" (click)="buscarPacientes()" [loading]="botonFiltroLoading">
+      <button mat-flat-button color="primary"
+       (click)="buscarPacientes()"
+        [loading]="botonFiltroLoading"
+        [disabled]="validar()">
         <mat-icon aria-hidden="false">search</mat-icon>
         Filtrar
       </button>
