@@ -20,15 +20,15 @@ export class DialogModificarTratamientoComponent {
     public dialogRef: MatDialogRef<DialogModificarTratamientoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Tratamiento,
     private TratamientoService: TratamientoService ) {
-    this.tratamiento = data;
-    this.titulo = data._id ? 'Modificar Tratamiento' : 'Agregar Tratamiento';
+          dialogRef.disableClose = true;
+          this.tratamiento = data;
+          this.titulo = data._id ? 'Modificar Tratamiento' : 'Agregar Tratamiento';
 
-    this.formTratamiento = new FormGroup({
-      descripcion: new FormControl('', Validators.required),
-      precio: new FormControl('', Validators.required),
-      duracion: new FormControl('', Validators.required),
-    });
-
+          this.formTratamiento = new FormGroup({
+            descripcion: new FormControl('', Validators.required),
+            precio: new FormControl('', Validators.required),
+            duracion: new FormControl('', Validators.required),
+          });
   }
 
   cerrar(): void {

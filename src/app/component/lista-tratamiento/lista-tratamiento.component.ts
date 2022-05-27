@@ -25,7 +25,6 @@ export class ListaTratamientoComponent {
       data: element
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
         this.getTratamientos();
     });
   }

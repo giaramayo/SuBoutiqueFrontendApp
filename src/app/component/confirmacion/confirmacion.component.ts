@@ -16,7 +16,9 @@ export interface DialogData {
 export class ConfirmacionComponent  {
 
   constructor(private dialogRef: MatDialogRef<ConfirmacionComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+              @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+                dialogRef.disableClose = true;
+              }
 
   confirmar(){
     this.dialogRef.close(true);
