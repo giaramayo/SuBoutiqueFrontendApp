@@ -79,16 +79,4 @@ export class PacienteComponent implements OnInit {
   }
 
 
-  // esEmailValido() {
-  //   const  email = this.pacienteForm.get('nombre')?.value
-  //   console.log(email)
-  //   const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  //   // /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  //   console.log(!email.match(EMAIL_REGEX))
-
-  //   return !email.match(EMAIL_REGEX);
-  // }
-
-
-
 }
