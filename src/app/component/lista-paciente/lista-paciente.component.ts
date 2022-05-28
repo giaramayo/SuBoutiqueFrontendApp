@@ -59,4 +59,8 @@ export class ListaPacienteComponent  {
         });
   }
 
+  consultarHistorias(element: any) {
+    console.log(element)
+  }
+
 }

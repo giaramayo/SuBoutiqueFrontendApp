@@ -22,6 +22,8 @@ import { DialogModificarTratamientoComponent } from './component/dialog-modifica
 import { GraficoComponent } from './component/grafico/grafico.component';
 import { NumberPipe } from './pipes/number.pipe';
 import { ConfirmacionComponent } from './component/confirmacion/confirmacion.component';
+import { HistorialComponent } from './component/historial/historial.component';
+import { ListaHistorialComponent } from './component/lista-historial/lista-historial.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { ConfirmacionComponent } from './component/confirmacion/confirmacion.com
     ListaTratamientoComponent,
     DialogModificarTratamientoComponent,
     GraficoComponent,
-    ConfirmacionComponent
+    ConfirmacionComponent,
+    HistorialComponent,
+    ListaHistorialComponent
   ],
   imports: [
     BrowserModule,
