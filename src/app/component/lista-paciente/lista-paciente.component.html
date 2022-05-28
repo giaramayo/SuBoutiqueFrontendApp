@@ -22,10 +22,10 @@
     </ng-container>
 
     <ng-container matColumnDef="modif">
-      <th mat-header-cell *matHeaderCellDef> Modificar </th>
+      <th mat-header-cell *matHeaderCellDef> Historial </th>
       <td mat-cell *matCellDef="let element" >
         <button mat-icon-button color="primary"  (click)="modificar(element)">
-          <mat-icon>edit_note</mat-icon>
+          <mat-icon>medical_information</mat-icon>
         </button>
       </td>
     </ng-container>
@@ -39,14 +39,14 @@
       </td>
     </ng-container>
     
-    <ng-container matColumnDef="elim">
+    <!-- <ng-container matColumnDef="elim">
       <th mat-header-cell *matHeaderCellDef> Eliminar </th>
       <td mat-cell *matCellDef="let element" >
         <button mat-icon-button color="warn"  (click)="eliminar(element)">
           <mat-icon>delete_forever</mat-icon>
         </button>
       </td>
-    </ng-container>
+    </ng-container> -->
 
     
 

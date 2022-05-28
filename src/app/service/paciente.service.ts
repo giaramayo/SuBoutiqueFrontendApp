@@ -12,6 +12,7 @@ export class PacienteService {
 
   private nodeURL = environment.nodeURL;
   private pacienteURL = this.nodeURL + '/pacientes'
+  private localidadURL = this.nodeURL + '/barrios'
 
   constructor( private readonly http: HttpClient ) { }
 
@@ -23,6 +24,9 @@ export class PacienteService {
     return this.http.delete(this.pacienteURL + '/borrar/' + documento)
   }
 
+  getLocalidad() : Observable<any> {
+    return this.http.get(this.localidadURL);
+  }
  // postFiltrarPaciente( nombre: string, apellido: string, dni: number ) : Observable<any>{
  //   let params = new HttpParams().set('nombre', nombre).set('apellido', apellido).set('dni', dni);
  //   return this.http.post(this.pacienteURL + '/filtrar', {params});

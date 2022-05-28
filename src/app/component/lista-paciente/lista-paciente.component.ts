@@ -14,7 +14,7 @@ import { PacienteService } from '../../service/paciente.service';
 export class ListaPacienteComponent  {
 
   @Input() dataSource: any;
-  public displayedColumns: string[] = ['dni', 'nomApe', 'fecha', 'tel', 'modif', 'detalle', 'elim' ];
+  public displayedColumns: string[] = ['dni', 'nomApe', 'fecha', 'tel', 'modif', 'detalle'];
   
   constructor(public dialog: MatDialog,
     private pacienteService: PacienteService) {}

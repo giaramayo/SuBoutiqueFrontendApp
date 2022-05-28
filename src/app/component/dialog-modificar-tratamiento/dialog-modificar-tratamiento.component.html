@@ -6,23 +6,23 @@
     <mat-form-field class="form-field">
       <mat-label>Descripción</mat-label>
       <input matInput type="text" [(ngModel)]="tratamiento.descripcion" formControlName="descripcion">
-        <mat-error *ngIf="formTratamiento.get('descripcion')?.invalid">
-          Este campo es requerido
-        </mat-error>
+      <mat-error *ngIf="formTratamiento.get('descripcion')?.invalid">
+        Este campo es requerido
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="form-field">
       <mat-label>Duración</mat-label>
       <input matInput type="number" min="1" [(ngModel)]="tratamiento.duracion" formControlName="duracion">
-        <mat-error *ngIf="formTratamiento.get('duracion')?.invalid">
-          Este campo es requerido (mayor a 0)
-        </mat-error>
+      <mat-error *ngIf="formTratamiento.get('duracion')?.invalid">
+        Este campo es requerido (mayor a 0)
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="form-field">
       <mat-label>Precio</mat-label>
       <input matInput type="number" min="1" [(ngModel)]="tratamiento.precio" formControlName="precio">
-        <mat-error *ngIf="formTratamiento.get('precio')?.invalid">
-          Este campo es requerido (mayor a 0)
-        </mat-error>
+      <mat-error *ngIf="formTratamiento.get('precio')?.invalid">
+        Este campo es requerido (mayor a 0)
+      </mat-error>
     </mat-form-field>
   </div>
 </mat-dialog-content>
@@ -30,9 +30,7 @@
   <button mat-button (click)="cerrar()">
     Cancelar
   </button>
-  <button mat-button color="accent" 
-  [disabled]="formTratamiento.invalid"
-  (click)="guardar()">
+  <button mat-button color="accent" [disabled]="formTratamiento.invalid" (click)="guardar()">
     Guardar
   </button>
 </mat-dialog-actions>
