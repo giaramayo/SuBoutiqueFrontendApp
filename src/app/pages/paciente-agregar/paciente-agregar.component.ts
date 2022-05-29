@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PacienteService } from '../../service/paciente.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { Paciente } from '../../interfaces/paciente.interfaces';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogSnackbarComponent } from '../../component/dialog-snackbar/dialog-snackbar.component';
 
 interface NameValue {
   value: number,
@@ -35,7 +36,8 @@ export class PacienteAgregarComponent  {
 
   private paciente!: Paciente;
 
-   constructor( private pacienteService: PacienteService,
+   constructor( public _snackBar: MatSnackBar,
+                private pacienteService: PacienteService,
                 private router: Router ) {
       this.disabledOK = true;
       this.step = 0;
@@ -133,9 +135,28 @@ export class PacienteAgregarComponent  {
     this.pacienteService.agregarPaciente(this.paciente)
       .subscribe( resp => {
         console.log(resp);
+        if(resp){
+          this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+            data: { icono: 'done', 
+                    mensaje: "Se dio de alta al paciente " + this.paciente.apellido +", " + this.paciente.nombre, 
+                    titulo: 'Guardar'},
+            duration: 4000,
+            horizontalPosition: "right",
+            verticalPosition: "top",
+            panelClass: ["snack-bar-ok"]
+          });
+          this.volver();
+        }
       },
       err => {
         console.log(err);
+        this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+          data: { icono: 'report', mensaje: "Ocurrio un error al guardar el paciente", titulo: 'Error'},
+          duration: 4000,
+          horizontalPosition: "right",
+          verticalPosition: "top",
+          panelClass: ["snack-bar-err"]
+        });
       });
 
   } 
@@ -144,6 +165,15 @@ export class PacienteAgregarComponent  {
     this.pacienteService.getLocalidad()
       .subscribe( resp => {
           this.localidades = resp;
+      },
+       err => {
+        this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+          data: { icono: 'report', mensaje: "Ocurrio un error consultar Localidades", titulo: 'Error'},
+          duration: 4000,
+          horizontalPosition: "right",
+          verticalPosition: "top",
+          panelClass: ["snack-bar-err"]
+        });
       });
  }
 

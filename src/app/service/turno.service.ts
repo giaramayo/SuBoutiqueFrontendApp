@@ -16,8 +16,8 @@ export class TurnoService {
   constructor( private readonly http: HttpClient ) { }
 
 
-  buscarTurnosPorPaciente( id: number ): Observable<any> {
-    return this.http.get(this.turnoURL + '/buscar/idPaciente/' + id);
+  buscarHistorialDelPaciente( id: number ): Observable<any> {
+    return this.http.get(this.turnoURL + '/buscarhistorial/' + id);
   }
 
 //   eliminar(documento: number): Observable<any> {

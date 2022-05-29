@@ -1,9 +1,10 @@
 import { Component, Input} from '@angular/core';
-import { ConfirmacionComponent } from '../confirmacion/confirmacion.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PacienteService } from '../../service/paciente.service';
 import { TurnoService } from '../../service/turno.service';
 import { DialogHistorialComponent } from '../dialog-historial/dialog-historial.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogSnackbarComponent } from '../dialog-snackbar/dialog-snackbar.component';
 
 @Component({
   selector: 'app-lista-paciente',
@@ -16,9 +17,10 @@ export class ListaPacienteComponent  {
   @Input() dataSource: any;
   public displayedColumns: string[] = ['dni', 'nomApe', 'fecha', 'tel', 'consulta', 'detalle'];
   
-  constructor(public dialog: MatDialog,
-            private pacienteService: PacienteService,
-            private turnoService: TurnoService) {}
+  constructor(public _snackBar: MatSnackBar,
+              public dialog: MatDialog,
+              private pacienteService: PacienteService,
+              private turnoService: TurnoService) {}
 
   detalle( element: any ){
       console.log("detalle")
@@ -33,13 +35,19 @@ export class ListaPacienteComponent  {
   }
 
   consultarHistorias(element: any) {
-    this.turnoService.buscarTurnosPorPaciente(element._id)
+    this.turnoService.buscarHistorialDelPaciente(element._id)
         .subscribe( resp => {
           if(resp)
               this.dialogConsultaHistorial(resp, element);
         },
         err => {
-          console.log(err.error.error)
+          this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+            data: { icono: 'report', mensaje: err.error.error, titulo: 'Error'},
+            duration: 4000,
+            horizontalPosition: "right",
+            verticalPosition: "top",
+            panelClass: ["snack-bar-err"]
+          });
         });
   }
 
