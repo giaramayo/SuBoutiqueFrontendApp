@@ -3,6 +3,7 @@ import { PacienteService } from '../../service/paciente.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
+import { Paciente } from '../../interfaces/paciente.interfaces';
 
 interface NameValue {
   value: number,
@@ -32,13 +33,15 @@ export class PacienteAgregarComponent  {
   public fototipos : NameValue[];
   public tienealergias = false;
 
+  private paciente!: Paciente;
+
    constructor( private pacienteService: PacienteService,
                 private router: Router ) {
       this.disabledOK = true;
       this.step = 0;
       this.routerVolver = "/paciente";
       this.localidades = [];
-
+      
       this.formPaciente = new FormGroup({
         nombre: new FormControl('', Validators.required),
         apellido: new FormControl('', Validators.required),
@@ -102,8 +105,39 @@ export class PacienteAgregarComponent  {
   }
 
   guardar(){
-    console.log('guargando datos...')
-    console.log(this.formPaciente);
+    this.paciente = {
+      documento     : this.formPaciente.get('documento')?.value,
+      tipo_documento : this.formPaciente.get('tipo_documento')?.value.name,
+      nombre        : this.formPaciente.get('nombre')?.value,
+      apellido      : this.formPaciente.get('apellido')?.value,
+      calle         : this.formPaciente.get('calle')?.value,
+      numero        : this.formPaciente.get('numero')?.value,
+      codigo_postal : this.formPaciente.get('codigo_postal')?.value,
+      barrio        : {
+        _id: this.formPaciente.get('localidad')?.value._id,
+        descripcion: this.formPaciente.get('localidad')?.value.descripcion,
+      },
+      telefono      : this.formPaciente.get('telefono')?.value,
+      correo        : this.formPaciente.get('correo')?.value,
+      fecha_nacimiento : this.formPaciente.get('fecha_nacimiento')?.value,
+      antecedente   : {
+        biotipo              : this.formPaciente.get('biotipo')?.value.name,
+        fototipo             : this.formPaciente.get('fototipo')?.value.name,
+        afeccion_cutanea     : this.formPaciente.get('afeccion_cutanea')?.value,
+        alergias             : this.formPaciente.get('alergias')?.value,
+        medicamentos         : this.formPaciente.get('medicamentos')?.value,
+        tratamientos_clinicos: this.formPaciente.get('tratamientos_clinicos')?.value,
+      }
+    }
+
+    this.pacienteService.agregarPaciente(this.paciente)
+      .subscribe( resp => {
+        console.log(resp);
+      },
+      err => {
+        console.log(err);
+      });
+
   } 
 
   getLocalidad() {

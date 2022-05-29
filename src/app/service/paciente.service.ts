@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
+import { Paciente } from '../interfaces/paciente.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class PacienteService {
  //   let params = new HttpParams().set('nombre', nombre).set('apellido', apellido).set('dni', dni);
  //   return this.http.post(this.pacienteURL + '/filtrar', {params});
  // }
+
+ agregarPaciente(paciente: Paciente) {
+  return this.http.post(this.pacienteURL + '/crear', paciente);
+ }
 
 }

@@ -2,31 +2,34 @@ import { Login } from './interfaces';
 
 
 export interface Paciente {
-    id            : number;
-    dni           : number;
-    tipoDocumento : string;
+    _id            ?: number;
+    documento     : string;
+    tipo_documento : string;
     nombre        : string;
     apellido      : string;
+    calle         : string;
+    numero        : number;
+    codigo_postal : number;
     barrio        : Barrio;
     telefono      : string;
-    email         : string;
-    fechaNac      : Date;
-    login         : Login;
+    correo        : string;
+    fecha_nacimiento : Date;
     antecedente   : antecedentesClinicos;
 }
+  //  login         : Login;
 
 export interface antecedentesClinicos {
-    id                  : number;
-    biotipo             : string;
-    fototipo            : number;
-    afectacionCutanea   : string;
-    alergias            : string;
-    medPrescriptos      : string;
-    tratamiento         : string;
+    _id                 ?: number;
+    biotipo              : string;
+    fototipo             : number;
+    afeccion_cutanea     : string;
+    alergias             : string;
+    medicamentos         : string;
+    tratamientos_clinicos: string;
 }
 
 export interface Barrio {
-    id      : number;
-    nombre  : string
+    _id      : number;
+    descripcion  : string
 }
 
