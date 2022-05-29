@@ -5,6 +5,7 @@ import { TurnoService } from '../../service/turno.service';
 import { DialogHistorialComponent } from '../dialog-historial/dialog-historial.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogSnackbarComponent } from '../dialog-snackbar/dialog-snackbar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-paciente',
@@ -16,15 +17,16 @@ export class ListaPacienteComponent  {
 
   @Input() dataSource: any;
   public displayedColumns: string[] = ['dni', 'nomApe', 'fecha', 'tel', 'consulta', 'detalle'];
-  
+  private routerDetalle: string = "paciente/detalle";
+
   constructor(public _snackBar: MatSnackBar,
               public dialog: MatDialog,
               private pacienteService: PacienteService,
-              private turnoService: TurnoService) {}
+              private turnoService: TurnoService,
+              private router: Router) {}
 
   detalle( element: any ){
-      console.log("detalle")
-      console.log(element)
+      this.router.navigateByUrl(this.routerDetalle + "/" + element._id);
   }
 
   getPacientes() {

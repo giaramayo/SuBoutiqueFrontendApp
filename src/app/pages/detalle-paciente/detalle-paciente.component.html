@@ -1,0 +1,195 @@
+<!-- <p>{{ paciente | json }}</p>
+
+<p>{{ historial | json }}</p> -->
+
+<br>
+<div class="container">
+
+  <h1 class="txt-titulo">
+    Detalle del Paciente
+  </h1>
+
+  <mat-divider></mat-divider>
+  <br>
+
+  <div class="row">
+    <mat-accordion class="example-headers-align">
+
+      <!-- Datos del paciente -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Datos del paciente
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon class="personal-icon">account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Nombre</mat-label>
+          <input matInput type="text" readonly [ngModel]="paciente.nombre">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Apellido</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.apellido">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Tipo Documento</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.tipo_documento">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Documento</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.documento">
+        </mat-form-field>
+
+        <!-- <mat-form-field class="form-field" color="accent">
+          <mat-label>Fecha de Nacimiento</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.fecha_nacimiento">
+        </mat-form-field> -->
+
+      </mat-expansion-panel>
+      <!-- Datos personales -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Datos personales
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon class="contact_mail">contact_mail</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Telefono</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.telefono">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.correo">
+        </mat-form-field>
+
+      </mat-expansion-panel>
+      <!-- Dirección -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Dirección
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon class="map-icon">map</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Calle</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.calle">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Altura</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.numero">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Localidad</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.barrio.descripcion">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Codigo Postal</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.codigo_postal">
+        </mat-form-field>
+
+      </mat-expansion-panel>
+      <!-- Antecedentes Clinicos -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Antecedentes Clinicos
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon class="medical-icon">medical_information</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Biotipo</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.antecedente.biotipo">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Fototipo Cut&#225;neos</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.antecedente.fototipo">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Afectacion Cutanea</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.antecedente.afeccion_cutanea">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Alergias</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.antecedente.alergias">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Medicamentos Prescriptos</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.antecedente.medicamentos">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" color="accent">
+          <mat-label>Tratamiento</mat-label>
+          <input matInput type="text" readonly [(ngModel)]="paciente.antecedente.tratamientos_clinicos">
+        </mat-form-field>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Historial
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon class="medical-history">history</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <app-lista-historial [dataSource]="historial"></app-lista-historial>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Turnos Pendientes
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon class="medical-event">event</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <app-lista-historial [dataSource]="historial"></app-lista-historial>
+
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </div>
+
+  <div class="botones">
+    <button mat-flat-button color="primary" (click)="volver()">
+      <mat-icon aria-hidden="false">arrow_back</mat-icon>
+      Volver
+    </button>
+    <!-- <button mat-flat-button color="accent" [disabled]="formPaciente.invalid" (click)="guardar()">
+      <mat-icon aria-hidden="false">how_to_reg</mat-icon>
+      Guardar
+    </button> -->
+  </div>
+
+
+</div>

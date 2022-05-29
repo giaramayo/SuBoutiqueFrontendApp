@@ -8,11 +8,13 @@ import { PacienteAgregarComponent } from './pages/paciente-agregar/paciente-agre
 import { TratamientoComponent } from './pages/tratamiento/tratamiento.component';
 import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
 import { TurnoComponent } from './pages/turno/turno.component';
+import { DetallePacienteComponent } from './pages/detalle-paciente/detalle-paciente.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)   },
   { path: 'paciente', component: PacienteComponent},
   { path: 'paciente/agregar', component: PacienteAgregarComponent},
+  { path: 'paciente/detalle/:id', component: DetallePacienteComponent},
   { path: 'tratamientos', component: TratamientoComponent},
   { path: 'turnos', component: TurnoComponent},
   { path: 'estadisticas', component: EstadisticasComponent},

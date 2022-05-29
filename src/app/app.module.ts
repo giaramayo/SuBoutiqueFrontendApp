@@ -26,6 +26,7 @@ import { HistorialComponent } from './component/historial/historial.component';
 import { ListaHistorialComponent } from './component/lista-historial/lista-historial.component';
 import { DialogHistorialComponent } from './component/dialog-historial/dialog-historial.component';
 import { DialogSnackbarComponent } from './component/dialog-snackbar/dialog-snackbar.component';
+import { DetallePacienteComponent } from './pages/detalle-paciente/detalle-paciente.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DialogSnackbarComponent } from './component/dialog-snackbar/dialog-snac
     HistorialComponent,
     ListaHistorialComponent,
     DialogHistorialComponent,
-    DialogSnackbarComponent
+    DialogSnackbarComponent,
+    DetallePacienteComponent
   ],
   imports: [
     BrowserModule,

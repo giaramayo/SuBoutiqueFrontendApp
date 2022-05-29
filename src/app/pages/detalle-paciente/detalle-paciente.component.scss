@@ -1,0 +1,51 @@
+
+.mat-form-field {
+    margin-right: 12px;
+  }
+
+  mat-panel-description{
+    justify-content: end;
+
+    .personal-icon {
+        color: #ff4081;
+    }
+
+    .map-icon {
+      color: #5cdb17;
+    }
+
+    .medical-icon {
+      color: #ad7be7;
+    }
+
+    .contact_mail{
+      color: #7baae7;
+    }
+    .medical-history{
+      color: #f28b56;
+    }
+    .medical-event{
+      color: #f256c4;
+    }
+    
+
+  }
+
+  mat-panel-title {
+    font-size: 18px;
+    font-weight: initial;
+    color: #973d8f;
+  }
+
+  .row {
+    padding: 15px 25px;
+  }
+
+
+  .botones {
+    display: flex;
+    justify-content: center;
+    button{
+      margin: 10px;
+    }
+  }
