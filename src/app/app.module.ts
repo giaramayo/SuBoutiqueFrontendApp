@@ -25,6 +25,7 @@ import { ConfirmacionComponent } from './component/confirmacion/confirmacion.com
 import { HistorialComponent } from './component/historial/historial.component';
 import { ListaHistorialComponent } from './component/lista-historial/lista-historial.component';
 import { DialogHistorialComponent } from './component/dialog-historial/dialog-historial.component';
+import { DialogSnackbarComponent } from './component/dialog-snackbar/dialog-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { DialogHistorialComponent } from './component/dialog-historial/dialog-hi
     ConfirmacionComponent,
     HistorialComponent,
     ListaHistorialComponent,
-    DialogHistorialComponent
+    DialogHistorialComponent,
+    DialogSnackbarComponent
   ],
   imports: [
     BrowserModule,

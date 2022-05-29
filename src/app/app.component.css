@@ -1,0 +1,15 @@
+
+::ng-deep .snack-bar-err {
+    color: rgb(120 48 18);
+    background: #f49d97;
+}
+
+::ng-deep .snack-bar-ok {
+    color: rgb(18 111 10);
+    background: #9ae176;
+}
+
+::ng-deep .snack-bar-war {
+    color: rgb(114 98 10);
+    background: #e2de88;
+}

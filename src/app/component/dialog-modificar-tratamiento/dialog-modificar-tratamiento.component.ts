@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Tratamiento } from '../../interfaces/tratamiento.interfaces';
 import { TratamientoService } from '../../service/tratamiento.service';
@@ -45,8 +45,8 @@ export class DialogModificarTratamientoComponent {
   modificar() {
     this.TratamientoService.modificar(this.tratamiento)
     .subscribe( resp => {
-      this.dialogRef.close(resp);
-    });
+       this.dialogRef.close(resp);
+      });
   }
 
   crear() {

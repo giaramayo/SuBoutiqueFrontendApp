@@ -3,6 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TratamientoService } from 'src/app/service/tratamiento.service';
 import { DialogModificarTratamientoComponent } from '../../component/dialog-modificar-tratamiento/dialog-modificar-tratamiento.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogSnackbarComponent } from '../../component/dialog-snackbar/dialog-snackbar.component';
 
 @Component({
   selector: 'app-tratamiento',
@@ -15,7 +17,8 @@ export class TratamientoComponent implements OnInit {
   public tratamientoForm: FormGroup;
   public botonFiltroLoading: boolean;
 
-  constructor(public dialog: MatDialog,
+  constructor(public _snackBar: MatSnackBar,
+              public dialog: MatDialog,
               private tratamientoService: TratamientoService) { 
     this.botonFiltroLoading = false;
     this.tratamientoForm = new FormGroup({
@@ -30,6 +33,15 @@ export class TratamientoComponent implements OnInit {
   getTratamientos(){
     this.tratamientoService.getAll().subscribe( resp => {
       this.tratamientos = resp;
+    },
+    () => {
+      this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+        data: { icono: 'report', mensaje: "Error al consultar tratamientos", titulo: 'Error'},
+        duration: 4000,
+        horizontalPosition: "right",
+        verticalPosition: "top",
+        panelClass: ["snack-bar-err"]
+      });
     });
   }
 
@@ -55,9 +67,16 @@ export class TratamientoComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-      if(result)
+      if(result){
+        this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+          data: { icono: 'done', mensaje: result.msg, titulo: 'Guardar'},
+          duration: 4000,
+          horizontalPosition: "right",
+          verticalPosition: "top",
+          panelClass: ["snack-bar-ok"]
+        });
         this.getTratamientos();
+      }        
     });
   }
 
