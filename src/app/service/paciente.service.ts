@@ -26,6 +26,10 @@ export class PacienteService {
     return this.http.delete(this.pacienteURL + '/borrar/' + documento)
   }
 
+  eliminarPorId( id: number): Observable<any> {
+    return this.http.delete(this.pacienteURL + '/borrarPorID/' + id)
+  }
+
   getLocalidad() : Observable<any> {
     return this.http.get(this.localidadURL);
   }

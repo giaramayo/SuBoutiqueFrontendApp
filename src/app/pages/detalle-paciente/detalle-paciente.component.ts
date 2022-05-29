@@ -6,6 +6,8 @@ import { PacienteService } from '../../service/paciente.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogSnackbarComponent } from '../../component/dialog-snackbar/dialog-snackbar.component';
 import { TurnoService } from '../../service/turno.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmacionComponent } from '../../component/confirmacion/confirmacion.component';
 
 @Component({
   selector: 'app-detalle-paciente',
@@ -23,7 +25,8 @@ export class DetallePacienteComponent implements OnInit {
               private routerAct: ActivatedRoute,
               private pacienteService: PacienteService,
               private turnoService: TurnoService,
-              public _snackBar: MatSnackBar) {
+              public _snackBar: MatSnackBar,
+              public dialog: MatDialog) {
     this.routerVolver = "/paciente";
     this.idPaciente = this.routerAct.snapshot.paramMap.get('id');
     this.historial = [];
@@ -139,11 +142,11 @@ export class DetallePacienteComponent implements OnInit {
           },
           () => {
             this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-              data: { icono: 'report', mensaje: "Error al consultar el historial", titulo: 'Error'},
+              data: { icono: 'warning_amber', mensaje: "No se encontro historial para el paciente", titulo: 'Historial'},
               duration: 4000,
               horizontalPosition: "right",
               verticalPosition: "top",
-              panelClass: ["snack-bar-err"]
+              panelClass: ["snack-bar-war"]
             });    
           });
   }
@@ -154,5 +157,46 @@ export class DetallePacienteComponent implements OnInit {
 
   modificar() {
     
+  }
+
+  eliminar() {
+    const dialogRef = this.dialog.open(ConfirmacionComponent, {
+      width: '270px',
+      data: {
+          msj: '¿Esta seguro que desea dar de baja al paciente \"' + this.paciente.nombre + ' ' + this.paciente.apellido + '\"?',
+          titulo: "Eliminar paciente"
+        }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+        if(result){
+          this.eliminarPaciente();
+        }
+    });
+
+  }
+
+  eliminarPaciente() {
+    this.pacienteService.eliminarPorId(this.paciente._id)
+        .subscribe( resp => {
+          if(resp){
+            this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+              data: { icono: 'done', mensaje: 'Se elimino con exito al paciente', titulo: 'Eliminado'},
+              duration: 4000,
+              horizontalPosition: "right",
+              verticalPosition: "top",
+              panelClass: ["snack-bar-ok"]
+            });
+            this.volver();
+          }
+        },
+        () => {
+          this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+            data: { icono: 'report', mensaje: "Error intentar eliminar el paciente", titulo: 'Error'},
+            duration: 4000,
+            horizontalPosition: "right",
+            verticalPosition: "top",
+            panelClass: ["snack-bar-err"]
+          });    
+        })
   }
 }
