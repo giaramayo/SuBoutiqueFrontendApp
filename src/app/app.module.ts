@@ -24,6 +24,7 @@ import { NumberPipe } from './pipes/number.pipe';
 import { ConfirmacionComponent } from './component/confirmacion/confirmacion.component';
 import { HistorialComponent } from './component/historial/historial.component';
 import { ListaHistorialComponent } from './component/lista-historial/lista-historial.component';
+import { DialogHistorialComponent } from './component/dialog-historial/dialog-historial.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ListaHistorialComponent } from './component/lista-historial/lista-histo
     GraficoComponent,
     ConfirmacionComponent,
     HistorialComponent,
-    ListaHistorialComponent
+    ListaHistorialComponent,
+    DialogHistorialComponent
   ],
   imports: [
     BrowserModule,

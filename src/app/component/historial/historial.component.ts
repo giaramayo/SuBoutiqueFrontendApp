@@ -1,19 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-historial',
   templateUrl: './historial.component.html',
   styleUrls: ['./historial.component.scss']
 })
-export class HistorialComponent implements OnInit {
 
-  @Input() dataSource: any;
-  public displayedColumns: string[] = ['fecha', 'tratamiento', 'observacion'];
+export class HistorialComponent  {
   
-
-  constructor() { }
-
-  ngOnInit(): void {
+  
+  constructor() {
   }
+
 
 }

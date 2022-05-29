@@ -1,0 +1,15 @@
+<h2 class="txt-titulo" mat-dialog-title>Historial de {{data.paciente.apellido}}, {{data.paciente.nombre}}</h2>
+
+<mat-divider></mat-divider>
+<br>
+
+<mat-dialog-content class="mat-typography">
+
+    <app-lista-historial [dataSource]="data.dataSource"></app-lista-historial>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="cancelar()" > Cerrar </button>
+    <button mat-button color="accent" (click)="confirmar()"> Agregar </button>
+ </mat-dialog-actions>

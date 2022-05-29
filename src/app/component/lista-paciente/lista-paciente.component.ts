@@ -3,14 +3,13 @@ import { ConfirmacionComponent } from '../confirmacion/confirmacion.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PacienteService } from '../../service/paciente.service';
 import { TurnoService } from '../../service/turno.service';
-
+import { DialogHistorialComponent } from '../dialog-historial/dialog-historial.component';
 
 @Component({
   selector: 'app-lista-paciente',
   templateUrl: './lista-paciente.component.html',
   styleUrls: ['./lista-paciente.component.scss'],
 })
-
 
 export class ListaPacienteComponent  {
 
@@ -26,7 +25,6 @@ export class ListaPacienteComponent  {
       console.log(element)
   }
 
-
   getPacientes() {
     this.pacienteService.getPacientes()
     .subscribe( resp => {
@@ -37,11 +35,26 @@ export class ListaPacienteComponent  {
   consultarHistorias(element: any) {
     this.turnoService.buscarTurnosPorPaciente(element._id)
         .subscribe( resp => {
-          console.log(resp);
+          if(resp)
+              this.dialogConsultaHistorial(resp, element);
         },
         err => {
           console.log(err.error.error)
         });
+  }
+
+  dialogConsultaHistorial(lista: any, element: any) {
+      const dialogRef = this.dialog.open(DialogHistorialComponent, {
+      width: '650px',
+      data: {
+          dataSource: lista,
+          paciente: element
+        }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+       console.log(result)
+    });
   }
 
   // eliminar( element: any){
