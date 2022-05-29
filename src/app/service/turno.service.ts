@@ -20,6 +20,10 @@ export class TurnoService {
     return this.http.get(this.turnoURL + '/buscarhistorial/' + id);
   }
 
+  buscarTurnoPorFecha( fecha: string ) : Observable<any> {
+    return this.http.get(this.turnoURL + '/buscar/fecha/' + fecha);
+  }
+
 //   eliminar(documento: number): Observable<any> {
 //     return this.http.delete(this.pacienteURL + '/borrar/' + documento)
 //   }

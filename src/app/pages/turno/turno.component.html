@@ -8,24 +8,23 @@
   <mat-divider></mat-divider>
   <br>
 
-
   <div class="row-turno">
 
     <div class="calendar-card card">
       <mat-card class="calendario-card" >
-        <mat-calendar [minDate]="hoy" [(selected)]="selected" color="accent"></mat-calendar>
+        <mat-calendar [minDate]="hoy" [(selected)]="selected" color="accent" (click)="consultar()"></mat-calendar>
       </mat-card>
 
       <mat-form-field class="calendario-piker" appearance="fill">
         <mat-label>Fecha</mat-label>
-        <input matInput [matDatepicker]="picker" color="accent">
+        <input matInput [matDatepicker]="picker" color="accent" >
         <mat-datepicker-toggle  matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker  #picker></mat-datepicker>
       </mat-form-field>
 
-      <button mat-flat-button color="accent" >
+      <button mat-flat-button color="accent" (click)="agendar()">
         <mat-icon aria-hidden="false">edit_calendar</mat-icon>
-        Agendar
+        Agendar - FALTA
       </button>
     </div>
 
@@ -36,10 +35,10 @@
              *ngFor="let turno of turnos" >
           <mat-expansion-panel-header>
             <mat-panel-title>
-              {{turno.fechaHora  | date:'dd/MM/yyyy hh:MM'}}
+              {{turno.fecha_turno  | date:'dd/MM/yyyy'}} {{turno.hora}}
             </mat-panel-title>
             <mat-panel-description>
-              {{turno.tratamiento.nombre}}
+              {{turno.id_tratamiento}}
             </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-icon aria-hidden="false">person</mat-icon>

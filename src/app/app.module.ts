@@ -27,6 +27,7 @@ import { ListaHistorialComponent } from './component/lista-historial/lista-histo
 import { DialogHistorialComponent } from './component/dialog-historial/dialog-historial.component';
 import { DialogSnackbarComponent } from './component/dialog-snackbar/dialog-snackbar.component';
 import { DetallePacienteComponent } from './pages/detalle-paciente/detalle-paciente.component';
+import { DialogAgendarTurnoComponent } from './component/dialog-agendar-turno/dialog-agendar-turno.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { DetallePacienteComponent } from './pages/detalle-paciente/detalle-pacie
     ListaHistorialComponent,
     DialogHistorialComponent,
     DialogSnackbarComponent,
-    DetallePacienteComponent
+    DetallePacienteComponent,
+    DialogAgendarTurnoComponent
   ],
   imports: [
     BrowserModule,
