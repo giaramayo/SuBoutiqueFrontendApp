@@ -185,10 +185,18 @@
       <mat-icon aria-hidden="false">arrow_back</mat-icon>
       Volver
     </button>
-    <!-- <button mat-flat-button color="accent" [disabled]="formPaciente.invalid" (click)="guardar()">
-      <mat-icon aria-hidden="false">how_to_reg</mat-icon>
-      Guardar
-    </button> -->
+    <button mat-flat-button color="accent" (click)="modificar()">
+      <mat-icon aria-hidden="false">edit_note</mat-icon>
+      Modificar
+    </button>
+    <button mat-flat-button class="button-calendar" (click)="modificar()">
+      <mat-icon aria-hidden="false">edit_calendar</mat-icon>
+      Nuevo Turno
+    </button>
+    <button mat-flat-button color="warn" (click)="modificar()">
+      <mat-icon aria-hidden="false">delete_forever</mat-icon>
+      Dar de Baja
+    </button>
   </div>
 
 

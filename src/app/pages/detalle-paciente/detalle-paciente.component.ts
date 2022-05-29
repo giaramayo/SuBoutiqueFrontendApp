@@ -152,4 +152,7 @@ export class DetallePacienteComponent implements OnInit {
     this.router.navigateByUrl(this.routerVolver);
   }
 
+  modificar() {
+    
+  }
 }
