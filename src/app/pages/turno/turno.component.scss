@@ -9,6 +9,28 @@ div{
 
 }
 
+.botones {
+  display: flex;
+  justify-content: center;
+  button{
+    margin: 10px;
+  }
+  .button-calendar{
+    background-color: rgb(162, 75, 244); 
+    color: #fff;
+  }
+}
+
+mat-panel-title {
+  font-size: 18px;
+  font-weight: initial;
+  color: #973d8f;
+}
+
+.mat-form-field {
+  margin-right: 15px;
+}
+
 @media all and (min-width: 769px) {
   div{
     .calendario-piker{
@@ -41,3 +63,9 @@ div{
   }
 }
 
+.icon-person {
+  font-size: 80px;
+  opacity: 0.2;
+  position: absolute;
+  padding-left: 570px;
+}

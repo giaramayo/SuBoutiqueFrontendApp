@@ -8,6 +8,7 @@ import { DialogSnackbarComponent } from '../../component/dialog-snackbar/dialog-
 import { TurnoService } from '../../service/turno.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmacionComponent } from '../../component/confirmacion/confirmacion.component';
+import { DialogAgendarTurnoComponent } from '../../component/dialog-agendar-turno/dialog-agendar-turno.component';
 
 @Component({
   selector: 'app-detalle-paciente',
@@ -99,13 +100,13 @@ export class DetallePacienteComponent implements OnInit {
           }
         },
         () => {
-          this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-            data: { icono: 'report', mensaje: "Error al consultar anecedentes del paciente", titulo: 'Error'},
-            duration: 4000,
-            horizontalPosition: "right",
-            verticalPosition: "top",
-            panelClass: ["snack-bar-err"]
-          });    
+          // this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+          //   data: { icono: 'report', mensaje: "Error al consultar anecedentes del paciente", titulo: 'Error'},
+          //   duration: 4000,
+          //   horizontalPosition: "right",
+          //   verticalPosition: "top",
+          //   panelClass: ["snack-bar-err"]
+          // });    
         },
         () => {
             this.getLocalidad();
@@ -198,5 +199,18 @@ export class DetallePacienteComponent implements OnInit {
             panelClass: ["snack-bar-err"]
           });    
         })
+  }
+
+  agendar() {
+    const dialogRef = this.dialog.open(DialogAgendarTurnoComponent, {
+      width: '270px',
+      data: {
+        fecha: new Date()
+        }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+
   }
 }
