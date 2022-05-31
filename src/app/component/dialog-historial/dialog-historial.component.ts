@@ -4,8 +4,9 @@ import { TurnoService } from '../../service/turno.service';
 
 export interface DialogData {
   dataSource: any,
-  paciente: any,
-  antecedente: any
+  // paciente: any,
+  antecedente: any,
+  titulo: string
 }
 
 @Component({

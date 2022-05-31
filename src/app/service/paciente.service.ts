@@ -52,6 +52,10 @@ export class PacienteService {
 
  consultarAntecedentes( id: number ): Observable<any>{
   return this.http.get(this.antecedenteURL + '/buscar/' + id);
-}
+  }
+  
+  consultarAntecedentePorPaciente( id: number ): Observable<any>{
+    return this.http.get(this.antecedenteURL + '/buscarPorPaciente/' + id);
+    }
 
 }

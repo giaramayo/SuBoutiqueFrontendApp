@@ -6,6 +6,7 @@ import { PacienteService } from '../../service/paciente.service';
 import { TratamientoService } from '../../service/tratamiento.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAgendarTurnoComponent } from '../../component/dialog-agendar-turno/dialog-agendar-turno.component';
+import { DialogHistorialComponent } from '../../component/dialog-historial/dialog-historial.component';
 
 
 @Component({
@@ -20,8 +21,11 @@ export class TurnoComponent {
   public turnos: any[];
 
   public abrirPanel: boolean;
+  public historial: any;
+  public antecedente: any;
 
   constructor( private turnoService: TurnoService,
+              private pacienteService: PacienteService,
                public _snackBar: MatSnackBar,
                public dialog: MatDialog) { 
     this.hoy = new Date();
@@ -29,35 +33,14 @@ export class TurnoComponent {
     this.abrirPanel = false;
     this.turnos = [];
     this.consultar();
-    // this.turnos = [{
-    //   id: 1,
-    //   paciente: {
-    //     dni: 1111,
-    //     nombre: "Lucia",
-    //     apellido: "H"
-    //   },
-    //   tratamiento: {
-    //     nombre: 'Limpieza'
-    //   },
-    //   estado: 'CONFIRMADO',
-    //   fechaHora: new Date(),
-    //   observacion: 'ddd'
-    // },
-    // {
-    //   id: 1,
-    //   paciente: {
-    //     dni: 3333,
-    //     nombre: "Sofia",
-    //     apellido: "K"
-    //   },
-    //   tratamiento: {
-    //     nombre: 'Masajes'
-    //   },
-    //   estado: 'CANCELADO',
-    //   fechaHora: new Date(),
-    //   observacion: 'ddd'
-    // }];
-
+    this.historial = [];
+    this.antecedente = {
+                  biotipo: '',
+                  fototipo: '',
+                  alergias: '',
+                  medicamentos: '',
+                  tratamientos_clinicos: ''
+                };
   }
 
   editar() {
@@ -99,5 +82,72 @@ export class TurnoComponent {
     });
 
   }
+
+
+
+  consultarHistorial(id: number) {
+    this.turnoService.buscarHistorialDelPaciente(id)
+        .subscribe( resp => {
+          if(resp) {
+            this.historial = resp;
+            this.getAntecedente(id);
+          }
+              
+        },
+        err => {
+          this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+            data: { icono: 'report', mensaje: err.error.error, titulo: 'Error'},
+            duration: 4000,
+            horizontalPosition: "right",
+            verticalPosition: "top",
+            panelClass: ["snack-bar-err"]
+          });
+        });
+  }
+
+  getAntecedente(id: number) {
+      this.pacienteService.consultarAntecedentePorPaciente(id)
+          .subscribe( resp => {
+            if(resp){
+              console.log(resp)
+              this.antecedente.biotipo = resp.biotipo;
+              this.antecedente.fototipo = resp.fototipo;
+              this.antecedente.afeccion_cutanea = resp.afeccion_cutanea;
+              this.antecedente.alergias = resp.alergias;
+              this.antecedente.medicamentos = resp.medicamentos;
+              this.antecedente.tratamientos_clinicos = resp.tratamientos_clinicos;
+            }
+          },
+          () => {
+            console.log("error al consultar antecedentes")
+          },
+          () => {
+            this.dialogConsultaHistorial();
+          });
+  }
+
+  dialogConsultaHistorial() {
+      const dialogRef = this.dialog.open(DialogHistorialComponent, {
+      width: '650px',
+      data: {
+          dataSource: this.historial,
+          antecedente: this.antecedente,
+          titulo: 'Historial'
+        }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+       console.log(result)
+       this.historial = [];
+       this.antecedente = {
+                  biotipo: '',
+                  fototipo: '',
+                  alergias: '',
+                  medicamentos: '',
+                  tratamientos_clinicos: ''
+                };
+    });
+  }
+
 
 }

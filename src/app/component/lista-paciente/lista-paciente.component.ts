@@ -97,7 +97,8 @@ export class ListaPacienteComponent  {
       data: {
           dataSource: this.historial,
           paciente: element,
-          antecedente: this.antecedente
+          antecedente: this.antecedente,
+          titulo: 'Historial de ' + element.apellido +', ' + element.nombre
         }
     });
 

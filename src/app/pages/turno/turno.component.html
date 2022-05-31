@@ -23,7 +23,7 @@
       </mat-form-field>
 
       <button mat-flat-button color="accent" (click)="agendar()">
-        <mat-icon aria-hidden="false">edit_calendar</mat-icon>
+        <mat-icon aria-hidden="false">event</mat-icon>
         Agendar - FALTA
       </button>
     </div>
@@ -72,15 +72,15 @@
             </div>
             <div class="botones">
               <button mat-flat-button color="primary">
-                <mat-icon aria-hidden="false">medical_information</mat-icon>
+                <mat-icon aria-hidden="false">edit_calendar</mat-icon>
                 Modificar
               </button>
-              <button mat-flat-button color="primary">
+              <button mat-flat-button color="primary" (click)="consultarHistorial(turno.id_paciente)">
                 <mat-icon aria-hidden="false">history</mat-icon>
                 Historial
               </button>
               <button mat-flat-button color="accent">
-                <mat-icon aria-hidden="false">edit_note</mat-icon>
+                <mat-icon aria-hidden="false">person_search</mat-icon>
                 Ver Paciente
               </button>
               <button mat-flat-button color="warn">
