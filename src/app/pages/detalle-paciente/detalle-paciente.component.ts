@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Paciente } from '../../interfaces/paciente.interfaces';
-import { Turno } from '../../interfaces/turno.interfaces';
 import { PacienteService } from '../../service/paciente.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogSnackbarComponent } from '../../component/dialog-snackbar/dialog-snackbar.component';

@@ -9,17 +9,7 @@ div{
 
 }
 
-.botones {
-  display: flex;
-  justify-content: center;
-  button{
-    margin: 10px;
-  }
-  .button-calendar{
-    background-color: rgb(162, 75, 244); 
-    color: #fff;
-  }
-}
+
 
 mat-panel-title {
   font-size: 18px;
@@ -61,11 +51,43 @@ mat-panel-title {
     }
    
   }
+
+  // .botones {
+  //   // display: flex;
+  //   // justify-content: center;
+  //   // button{
+  //   //   // margin: 10px;
+  //   // }
+  //   // .button-calendar{
+  //   //   background-color: rgb(162, 75, 244); 
+  //   //   color: #fff;
+  //   // }
+  //   display: table-cell;
+  // width: 490px;
+  // }
+
+}
+
+.botones {
+  // display: flex;
+  // justify-content: center;
+  // button{
+  //   // margin: 10px;
+  // }
+  // .button-calendar{
+  //   background-color: rgb(162, 75, 244); 
+  //   color: #fff;
+  // }
+  // display: table-cell;
+  // width: 490px;
+    .mat-button-base {
+      margin: 8px 8px 8px 0;
+    }
 }
 
 .icon-person {
   font-size: 80px;
   opacity: 0.2;
-  position: absolute;
-  padding-left: 570px;
+  // position: absolute;
+  // padding-left: 570px;
 }

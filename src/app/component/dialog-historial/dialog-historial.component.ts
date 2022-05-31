@@ -4,7 +4,8 @@ import { TurnoService } from '../../service/turno.service';
 
 export interface DialogData {
   dataSource: any,
-  paciente: any
+  paciente: any,
+  antecedente: any
 }
 
 @Component({
@@ -16,7 +17,8 @@ export class DialogHistorialComponent {
 
 
   constructor( private dialogRef: MatDialogRef<DialogHistorialComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) { 
+    }
 
   
     confirmar(){

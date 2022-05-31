@@ -116,36 +116,8 @@
             <mat-icon class="medical-icon">medical_information</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
-
-        <mat-form-field class="form-field" color="accent">
-          <mat-label>Biotipo</mat-label>
-          <input matInput type="text" readonly [(ngModel)]="paciente.antecedente.biotipo">
-        </mat-form-field>
-
-        <mat-form-field class="form-field" color="accent">
-          <mat-label>Fototipo Cut&#225;neos</mat-label>
-          <input matInput type="text" readonly [(ngModel)]="paciente.antecedente.fototipo">
-        </mat-form-field>
-
-        <mat-form-field class="form-field" color="accent">
-          <mat-label>Afectacion Cutanea</mat-label>
-          <input matInput type="text" readonly [(ngModel)]="paciente.antecedente.afeccion_cutanea">
-        </mat-form-field>
-
-        <mat-form-field class="form-field" color="accent">
-          <mat-label>Alergias</mat-label>
-          <input matInput type="text" readonly [(ngModel)]="paciente.antecedente.alergias">
-        </mat-form-field>
-
-        <mat-form-field class="form-field" color="accent">
-          <mat-label>Medicamentos Prescriptos</mat-label>
-          <input matInput type="text" readonly [(ngModel)]="paciente.antecedente.medicamentos">
-        </mat-form-field>
-
-        <mat-form-field class="form-field" color="accent">
-          <mat-label>Tratamiento</mat-label>
-          <input matInput type="text" readonly [(ngModel)]="paciente.antecedente.tratamientos_clinicos">
-        </mat-form-field>
+        
+        <app-antecedentes [antecedente]="paciente.antecedente"></app-antecedentes>
 
       </mat-expansion-panel>
 

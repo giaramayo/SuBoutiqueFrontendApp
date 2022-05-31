@@ -19,11 +19,25 @@ export class ListaPacienteComponent  {
   public displayedColumns: string[] = ['dni', 'nomApe', 'fecha', 'tel', 'consulta', 'detalle'];
   private routerDetalle: string = "paciente/detalle";
 
+  private historial: any[];
+  private antecedente: any;
+
   constructor(public _snackBar: MatSnackBar,
               public dialog: MatDialog,
               private pacienteService: PacienteService,
               private turnoService: TurnoService,
-              private router: Router) {}
+              private router: Router) {
+
+                this.historial = [];
+                this.antecedente = {
+                  biotipo: '',
+                  fototipo: '',
+                  alergias: '',
+                  medicamentos: '',
+                  tratamientos_clinicos: ''
+                };
+             
+              }
 
   detalle( element: any ){
       this.router.navigateByUrl(this.routerDetalle + "/" + element._id);
@@ -39,8 +53,11 @@ export class ListaPacienteComponent  {
   consultarHistorias(element: any) {
     this.turnoService.buscarHistorialDelPaciente(element._id)
         .subscribe( resp => {
-          if(resp)
-              this.dialogConsultaHistorial(resp, element);
+          if(resp) {
+            this.historial = resp;
+            this.getAntecedente(element);
+          }
+              
         },
         err => {
           this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
@@ -53,17 +70,47 @@ export class ListaPacienteComponent  {
         });
   }
 
-  dialogConsultaHistorial(lista: any, element: any) {
+  getAntecedente(element: any) {
+      this.pacienteService.consultarAntecedentes(element.id_antecedente)
+          .subscribe( resp => {
+            if(resp){
+              console.log(resp)
+              this.antecedente.biotipo = resp.biotipo;
+              this.antecedente.fototipo = resp.fototipo;
+              this.antecedente.afeccion_cutanea = resp.afeccion_cutanea;
+              this.antecedente.alergias = resp.alergias;
+              this.antecedente.medicamentos = resp.medicamentos;
+              this.antecedente.tratamientos_clinicos = resp.tratamientos_clinicos;
+            }
+          },
+          () => {
+            console.log("error al consultar antecedentes")
+          },
+          () => {
+            this.dialogConsultaHistorial(element);
+          });
+  }
+
+  dialogConsultaHistorial(element: any) {
       const dialogRef = this.dialog.open(DialogHistorialComponent, {
       width: '650px',
       data: {
-          dataSource: lista,
-          paciente: element
+          dataSource: this.historial,
+          paciente: element,
+          antecedente: this.antecedente
         }
     });
 
     dialogRef.afterClosed().subscribe(result => {
        console.log(result)
+       this.historial = [];
+       this.antecedente = {
+                  biotipo: '',
+                  fototipo: '',
+                  alergias: '',
+                  medicamentos: '',
+                  tratamientos_clinicos: ''
+                };
     });
   }
 

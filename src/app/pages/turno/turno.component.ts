@@ -60,6 +60,10 @@ export class TurnoComponent {
 
   }
 
+  editar() {
+    console.log("das")
+  }
+  
   consultar() {
     let fecha = this.selected?.getFullYear() + "-" + this.selected?.getMonth() + "-" +  this.selected?.getDate()
     fecha = "2022-05-23"  //PRUEBA

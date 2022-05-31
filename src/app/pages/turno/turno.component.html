@@ -39,53 +39,55 @@
             </mat-panel-title>
             <mat-panel-description>
               {{turno.id_tratamiento}}
+              <!-- <mat-icon (click)="editar()">edit</mat-icon> -->
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <mat-icon class="icon-person" aria-hidden="false">person</mat-icon>
           <!-- <p>{{turno | json}}</p> -->
 
-          <mat-form-field class="form-field" color="accent">
-            <mat-label>Nombre y Apellido</mat-label>
-            <input matInput type="text" readonly >
-          </mat-form-field>
-  
-          <mat-form-field class="form-field" color="accent">
-            <mat-label>Documento</mat-label>
-            <input matInput type="text" readonly>
-          </mat-form-field>
-  
-          <mat-form-field class="form-field" color="accent">
-            <mat-label>Telefono</mat-label>
-            <input matInput type="text" readonly >
-          </mat-form-field>
-  
-          <mat-form-field class="form-field" color="accent">
-            <mat-label>Email</mat-label>
-            <input matInput type="text" readonly>
-          </mat-form-field>
-  
-    
-      <div class="botones">
-        <button mat-flat-button color="primary">
-          <mat-icon aria-hidden="false">medical_information</mat-icon>
-          Antecedentes
-        </button>
-        <button mat-flat-button color="primary">
-          <mat-icon aria-hidden="false">history</mat-icon>
-          Historial
-        </button>
-        <button mat-flat-button color="accent">
-          <mat-icon aria-hidden="false">edit_note</mat-icon>
-          Ver Paciente
-        </button>
-        <button mat-flat-button color="warn">
-          <mat-icon aria-hidden="false">delete_forever</mat-icon>
-          Cancelar
-        </button>
-      </div>
+            <div>
+              <div >
+                <mat-icon class="icon-person" aria-hidden="false">person</mat-icon>
+              </div>
+              <div>
+                <mat-form-field class="form-field" color="accent">
+                  <mat-label>Nombre y Apellido</mat-label>
+                  <input matInput type="text" readonly >
+                </mat-form-field>
+                <mat-form-field class="form-field" color="accent">
+                  <mat-label>Documento</mat-label>
+                  <input matInput type="text" readonly>
+                </mat-form-field>
+                <mat-form-field class="form-field" color="accent">
+                  <mat-label>Telefono</mat-label>
+                  <input matInput type="text" readonly >
+                </mat-form-field>
+                <mat-form-field class="form-field" color="accent">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="text" readonly>
+                </mat-form-field>
+              </div>
+              <div>
 
-
-
+              </div>
+            </div>
+            <div class="botones">
+              <button mat-flat-button color="primary">
+                <mat-icon aria-hidden="false">medical_information</mat-icon>
+                Modificar
+              </button>
+              <button mat-flat-button color="primary">
+                <mat-icon aria-hidden="false">history</mat-icon>
+                Historial
+              </button>
+              <button mat-flat-button color="accent">
+                <mat-icon aria-hidden="false">edit_note</mat-icon>
+                Ver Paciente
+              </button>
+              <button mat-flat-button color="warn">
+                <mat-icon aria-hidden="false">delete_forever</mat-icon>
+                Cancelar
+              </button>
+            </div>
 
         </mat-expansion-panel>
       </mat-accordion>
