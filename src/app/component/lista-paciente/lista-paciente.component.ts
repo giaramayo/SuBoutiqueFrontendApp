@@ -40,7 +40,7 @@ export class ListaPacienteComponent  {
               }
 
   detalle( element: any ){
-      this.router.navigateByUrl(this.routerDetalle + "/" + element._id);
+      this.router.navigateByUrl(this.routerDetalle + "/" + element._id + "/paciente");
   }
 
   getPacientes() {

@@ -1,4 +1,5 @@
- <br>
+{{ estados | json }}
+<br>
 
 <div class="container">
 
@@ -39,11 +40,8 @@
             </mat-panel-title>
             <mat-panel-description>
               {{turno.id_tratamiento}}
-              <!-- <mat-icon (click)="editar()">edit</mat-icon> -->
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <!-- <p>{{turno | json}}</p> -->
-
             <div>
               <div >
                 <mat-icon class="icon-person" aria-hidden="false">person</mat-icon>
@@ -73,19 +71,19 @@
             <div class="botones">
               <button mat-flat-button color="primary">
                 <mat-icon aria-hidden="false">edit_calendar</mat-icon>
-                Modificar
+                Reprogramar FALTA
+              </button>
+              <button mat-flat-button color="warn" (click)="cambiarEstado(turno)">
+                <mat-icon aria-hidden="false" >free_cancellation</mat-icon>
+                Cambiar Estado FALTA
               </button>
               <button mat-flat-button color="primary" (click)="consultarHistorial(turno.id_paciente)">
                 <mat-icon aria-hidden="false">history</mat-icon>
                 Historial
               </button>
-              <button mat-flat-button color="accent">
+              <button mat-flat-button color="accent" (click)="detalleDelPaciente(turno.id_paciente)">
                 <mat-icon aria-hidden="false">person_search</mat-icon>
                 Ver Paciente
-              </button>
-              <button mat-flat-button color="warn">
-                <mat-icon aria-hidden="false">delete_forever</mat-icon>
-                Cancelar
               </button>
             </div>
 
@@ -93,8 +91,6 @@
       </mat-accordion>
 
     </div>
-    <!-- <p>Selected date: {{selected}}</p>     -->
-
   </div> 
 
 

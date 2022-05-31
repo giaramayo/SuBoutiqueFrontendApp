@@ -7,6 +7,7 @@ import { TratamientoService } from '../../service/tratamiento.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAgendarTurnoComponent } from '../../component/dialog-agendar-turno/dialog-agendar-turno.component';
 import { DialogHistorialComponent } from '../../component/dialog-historial/dialog-historial.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,21 +20,24 @@ export class TurnoComponent {
   public selected?: Date | null;
   public hoy: Date;
   public turnos: any[];
-
+  private routerDetalle: string = "paciente/detalle";
   public abrirPanel: boolean;
   public historial: any;
   public antecedente: any;
+  public estados: any;
 
   constructor( private turnoService: TurnoService,
               private pacienteService: PacienteService,
                public _snackBar: MatSnackBar,
-               public dialog: MatDialog) { 
+               public dialog: MatDialog,
+               private router: Router) { 
     this.hoy = new Date();
     this.selected = this.hoy;
     this.abrirPanel = false;
     this.turnos = [];
     this.consultar();
     this.historial = [];
+    this.estados = [];
     this.antecedente = {
                   biotipo: '',
                   fototipo: '',
@@ -41,6 +45,15 @@ export class TurnoComponent {
                   medicamentos: '',
                   tratamientos_clinicos: ''
                 };
+    this.obtenerEstados();
+  }
+
+  obtenerEstados(){
+    this.turnoService.getEstados()
+        .subscribe( resp => {
+          if(resp)
+            this.estados = resp;
+        });
   }
 
   editar() {
@@ -83,7 +96,9 @@ export class TurnoComponent {
 
   }
 
-
+  detalleDelPaciente( id: number ){
+    this.router.navigateByUrl(this.routerDetalle + "/" + id + "/turnos");
+  }
 
   consultarHistorial(id: number) {
     this.turnoService.buscarHistorialDelPaciente(id)
@@ -149,5 +164,5 @@ export class TurnoComponent {
     });
   }
 
-
+  cambiarEstado(turno: any) {}
 }

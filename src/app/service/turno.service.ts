@@ -12,6 +12,7 @@ export class TurnoService {
 
   private nodeURL = environment.nodeURL;
   private turnoURL = this.nodeURL + '/turnos'
+  private estadosURL = this.nodeURL + '/estados'
 
   constructor( private readonly http: HttpClient ) { }
 
@@ -22,6 +23,10 @@ export class TurnoService {
 
   buscarTurnoPorFecha( fecha: string ) : Observable<any> {
     return this.http.get(this.turnoURL + '/buscar/fecha/' + fecha);
+  }
+
+  getEstados() : Observable<any> {
+    return this.http.get(this.estadosURL);
   }
 
 //   eliminar(documento: number): Observable<any> {

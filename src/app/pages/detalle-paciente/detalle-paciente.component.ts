@@ -16,7 +16,7 @@ import { DialogAgendarTurnoComponent } from '../../component/dialog-agendar-turn
 export class DetallePacienteComponent implements OnInit {
 
   public idPaciente: any;
-  public routerVolver: string;
+  public routerVolver: any;
   public paciente: any;
   public historial: any[];
 
@@ -26,8 +26,9 @@ export class DetallePacienteComponent implements OnInit {
               private turnoService: TurnoService,
               public _snackBar: MatSnackBar,
               public dialog: MatDialog) {
-    this.routerVolver = "/paciente";
+   // this.routerVolver = "/paciente";
     this.idPaciente = this.routerAct.snapshot.paramMap.get('id');
+    this.routerVolver = this.routerAct.snapshot.paramMap.get('pages');
     this.historial = [];
     this.paciente =  {documento     : "",
                       tipo_documento : "",
