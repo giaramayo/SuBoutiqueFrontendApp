@@ -53,7 +53,6 @@ export class DetallePacienteComponent implements OnInit {
   getPaciente() {
     this.pacienteService.consultarPaciente( this.idPaciente )
         .subscribe( resp => {
-          console.log(resp);
           if( resp ){
             this.paciente =  {
               _id            : this.idPaciente,

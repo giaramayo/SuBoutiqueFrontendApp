@@ -41,6 +41,7 @@ mat-panel-title {
     }
     .dia-select {
       width: 70%;
+      overflow-y: auto;
     }
 
     .card {
@@ -52,19 +53,6 @@ mat-panel-title {
    
   }
 
-  // .botones {
-  //   // display: flex;
-  //   // justify-content: center;
-  //   // button{
-  //   //   // margin: 10px;
-  //   // }
-  //   // .button-calendar{
-  //   //   background-color: rgb(162, 75, 244); 
-  //   //   color: #fff;
-  //   // }
-  //   display: table-cell;
-  // width: 490px;
-  // }
 
 }
 
@@ -83,11 +71,40 @@ mat-panel-title {
     .mat-button-base {
       margin: 8px 8px 8px 0;
     }
+
+    
+}
+
+.botonesLista {
+  // display: flex;
+  // justify-content: center;
+  justify-content: center;
+    display: inline-block;
+    margin: 0 10px;
+
+  button{
+    text-align: center !important; 
+  }
+
+  .button-camb-est{
+    background-color: rgba(190, 137, 240, 0.922); 
+    color: #fff;
+  }
+  .button-reprogramar {
+    background-color: rgb(62, 195, 164); 
+    color: #fff;
+  }
+
+  .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }
+
 }
 
 .icon-person {
   font-size: 80px;
   opacity: 0.2;
+  color: #826a80;
   // position: absolute;
   // padding-left: 570px;
 }

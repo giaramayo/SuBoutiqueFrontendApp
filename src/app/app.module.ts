@@ -29,6 +29,7 @@ import { DialogSnackbarComponent } from './component/dialog-snackbar/dialog-snac
 import { DetallePacienteComponent } from './pages/detalle-paciente/detalle-paciente.component';
 import { DialogAgendarTurnoComponent } from './component/dialog-agendar-turno/dialog-agendar-turno.component';
 import { AntecedentesComponent } from './component/antecedentes/antecedentes.component';
+import { DialogCambiarEstadoComponent } from './component/dialog-cambiar-estado/dialog-cambiar-estado.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AntecedentesComponent } from './component/antecedentes/antecedentes.com
     DialogSnackbarComponent,
     DetallePacienteComponent,
     DialogAgendarTurnoComponent,
-    AntecedentesComponent
+    AntecedentesComponent,
+    DialogCambiarEstadoComponent
   ],
   imports: [
     BrowserModule,

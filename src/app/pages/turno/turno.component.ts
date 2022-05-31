@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAgendarTurnoComponent } from '../../component/dialog-agendar-turno/dialog-agendar-turno.component';
 import { DialogHistorialComponent } from '../../component/dialog-historial/dialog-historial.component';
 import { Router } from '@angular/router';
+import { DialogCambiarEstadoComponent } from '../../component/dialog-cambiar-estado/dialog-cambiar-estado.component';
 
 
 @Component({
@@ -62,10 +63,9 @@ export class TurnoComponent {
   
   consultar() {
     let fecha = this.selected?.getFullYear() + "-" + this.selected?.getMonth() + "-" +  this.selected?.getDate()
-    fecha = "2022-05-23"  //PRUEBA
+    fecha = "2022-05-23"  //TODO
     this.turnoService.buscarTurnoPorFecha(fecha)
       .subscribe( resp => {
-        console.log(resp)
         if(resp){
           this.turnos = resp;
         }
@@ -124,7 +124,6 @@ export class TurnoComponent {
       this.pacienteService.consultarAntecedentePorPaciente(id)
           .subscribe( resp => {
             if(resp){
-              console.log(resp)
               this.antecedente.biotipo = resp.biotipo;
               this.antecedente.fototipo = resp.fototipo;
               this.antecedente.afeccion_cutanea = resp.afeccion_cutanea;
@@ -164,5 +163,46 @@ export class TurnoComponent {
     });
   }
 
-  cambiarEstado(turno: any) {}
+  cambiarEstado(turno: any) {
+    const dialogRef = this.dialog.open(DialogCambiarEstadoComponent, {
+      width: '270px',
+      data: {
+        idEstado: turno.id_estado,
+        estados: this.estados
+        }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+        if(result != turno.id_estado) {
+          turno.id_estado = result;
+          this.modificarTurno( turno._id, turno );
+        }
+    });
+  }
+
+  modificarTurno(id: number, turno: any){
+    this.turnoService.modificarTurno(id, turno)
+        .subscribe( resul => {
+          if(resul) {
+            this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+              data: { icono: 'done', mensaje: resul.msg, titulo: 'Actualizado'},
+              duration: 4000,
+              horizontalPosition: "right",
+              verticalPosition: "top",
+              panelClass: ["snack-bar-ok"]
+            });
+          }
+        },
+        () => {
+          this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+            data: { icono: 'report', mensaje: "Ocurrio un error al intentar modificar el turno", titulo: 'Error'},
+            duration: 4000,
+            horizontalPosition: "right",
+            verticalPosition: "top",
+            panelClass: ["snack-bar-err"]
+          });
+        },
+        () => { this.consultar(); });
+
+  }
 }

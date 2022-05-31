@@ -74,7 +74,6 @@ export class ListaPacienteComponent  {
       this.pacienteService.consultarAntecedentes(element.id_antecedente)
           .subscribe( resp => {
             if(resp){
-              console.log(resp)
               this.antecedente.biotipo = resp.biotipo;
               this.antecedente.fototipo = resp.fototipo;
               this.antecedente.afeccion_cutanea = resp.afeccion_cutanea;

@@ -134,7 +134,6 @@ export class PacienteAgregarComponent  {
 
     this.pacienteService.agregarPaciente(this.paciente)
       .subscribe( resp => {
-        console.log(resp);
         if(resp){
           this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
             data: { icono: 'done', 

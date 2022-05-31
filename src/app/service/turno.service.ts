@@ -29,6 +29,10 @@ export class TurnoService {
     return this.http.get(this.estadosURL);
   }
 
+  modificarTurno(id: number, body: any): Observable<any> {
+    return this.http.put(this.turnoURL + '/modificar/' + id, body);
+  }
+
 //   eliminar(documento: number): Observable<any> {
 //     return this.http.delete(this.pacienteURL + '/borrar/' + documento)
 //   }
