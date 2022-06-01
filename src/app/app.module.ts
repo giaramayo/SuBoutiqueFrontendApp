@@ -31,6 +31,8 @@ import { AntecedentesComponent } from './component/antecedentes/antecedentes.com
 import { DialogCambiarEstadoComponent } from './component/dialog-cambiar-estado/dialog-cambiar-estado.component';
 import { DialogReprogramarComponent } from './component/dialog-reprogramar/dialog-reprogramar.component';
 import { HomeComponent } from './pages/home/home.component';
+import { EstadisticaTratamientosComponent } from './component/estadistica-tratamientos/estadistica-tratamientos.component';
+import { EstadisticaDeTortaComponent } from './component/estadistica-de-torta/estadistica-de-torta.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { HomeComponent } from './pages/home/home.component';
     DialogAgendarTurnoComponent,
     AntecedentesComponent,
     DialogCambiarEstadoComponent,
-    DialogReprogramarComponent
+    DialogReprogramarComponent,
+    EstadisticaTratamientosComponent,
+    EstadisticaDeTortaComponent
   ],
   imports: [
     BrowserModule,

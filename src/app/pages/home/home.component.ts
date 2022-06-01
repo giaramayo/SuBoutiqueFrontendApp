@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TurnoService } from '../../service/turno.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,10 +14,13 @@ export class HomeComponent implements OnInit {
   public imag1: string = 'imag1';
   public hoy: Date;
   public turnosHoy: any[];
+  public routerAgregar: string;
 
-  constructor(private turnoService: TurnoService) {
+  constructor(private turnoService: TurnoService,
+              private router: Router) {
     this.hoy = new Date();
     this.turnosHoy = [];
+    this.routerAgregar = '/paciente/agregar'
   }
 
   ngOnInit(): void {
@@ -39,6 +43,10 @@ export class HomeComponent implements OnInit {
 
   formatoVariable(valor: any): string {
     return valor.length > 1 ? valor : ('0' + valor);
+  }
+
+  agregarPaciente() {
+    this.router.navigateByUrl(this.routerAgregar);
   }
 
 }

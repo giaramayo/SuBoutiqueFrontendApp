@@ -11,9 +11,13 @@
     <div class="estadistica">
         <h2>Estaditicas del dia</h2>
         <mat-tab-group>
-            <mat-tab label="First"> Content 1 </mat-tab>
-            <mat-tab label="Second"> Content 2 </mat-tab>
-            <mat-tab label="Third"> Content 3 </mat-tab>
+            <mat-tab label="Tratamiento">
+                <app-estadistica-de-torta></app-estadistica-de-torta>
+            </mat-tab>
+            <mat-tab label="Estados de Turnos"> 
+                Falta...
+            </mat-tab>
+            <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
           </mat-tab-group>
     </div>
     <div class="eventos">
@@ -45,30 +49,28 @@
                           </div>
                       </div>
                       
-                      
                     </mat-expansion-panel>
                 
                   </mat-accordion>
 
                 </mat-card-content>               
                 <mat-card-footer>
-                    <mat-progress-bar mode="buffer"></mat-progress-bar>
                 </mat-card-footer>
               </mat-card>
         </div>
         <div class="acciones">
             <button mat-flat-button class="button-camb-est">
                 <mat-icon aria-hidden="false">event</mat-icon>
-                Agendar Turno
+                Agendar Turno - FALTA
             </button>
-            <button mat-flat-button color="accent">
+            <button mat-flat-button color="accent" (click)="agregarPaciente()">
                 <mat-icon aria-hidden="false">person_add</mat-icon>
                 Agregar Paciente
             </button>
-            <button mat-flat-button color="primary">
+            <!-- <button mat-flat-button color="primary">
                 <mat-icon aria-hidden="false">settings</mat-icon>
-                Modificar Contraseña
-            </button>
+                Modificar Contraseña - FALTA
+            </button> -->
         </div>
     </div>
 </div>
