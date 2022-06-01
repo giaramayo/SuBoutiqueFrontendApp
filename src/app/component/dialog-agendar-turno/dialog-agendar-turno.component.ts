@@ -25,6 +25,10 @@ export class DialogAgendarTurnoComponent {
       this.dialogRef.close(false);
     }
 
+    buscarPacientes() {
+      
+    }
+
     
 
 }

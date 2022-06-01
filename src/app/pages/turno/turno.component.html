@@ -11,15 +11,15 @@
   <div class="row-turno">
 
     <div class="calendar-card card">
-      <mat-card class="calendario-card" >
+      <mat-card class="calendario-card">
         <mat-calendar [minDate]="hoy" [(selected)]="selected" color="accent" (click)="consultar()"></mat-calendar>
       </mat-card>
 
       <mat-form-field class="calendario-piker" appearance="fill">
         <mat-label>Fecha</mat-label>
-        <input matInput [matDatepicker]="picker" color="accent" >
-        <mat-datepicker-toggle  matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker  #picker></mat-datepicker>
+        <input matInput [matDatepicker]="picker" color="accent">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <button mat-flat-button color="accent" (click)="agendar()">
@@ -29,38 +29,45 @@
     </div>
 
     <div class="dia-select card">
-     
+
       <mat-accordion>
-        <mat-expansion-panel (opened)="abrirPanel = true" (closed)="abrirPanel = false"
-             *ngFor="let turno of turnos" >
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              {{turno.fecha_turno  | date:'dd/MM/yyyy'}} {{turno.hora}}
-            </mat-panel-title>
-            <mat-panel-description>
-              {{turno.id_estado}}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
+        <div>
+          <mat-expansion-panel (opened)="abrirPanel = true" (closed)="abrirPanel = false" *ngFor="let turno of turnos">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{turno.fecha_turno | date:'dd/MM/yyyy'}} {{turno.hora}}
+              </mat-panel-title>
+              <mat-panel-description>
+                {{turno.estado[0] ? turno.estado[0].descripcion : '-'}}
+              </mat-panel-description>
+              <mat-panel-description>
+                {{turno.tratamiento[0] ? turno.tratamiento[0].descripcion : '-'}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
             <div>
-              <div >
+              <div>
                 <mat-icon class="icon-person" aria-hidden="false">person</mat-icon>
               </div>
               <div>
                 <mat-form-field class="form-field" color="accent">
-                  <mat-label>Nombre y Apellido</mat-label>
-                  <input matInput type="text" readonly >
+                  <mat-label>Nombre</mat-label>
+                  <input matInput type="text" readonly [(ngModel)]="turno.paciente[0].nombre">
+                </mat-form-field>
+                <mat-form-field class="form-field" color="accent">
+                  <mat-label>Apellido</mat-label>
+                  <input matInput type="text" readonly [(ngModel)]="turno.paciente[0].apellido">
                 </mat-form-field>
                 <mat-form-field class="form-field" color="accent">
                   <mat-label>Documento</mat-label>
-                  <input matInput type="text" readonly>
+                  <input matInput type="text" readonly [(ngModel)]="turno.paciente[0].documento">
                 </mat-form-field>
                 <mat-form-field class="form-field" color="accent">
                   <mat-label>Telefono</mat-label>
-                  <input matInput type="text" readonly >
+                  <input matInput type="text" readonly [(ngModel)]="turno.paciente[0].telefono">
                 </mat-form-field>
                 <mat-form-field class="form-field" color="accent">
                   <mat-label>Email</mat-label>
-                  <input matInput type="text" readonly>
+                  <input matInput type="text" readonly [(ngModel)]="turno.paciente[0].correo">
                 </mat-form-field>
               </div>
               <div>
@@ -73,7 +80,7 @@
                 Reprogramar FALTA
               </button>
               <button mat-flat-button class="button-camb-est" (click)="cambiarEstado(turno)">
-                <mat-icon aria-hidden="false" >free_cancellation</mat-icon>
+                <mat-icon aria-hidden="false">free_cancellation</mat-icon>
                 Cambiar Estado
               </button>
               <button mat-flat-button color="primary" (click)="consultarHistorial(turno.id_paciente)">
@@ -86,14 +93,12 @@
               </button>
             </div>
 
-        </mat-expansion-panel>
+          </mat-expansion-panel>
+        </div>
       </mat-accordion>
 
     </div>
-  </div> 
+  </div>
 
 
-</div> 
-
-
-
+</div>

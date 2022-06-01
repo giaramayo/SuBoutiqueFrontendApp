@@ -63,8 +63,11 @@ export class TurnoComponent {
   }
   
   consultar() {
-    let fecha = this.selected?.getFullYear() + "-" + this.selected?.getMonth() + "-" +  this.selected?.getDate()
-    fecha = "2022-05-23"  //TODO
+    let mes = this.selected?.getMonth()
+    let mesM = mes ? (mes + 1).toString() : 0;
+    let fecha = this.selected?.getFullYear() + "-" + this.formatoVariable(mesM) + "-" +  this.formatoVariable(this.selected?.getDate())
+  //  fecha = "2022-05-23"  //TODO
+  console.log(fecha)
     this.turnoService.buscarTurnoPorFecha(fecha)
       .subscribe( resp => {
         if(resp){
@@ -84,9 +87,13 @@ export class TurnoComponent {
       });
   }
 
+  formatoVariable( valor: any ): string {
+    return valor.length > 1 ? valor : ('0' + valor);
+  }
+
   agendar() {
     const dialogRef = this.dialog.open(DialogAgendarTurnoComponent, {
-      width: '270px',
+      width: '500px',
       data: {
         fecha: this.selected
         }
@@ -176,24 +183,35 @@ export class TurnoComponent {
 
     dialogRef.afterClosed().subscribe(result => {
         if(result !== estadoAnt) {
+          console.log(result)
           turno.id_estado = result;
-          this.modificarTurno( turno._id, turno );
+         this.modificarTurno( turno._id, turno );
         }
     });
   }
 
   modificarTurno(id: number, turno: any){
-    this.turnoService.modificarTurno(id, turno)
+    let body = {
+            fecha_turno: turno.fecha_turno,
+            hora: turno.hora,
+            id_estado: turno.id_estado,
+            id_paciente: turno.id_paciente,
+            id_tratamiento: turno.id_tratamiento,
+            observacion: turno.observacion,
+            _id: id
+    };
+
+    this.turnoService.modificarTurno(id, body)
         .subscribe( resul => {
-          if(resul) {
-            this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-              data: { icono: 'done', mensaje: resul.msg, titulo: 'Actualizado'},
-              duration: 4000,
-              horizontalPosition: "right",
-              verticalPosition: "top",
-              panelClass: ["snack-bar-ok"]
-            });
-          }
+          // if(resul) {
+          //   // this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+          //   //   data: { icono: 'done', mensaje: resul.msg, titulo: 'Actualizado'},
+          //   //   duration: 4000,
+          //   //   horizontalPosition: "right",
+          //   //   verticalPosition: "top",
+          //   //   panelClass: ["snack-bar-ok"]
+          //   // });
+          // }
         },
         () => {
           this._snackBar.openFromComponent(DialogSnackbarComponent,{ 

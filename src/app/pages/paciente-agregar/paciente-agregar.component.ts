@@ -122,7 +122,7 @@ export class PacienteAgregarComponent  {
         descripcion: this.formPaciente.get('localidad')?.value.descripcion,
       },
       telefono      : this.formPaciente.get('telefono')?.value,
-      correo        : this.formPaciente.get('correo')?.value,
+      correo        : this.formPaciente.get('email')?.value,
       fecha_nacimiento : this.formPaciente.get('fecha_nacimiento')?.value,
       antecedente   : {
         biotipo              : this.formPaciente.get('biotipo')?.value.name,

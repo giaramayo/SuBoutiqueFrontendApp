@@ -22,7 +22,6 @@ import { DialogModificarTratamientoComponent } from './component/dialog-modifica
 import { GraficoComponent } from './component/grafico/grafico.component';
 import { NumberPipe } from './pipes/number.pipe';
 import { ConfirmacionComponent } from './component/confirmacion/confirmacion.component';
-import { HistorialComponent } from './component/historial/historial.component';
 import { ListaHistorialComponent } from './component/lista-historial/lista-historial.component';
 import { DialogHistorialComponent } from './component/dialog-historial/dialog-historial.component';
 import { DialogSnackbarComponent } from './component/dialog-snackbar/dialog-snackbar.component';
@@ -51,7 +50,6 @@ import { DialogReprogramarComponent } from './component/dialog-reprogramar/dialo
     DialogModificarTratamientoComponent,
     GraficoComponent,
     ConfirmacionComponent,
-    HistorialComponent,
     ListaHistorialComponent,
     DialogHistorialComponent,
     DialogSnackbarComponent,
