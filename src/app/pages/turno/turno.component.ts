@@ -9,6 +9,7 @@ import { DialogAgendarTurnoComponent } from '../../component/dialog-agendar-turn
 import { DialogHistorialComponent } from '../../component/dialog-historial/dialog-historial.component';
 import { Router } from '@angular/router';
 import { DialogCambiarEstadoComponent } from '../../component/dialog-cambiar-estado/dialog-cambiar-estado.component';
+import { DialogReprogramarComponent } from '../../component/dialog-reprogramar/dialog-reprogramar.component';
 
 
 @Component({
@@ -164,6 +165,7 @@ export class TurnoComponent {
   }
 
   cambiarEstado(turno: any) {
+    let estadoAnt = turno.id_estado;
     const dialogRef = this.dialog.open(DialogCambiarEstadoComponent, {
       width: '270px',
       data: {
@@ -173,7 +175,7 @@ export class TurnoComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-        if(result != turno.id_estado) {
+        if(result !== estadoAnt) {
           turno.id_estado = result;
           this.modificarTurno( turno._id, turno );
         }
@@ -204,5 +206,22 @@ export class TurnoComponent {
         },
         () => { this.consultar(); });
 
+  }
+
+  reprogramar(turno: any) {
+    const dialogRef = this.dialog.open(DialogReprogramarComponent, {
+      width: '370px',
+      data: {
+     //   idEstado: turno.id_estado,
+      //  estados: this.estados
+        }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+        if(result != turno.id_estado) {
+          turno.id_estado = result;
+          this.modificarTurno( turno._id, turno );
+        }
+    });
   }
 }
