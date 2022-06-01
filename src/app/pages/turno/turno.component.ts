@@ -3,7 +3,6 @@ import { TurnoService } from '../../service/turno.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogSnackbarComponent } from '../../component/dialog-snackbar/dialog-snackbar.component';
 import { PacienteService } from '../../service/paciente.service';
-import { TratamientoService } from '../../service/tratamiento.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAgendarTurnoComponent } from '../../component/dialog-agendar-turno/dialog-agendar-turno.component';
 import { DialogHistorialComponent } from '../../component/dialog-historial/dialog-historial.component';

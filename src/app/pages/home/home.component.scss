@@ -1,2 +1,67 @@
+.icon-header {
+    width: 140px;
+    position: absolute;
+    top: 15px;
+    left: 25px;
+  }
+  
+
+  .button-camb-est{
+    background-color: rgba(190, 137, 240, 0.922); 
+    color: #fff;
+  }
+
+.titulo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.turnos {
+    padding-bottom: 15px;
+}
+
+h2 {
+    color: #94288b82;
+}
+
+.data-info-paciente{
+    display: flex;
+    .info{
+        width: 70%;
+        overflow-y: auto;
+    }
+    .info-icon {
+        width: 30%;
+        opacity: 0.2;
+        color: #826a80;
+        .icon-person {
+            font-size: 80px;
+        }
+    }
+}
 
 
+  @media all and (min-width: 769px) {
+      .container {
+          display: flex;
+
+          .estadistica {
+            width: 50%;
+            overflow-y: auto;
+            padding-right: 15px;
+            padding-left: 15px;
+          }
+    
+          .eventos {
+            width: 50%;
+            padding-right: 10px;
+          }
+
+          .acciones {
+              button {
+                width: 100%;
+                margin-bottom: 5px;
+              }
+          }
+      }
+  }

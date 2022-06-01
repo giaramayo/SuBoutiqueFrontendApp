@@ -30,6 +30,7 @@ import { DialogAgendarTurnoComponent } from './component/dialog-agendar-turno/di
 import { AntecedentesComponent } from './component/antecedentes/antecedentes.component';
 import { DialogCambiarEstadoComponent } from './component/dialog-cambiar-estado/dialog-cambiar-estado.component';
 import { DialogReprogramarComponent } from './component/dialog-reprogramar/dialog-reprogramar.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { DialogReprogramarComponent } from './component/dialog-reprogramar/dialo
     PacienteAgregarComponent,
     TratamientoComponent,
     TurnoComponent,
+    HomeComponent,
     EstadisticasComponent,
     ListaTratamientoComponent,
     DialogModificarTratamientoComponent,

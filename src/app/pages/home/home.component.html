@@ -1,8 +1,74 @@
 
-<div>
-    <div>Estadisticas</div>
-    <div>
-        <div>Turnos del dia</div>
-        <div>Funcionalidades</div>
+<div class="titulo">
+    <h1 class="txt-titulo">
+        <!-- <img class="icon-header" [src]="imag1 | imagen"> -->
+        Bienvenido a SuBoutique
+    </h1>
+      <mat-divider></mat-divider>
+</div>
+<div class="container">
+    
+    <div class="estadistica">
+        <h2>Estaditicas del dia</h2>
+        <mat-tab-group>
+            <mat-tab label="First"> Content 1 </mat-tab>
+            <mat-tab label="Second"> Content 2 </mat-tab>
+            <mat-tab label="Third"> Content 3 </mat-tab>
+          </mat-tab-group>
+    </div>
+    <div class="eventos">
+        <div class="turnos">
+            <mat-card>
+                <h2>Turnos Proximos</h2>
+                <mat-card-subtitle>{{hoy | date:'dd/MM/yyyy'}} </mat-card-subtitle>
+                <mat-card-content>
+
+                    <mat-accordion>
+
+                    <mat-expansion-panel *ngFor="let turno of turnosHoy">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{turno.fecha_turno | date:'dd/MM/yyyy'}} {{turno.hora}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{turno.estado[0] ? turno.estado[0].descripcion : '-'}} - {{turno.tratamiento[0] ? turno.tratamiento[0].descripcion : '-'}}
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="data-info-paciente">
+                        <div class="info">
+                            <p>{{turno.paciente[0] ? turno.paciente[0].apellido : '-'}}, {{turno.paciente[0] ? turno.paciente[0].nombre : '-'}}</p>
+                            <p>Teleno: {{turno.paciente[0] ? turno.paciente[0].telefono : '-'}} </p>
+                            <p>Email: {{turno.paciente[0] ? turno.paciente[0].correo : '-'}}</p>
+                          </div>
+                          <div class="info-icon">
+                            <mat-icon class="icon-person" aria-hidden="false">person</mat-icon>
+                          </div>
+                      </div>
+                      
+                      
+                    </mat-expansion-panel>
+                
+                  </mat-accordion>
+
+                </mat-card-content>               
+                <mat-card-footer>
+                    <mat-progress-bar mode="buffer"></mat-progress-bar>
+                </mat-card-footer>
+              </mat-card>
+        </div>
+        <div class="acciones">
+            <button mat-flat-button class="button-camb-est">
+                <mat-icon aria-hidden="false">event</mat-icon>
+                Agendar Turno
+            </button>
+            <button mat-flat-button color="accent">
+                <mat-icon aria-hidden="false">person_add</mat-icon>
+                Agregar Paciente
+            </button>
+            <button mat-flat-button color="primary">
+                <mat-icon aria-hidden="false">settings</mat-icon>
+                Modificar Contraseña
+            </button>
+        </div>
     </div>
 </div>
