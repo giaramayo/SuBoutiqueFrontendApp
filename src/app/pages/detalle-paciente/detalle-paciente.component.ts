@@ -17,6 +17,7 @@ export class DetallePacienteComponent implements OnInit {
 
   public idPaciente: any;
   public routerVolver: any;
+  public routerPaciente: any = "/paciente/modificar/";
   public paciente: any;
   public historial: any[];
 
@@ -26,22 +27,22 @@ export class DetallePacienteComponent implements OnInit {
               private turnoService: TurnoService,
               public _snackBar: MatSnackBar,
               public dialog: MatDialog) {
-   // this.routerVolver = "/paciente";
     this.idPaciente = this.routerAct.snapshot.paramMap.get('id');
     this.routerVolver = this.routerAct.snapshot.paramMap.get('pages');
     this.historial = [];
-    this.paciente =  {documento     : "",
-                      tipo_documento : "",
-                      nombre        : "",
-                      apellido      : "",
-                      calle         : "",
-                      numero        : "",
-                      codigo_postal : "",
-                      barrio        : { _id: "", descripcion: "" },
-                      telefono      :  "",
-                      correo        : "",
-                      fecha_nacimiento : "",
-                      antecedente   : { _id: "", biotipo: "", fototipo: "", afeccion_cutanea: "", alergias: "", medicamentos: "", tratamientos_clinicos: ""}
+    this.paciente =  {
+                  documento     : "",
+                  tipo_documento : "",
+                  nombre        : "",
+                  apellido      : "",
+                  calle         : "",
+                  numero        : "",
+                  codigo_postal : "",
+                  barrio        : { _id: "", descripcion: "" },
+                  telefono      :  "",
+                  correo        : "",
+                  fecha_nacimiento : "",
+                  antecedente   : { _id: "", biotipo: "", fototipo: "", afeccion_cutanea: "", alergias: "", medicamentos: "", tratamientos_clinicos: ""}
                     };
     this.getPaciente();
    }
@@ -155,7 +156,7 @@ export class DetallePacienteComponent implements OnInit {
   }
 
   modificar() {
-    
+    //this.router.navigateByUrl(this.routerPaciente + this.idPaciente + '/detalle');    
   }
 
   eliminar() {

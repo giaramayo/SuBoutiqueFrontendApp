@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PacienteService } from '../../service/paciente.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Paciente } from '../../interfaces/paciente.interfaces';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -35,10 +35,12 @@ export class PacienteAgregarComponent  {
   public tienealergias = false;
 
   private paciente!: Paciente;
+  public pacienteDetalle: any;
 
    constructor( public _snackBar: MatSnackBar,
                 private pacienteService: PacienteService,
-                private router: Router ) {
+                private router: Router) {
+
       this.disabledOK = true;
       this.step = 0;
       this.routerVolver = "/paciente";
