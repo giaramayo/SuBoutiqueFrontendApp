@@ -1,55 +1,107 @@
 
-.mat-form-field {
-    margin-right: 12px;
+.detalle-paciente-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+  padding: 2%;
+  border-radius: 10px;
+  background: #f8e5f2;
+  background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
+  justify-content: center;
+  .container {
+    border-radius: 10px;
+    background: #f8e5f2;
+    background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
+    padding: 2%;
+  }
+  .row {
+      padding: 15px 25px;
+      justify-content: center;
+//      width: 100vh;
+      flex-direction: row;
+      .form-detalle{
+        mat-form-field {
+          margin-right: 12px;
+          width: 60%;
+          
+        }
+        mat-panel-title {
+          color: rgb(65, 3, 44);
+          font-family: system-ui;
+        }
+        mat-panel-description {
+          justify-content: end;
+          mat-icon {
+            color: #debadc;
+          }
+        }        
+      }
+      .btn-detalle{
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 2%;
+        margin: 1%;
+        button {
+          margin: 1%;
+        }
+      }
   }
 
-  mat-panel-description{
-    justify-content: end;
+}
 
-    .personal-icon {
-        color: #ff4081;
-    }
 
-    .map-icon {
-      color: #5cdb17;
-    }
+// .mat-form-field {
+//     margin-right: 12px;
+//   }
 
-    .medical-icon {
-      color: #ad7be7;
-    }
+//   mat-panel-description{
+//     justify-content: end;
 
-    .contact_mail{
-      color: #7baae7;
-    }
-    .medical-history{
-      color: #f28b56;
-    }
-    .medical-event{
-      color: #f256c4;
-    }
+//     .personal-icon {
+//         color: #ff4081;
+//     }
+
+//     .map-icon {
+//       color: #5cdb17;
+//     }
+
+//     .medical-icon {
+//       color: #ad7be7;
+//     }
+
+//     .contact_mail{
+//       color: #7baae7;
+//     }
+//     .medical-history{
+//       color: #f28b56;
+//     }
+//     .medical-event{
+//       color: #f256c4;
+//     }
     
 
-  }
+//   }
 
-  mat-panel-title {
-    font-size: 18px;
-    font-weight: initial;
-    color: #973d8f;
-  }
+//   mat-panel-title {
+//     font-size: 18px;
+//     font-weight: initial;
+//     color: #973d8f;
+//   }
 
-  .row {
-    padding: 15px 25px;
-  }
+//   .row {
+//     padding: 15px 25px;
+//   }
 
 
-  .botones {
-    display: flex;
-    justify-content: center;
-    button{
-      margin: 10px;
-    }
-    .button-calendar{
-      background-color: rgb(162, 75, 244); 
-      color: #fff;
-    }
-  }
+//   .botones {
+//     display: flex;
+//     justify-content: center;
+//     button{
+//       margin: 10px;
+//     }
+//     .button-calendar{
+//       background-color: rgb(162, 75, 244); 
+//       color: #fff;
+//     }
+//   }
