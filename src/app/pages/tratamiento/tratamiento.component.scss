@@ -7,6 +7,9 @@
   background: #f8e5f2;
   background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
   justify-content: center;
+  .row {
+    padding: 15px 25px;
+  }
   .tratamiento-box {
     justify-content: center;
     width: 100vh;
@@ -17,7 +20,7 @@
       }
       .button-agregar {
         margin-right: 12px;
-        //height: 3em;
+        height: 3em;
         padding: 6px 40px;
         top: 0;
         left: 0;
@@ -30,7 +33,7 @@
     }
     .tratamiento-table {
       justify-content: center;
-      width: 100vh;
+     // width: 100vh;
       table {
         width: 100%;
         .mat-header-row {

@@ -5,10 +5,10 @@
         Tratamientos
       </h2>
       <div class="row tratamiento-box">
-        <div class="form-tratamiento" [formGroup]="tratamientoForm">
+        <div class="form-tratamiento">
           <mat-form-field appearance="fill" color="accent">
             <mat-label>Filtrar</mat-label>
-            <input matInput type="text" formControlName="descripcion">
+            <input matInput (keyup)="filtrar($event)" #input>
           </mat-form-field>
           <button mat-flat-button class="button-agregar" color="accent" (click)="agregar()">
             <mat-icon aria-hidden="false">add</mat-icon>
