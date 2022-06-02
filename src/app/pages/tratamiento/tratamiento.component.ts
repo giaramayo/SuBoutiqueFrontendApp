@@ -62,7 +62,7 @@ export class TratamientoComponent implements OnInit {
     }
 
     const dialogRef = this.dialog.open(DialogModificarTratamientoComponent, {
-      width: '270px',
+      width: '300px',
       data: nuevo
     });
 

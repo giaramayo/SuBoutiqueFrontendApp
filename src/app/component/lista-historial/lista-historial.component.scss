@@ -1,10 +1,14 @@
-table {
+  table {
     width: 100%;
   }
   
-  th {
-    font-size: 15px;
-    font-weight: initial;
-    color: #973d8f;
-   // background-color: #d349d312;
+  .mat-header-row {
+    background: #956592;
+  background: linear-gradient(90deg, #956592 0%, #efa3e9 100%);
+    th {
+      font-size: 15px;
+      font-weight: initial;
+      color: white;
+    }
   }
+  

@@ -1,17 +1,12 @@
 <div class="container">
-
   <div class="turno-content">
     <mat-card>
-
       <h2>
         Gestion de Turnos
       </h2>
       <div class="row-turno">
-
-
         <div class="dia-select card">
           <div class="container">
-
             <mat-accordion>
               <div>
                 <mat-expansion-panel (opened)="abrirPanel = true" (closed)="abrirPanel = false"
@@ -27,26 +22,28 @@
                       {{turno.tratamiento[0] ? turno.tratamiento[0].descripcion : '-'}}
                     </mat-panel-description>
                   </mat-expansion-panel-header>
-                  <app-card-persona [paciente]="turno.paciente[0]"></app-card-persona>  
-
-                  <div class="botonesLista">
-                    <button mat-flat-button class="button-reprogramar" color="primary" (click)="reprogramar(turno)">
-                      <mat-icon aria-hidden="false">edit_calendar</mat-icon>
-                      Reprogramar FALTA
-                    </button>
-                    <button mat-flat-button class="button-camb-est" (click)="cambiarEstado(turno)">
-                      <mat-icon aria-hidden="false">free_cancellation</mat-icon>
-                      Cambiar Estado
-                    </button>
-                    <button mat-flat-button color="primary" (click)="consultarHistorial(turno.id_paciente)">
-                      <mat-icon aria-hidden="false">history</mat-icon>
-                      Historial
-                    </button>
-                    <button mat-flat-button color="accent" (click)="detalleDelPaciente(turno.id_paciente)">
-                      <mat-icon aria-hidden="false">person_search</mat-icon>
-                      Ver Paciente
-                    </button>
+                  <div class="card-paciente-detalle">
+                    <app-card-persona [paciente]="turno.paciente[0]"></app-card-persona>
+                    <div class="botonesLista">
+                      <button mat-flat-button class="button-reprogramar" color="primary" (click)="reprogramar(turno)">
+                        <mat-icon aria-hidden="false">edit_calendar</mat-icon>
+                        Reprogramar FALTA
+                      </button>
+                      <button mat-flat-button class="button-camb-est" (click)="cambiarEstado(turno)">
+                        <mat-icon aria-hidden="false">free_cancellation</mat-icon>
+                        Cambiar Estado
+                      </button>
+                      <button mat-flat-button color="primary" (click)="consultarHistorial(turno.id_paciente)">
+                        <mat-icon aria-hidden="false">history</mat-icon>
+                        Historial
+                      </button>
+                      <button mat-flat-button color="accent" (click)="detalleDelPaciente(turno.id_paciente)">
+                        <mat-icon aria-hidden="false">person_search</mat-icon>
+                        Ver Paciente
+                      </button>
+                    </div>
                   </div>
+
 
                 </mat-expansion-panel>
               </div>

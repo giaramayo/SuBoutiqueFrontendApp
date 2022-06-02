@@ -161,7 +161,7 @@ export class DetallePacienteComponent implements OnInit {
 
   eliminar() {
     const dialogRef = this.dialog.open(ConfirmacionComponent, {
-      width: '270px',
+     // width: '270px',
       data: {
           msj: '¿Esta seguro que desea dar de baja al paciente \"' + this.paciente.nombre + ' ' + this.paciente.apellido + '\"?',
           titulo: "Eliminar paciente"

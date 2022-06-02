@@ -24,7 +24,7 @@ export class ListaTratamientoComponent {
   modificar( element: any){
     element.titulo = 'Modificar Tratamiento';
     const dialogRef = this.dialog.open(DialogModificarTratamientoComponent, {
-      width: '270px',
+      width: '300px',
       data: element
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -58,7 +58,7 @@ export class ListaTratamientoComponent {
 
   eliminar( element: any){
     const dialogRef = this.dialog.open(ConfirmacionComponent, {
-      width: '270px',
+      //width: '270px',
       data: {
           msj: "¿Esta seguro que desea eliminar \"" + element.descripcion + "\"?",
           titulo: "Eliminar"

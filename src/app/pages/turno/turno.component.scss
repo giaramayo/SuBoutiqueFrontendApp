@@ -7,36 +7,73 @@
   background: #f8e5f2;
   background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
   justify-content: center;
-  .container{
+
+  .container {
     border-radius: 10px;
-   background: #f8e5f2;
-   background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
-   padding: 2%;
-   .btn-agregar {
-     width: 100%;
-   }
-   }
+    background: #f8e5f2;
+    background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
+    padding: 2%;
+
+    .btn-agregar {
+      width: 100%;
+    }
+
+    .card-paciente-detalle {
+      display: flex;
+      justify-content: center;
+      app-card-persona{
+        width: 70%;
+        padding: 2%;
+      }
+      .botonesLista {
+        display: flex;
+        flex-direction: column;
+        button {
+          text-align: center !important;
+        }
+        .button-camb-est {
+          background-color: rgba(190, 137, 240, 0.922);
+          color: #fff;
+        }
+        .button-reprogramar {
+          background-color: rgb(62, 195, 164);
+          color: #fff;
+        }
+        .mat-button-base {
+          margin: 8px 8px 8px 0;
+        }
+      }
+    }
+  }
+
   .row-turno {
     display: flex;
     flex-direction: row;
- .dia-select {
-   width: 70%;
-   padding-right: 2%;
- }
- .calendar-card {
-   width: 30%;
 
- }
- .card-turno {
-   margin-bottom: 10px;
- }
-  .calendario-piker{
-    display: block;
+    .dia-select {
+      width: 70%;
+      padding-right: 2%;
+    }
+
+    .calendar-card {
+      width: 30%;
+
+    }
+
+    .card-turno {
+      margin-bottom: 10px;
+    }
+
+    .calendario-piker {
+      display: block;
+    }
+
+    .calendario-card {
+      display: none;
+    }
   }
-  .calendario-card{
-    display: none;
-  }
-}
+
+
 
 }
 
@@ -51,83 +88,41 @@ mat-panel-title {
 }
 
 @media all and (min-width: 769px) {
-.turno-content {
+  .turno-content {
 
-  .container{
-    .calendario-piker{
-      display: none;
-    }
-    .calendario-card{
-      display: block;
-    }
+    .container {
+      .calendario-piker {
+        display: none;
+      }
 
-    .row-turno{
-      display: flex;
-      flex-direction: row-reverse;
-       padding: 15px 25px;
-    }
+      .calendario-card {
+        display: block;
+      }
 
-    .calendar-card {
-      width: 30%;
-    }
-    .dia-select {
-      width: 70%;
-      overflow-y: auto;
-    }
+      .row-turno {
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 15px 25px;
+      }
 
-    .card {
-      margin: 1vh;
-      button{
-        width: 100%;
+      .calendar-card {
+        width: 30%;
+      }
+
+      .dia-select {
+        width: 70%;
+        overflow-y: auto;
+      }
+
+      .card {
+        margin: 1vh;
+
+        button {
+          width: 100%;
+        }
       }
     }
   }
-}
 
-
-}
-
-.botones {
-  // display: flex;
-  // justify-content: center;
-  // button{
-  //   // margin: 10px;
-  // }
-  // .button-calendar{
-  //   background-color: rgb(162, 75, 244); 
-  //   color: #fff;
-  // }
-  // display: table-cell;
-  // width: 490px;
-    .mat-button-base {
-      margin: 8px 8px 8px 0;
-    }
-
-    
-}
-
-.botonesLista {
-  // display: flex;
-  // justify-content: center;
-  justify-content: center;
-    display: inline-block;
-    margin: 0 10px;
-
-  button{
-    text-align: center !important; 
-  }
-
-  .button-camb-est{
-    background-color: rgba(190, 137, 240, 0.922); 
-    color: #fff;
-  }
-  .button-reprogramar {
-    background-color: rgb(62, 195, 164); 
-    color: #fff;
-  }
-
-  .mat-button-base {
-    margin: 8px 8px 8px 0;
-  }
 
 }
