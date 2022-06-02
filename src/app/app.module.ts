@@ -17,7 +17,6 @@ import { PacienteAgregarComponent } from './pages/paciente-agregar/paciente-agre
 import { TratamientoComponent } from './pages/tratamiento/tratamiento.component';
 import { TurnoComponent } from './pages/turno/turno.component';
 import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
-import { ListaTratamientoComponent } from './component/lista-tratamiento/lista-tratamiento.component';
 import { DialogModificarTratamientoComponent } from './component/dialog-modificar-tratamiento/dialog-modificar-tratamiento.component';
 import { GraficoComponent } from './component/grafico/grafico.component';
 import { NumberPipe } from './pipes/number.pipe';
@@ -51,7 +50,6 @@ import { CardPersonaComponent } from './component/card-persona/card-persona.comp
     TurnoComponent,
     HomeComponent,
     EstadisticasComponent,
-    ListaTratamientoComponent,
     DialogModificarTratamientoComponent,
     GraficoComponent,
     ConfirmacionComponent,
