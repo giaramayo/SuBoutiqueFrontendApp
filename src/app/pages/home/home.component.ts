@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
               private router: Router) {
     this.hoy = new Date();
     this.turnosHoy = [];
-    this.routerAgregar = '/paciente/agregar'
+    this.routerAgregar = '/paciente/agregar/inicio'
   }
 
   ngOnInit(): void {

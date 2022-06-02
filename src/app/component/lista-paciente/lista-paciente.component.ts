@@ -62,7 +62,7 @@ export class ListaPacienteComponent {
             data: { icono: 'report', mensaje: err.error.error, titulo: 'Error' },
             duration: 4000,
             horizontalPosition: "right",
-            verticalPosition: "top",
+            verticalPosition: "bottom",
             panelClass: ["snack-bar-err"]
           });
         });

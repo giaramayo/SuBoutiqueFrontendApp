@@ -23,9 +23,7 @@ export class PacienteComponent implements OnInit {
                private router: Router) {  
 
     this.botonFiltroLoading = false;
-    this.routerAgregar = '/paciente/agregar'
-  
-
+    this.routerAgregar = '/paciente/agregar/paciente';
    }
 
   ngOnInit(): void {

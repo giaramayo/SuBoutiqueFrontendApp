@@ -38,7 +38,7 @@ export class TratamientoComponent implements OnInit {
         data: { icono: 'report', mensaje: "Error al consultar tratamientos", titulo: 'Error'},
         duration: 4000,
         horizontalPosition: "right",
-        verticalPosition: "top",
+        verticalPosition: "bottom",
         panelClass: ["snack-bar-err"]
       });
     });
@@ -63,7 +63,7 @@ export class TratamientoComponent implements OnInit {
           data: { icono: 'done', mensaje: result.msg, titulo: 'Guardar'},
           duration: 4000,
           horizontalPosition: "right",
-          verticalPosition: "top",
+          verticalPosition: "bottom",
           panelClass: ["snack-bar-ok"]
         });
         this.getTratamientos();
@@ -84,7 +84,7 @@ export class TratamientoComponent implements OnInit {
           data: { icono: 'done', mensaje: result.msg, titulo: 'Modificado'},
           duration: 4000,
           horizontalPosition: "right",
-          verticalPosition: "top",
+          verticalPosition: "bottom",
           panelClass: ["snack-bar-ok"]
         });
       }
@@ -113,7 +113,7 @@ export class TratamientoComponent implements OnInit {
               data: { icono: 'done', mensaje: resp.msg, titulo: 'Eliminado'},
               duration: 4000,
               horizontalPosition: "right",
-              verticalPosition: "top",
+              verticalPosition: "bottom",
               panelClass: ["snack-bar-ok"]
             });
           }
@@ -123,7 +123,7 @@ export class TratamientoComponent implements OnInit {
             data: { icono: 'report', mensaje: "Ocurrio un error al eliminar el tratamiento indicado", titulo: 'Error'},
             duration: 4000,
             horizontalPosition: "right",
-            verticalPosition: "top",
+            verticalPosition: "bottom",
             panelClass: ["snack-bar-err"]
           });
         },

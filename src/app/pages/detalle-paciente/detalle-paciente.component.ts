@@ -77,7 +77,7 @@ export class DetallePacienteComponent implements OnInit {
             data: { icono: 'report', mensaje: "Error al consultar paciente", titulo: 'Error'},
             duration: 4000,
             horizontalPosition: "right",
-            verticalPosition: "top",
+            verticalPosition: "bottom",
             panelClass: ["snack-bar-err"]
           });    
         },
@@ -103,7 +103,7 @@ export class DetallePacienteComponent implements OnInit {
           //   data: { icono: 'report', mensaje: "Error al consultar anecedentes del paciente", titulo: 'Error'},
           //   duration: 4000,
           //   horizontalPosition: "right",
-          //   verticalPosition: "top",
+          //   verticalPosition: "bottom",
           //   panelClass: ["snack-bar-err"]
           // });    
         },
@@ -124,7 +124,7 @@ export class DetallePacienteComponent implements OnInit {
             data: { icono: 'report', mensaje: "Error al consultar la localidad", titulo: 'Error'},
             duration: 4000,
             horizontalPosition: "right",
-            verticalPosition: "top",
+            verticalPosition: "bottom",
             panelClass: ["snack-bar-err"]
           });    
         }, 
@@ -145,7 +145,7 @@ export class DetallePacienteComponent implements OnInit {
               data: { icono: 'warning_amber', mensaje: "No se encontro historial para el paciente", titulo: 'Historial'},
               duration: 4000,
               horizontalPosition: "right",
-              verticalPosition: "top",
+              verticalPosition: "bottom",
               panelClass: ["snack-bar-war"]
             });    
           });
@@ -183,7 +183,7 @@ export class DetallePacienteComponent implements OnInit {
               data: { icono: 'done', mensaje: 'Se elimino con exito al paciente', titulo: 'Eliminado'},
               duration: 4000,
               horizontalPosition: "right",
-              verticalPosition: "top",
+              verticalPosition: "bottom",
               panelClass: ["snack-bar-ok"]
             });
             this.volver();
@@ -194,7 +194,7 @@ export class DetallePacienteComponent implements OnInit {
             data: { icono: 'report', mensaje: "Error intentar eliminar el paciente", titulo: 'Error'},
             duration: 4000,
             horizontalPosition: "right",
-            verticalPosition: "top",
+            verticalPosition: "bottom",
             panelClass: ["snack-bar-err"]
           });    
         })

@@ -79,7 +79,7 @@ export class TurnoComponent {
           data: { icono: 'warning_amber', mensaje: "No se encontro turno para la fecha", titulo: 'Sin turnos'},
           duration: 4000,
           horizontalPosition: "right",
-          verticalPosition: "top",
+          verticalPosition: "bottom",
           panelClass: ["snack-bar-war"]
         });
   
@@ -121,7 +121,7 @@ export class TurnoComponent {
             data: { icono: 'report', mensaje: err.error.error, titulo: 'Error'},
             duration: 4000,
             horizontalPosition: "right",
-            verticalPosition: "top",
+            verticalPosition: "bottom",
             panelClass: ["snack-bar-err"]
           });
         });
@@ -203,22 +203,22 @@ export class TurnoComponent {
 
     this.turnoService.modificarTurno(id, body)
         .subscribe( resul => {
-          // if(resul) {
-          //   // this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-          //   //   data: { icono: 'done', mensaje: resul.msg, titulo: 'Actualizado'},
-          //   //   duration: 4000,
-          //   //   horizontalPosition: "right",
-          //   //   verticalPosition: "top",
-          //   //   panelClass: ["snack-bar-ok"]
-          //   // });
-          // }
+          if(resul) {
+            this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+              data: { icono: 'done', mensaje: resul.msg, titulo: 'Actualizado'},
+              duration: 4000,
+              horizontalPosition: "right",
+              verticalPosition: "bottom",
+              panelClass: ["snack-bar-ok"]
+            });
+          }
         },
         () => {
           this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
             data: { icono: 'report', mensaje: "Ocurrio un error al intentar modificar el turno", titulo: 'Error'},
             duration: 4000,
-            horizontalPosition: "right",
-            verticalPosition: "top",
+            horizontalPosition: "end",
+            verticalPosition: "bottom",
             panelClass: ["snack-bar-err"]
           });
         },
