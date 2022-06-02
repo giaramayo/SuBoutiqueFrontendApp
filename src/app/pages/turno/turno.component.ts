@@ -150,6 +150,7 @@ export class TurnoComponent {
   dialogConsultaHistorial() {
       const dialogRef = this.dialog.open(DialogHistorialComponent, {
       width: '700px',
+      maxHeight: '90vh',
       data: {
           dataSource: this.historial,
           antecedente: this.antecedente,

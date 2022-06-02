@@ -1,16 +1,24 @@
-<h2 class="txt-titulo" mat-dialog-title>{{data.titulo}}</h2>
 
-<mat-divider></mat-divider>
-<br>
 
-<mat-dialog-content class="mat-typography">
+<div class="container">
+    <div class="historial-container">  
+            <h2 class="txt-titulo" mat-dialog-title>{{data.titulo}}</h2>
+            <div class="row historial-box">
+                <div class="data-antecedente">
+                    <div class="icon-antecedente">
+                        <mat-icon>medical_information</mat-icon>
+                    </div>
+                    <div class="inf-antecedente">
+                        <app-antecedentes [antecedente]="data.antecedente" ></app-antecedentes>
+                    </div>
+                </div>
+                <div class="tabla-historial">
+                    <app-lista-historial [dataSource]="data.dataSource"></app-lista-historial>
+                </div>
+            </div>
+            <mat-dialog-actions align="end">
+                <button mat-button (focus)="true" (click)="cancelar()" > Cerrar </button>
+             </mat-dialog-actions>
+    </div>
+</div>
 
-    <app-antecedentes [antecedente]="data.antecedente" ></app-antecedentes>
-
-    <app-lista-historial [dataSource]="data.dataSource"></app-lista-historial>
-
-</mat-dialog-content>
-
-<mat-dialog-actions align="end">
-    <button mat-button (click)="cancelar()" > Cerrar </button>
- </mat-dialog-actions>
