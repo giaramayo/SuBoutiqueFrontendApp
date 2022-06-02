@@ -1,12 +1,10 @@
-<br>
-
 <div class="container">
-  <h1 class="txt-titulo">
-    Pacientes
-  </h1>
-  <mat-divider></mat-divider>
-  <br>
-  <div class="row">
+  <div class="paciente-content">
+    <mat-card>
+      <h2>
+        Pacientes
+      </h2>
+  <div class="row paciente-box">
     <div class="form row-cols-3" [formGroup]="pacienteForm">
       <mat-form-field appearance="fill"  color="accent">
         <mat-label>Nombre</mat-label>
@@ -33,4 +31,7 @@
       <app-lista-paciente [dataSource]="pacientes"></app-lista-paciente>
     </section>
   </div>
+</mat-card>
+
+</div>
 </div>

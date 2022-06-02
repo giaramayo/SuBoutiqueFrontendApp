@@ -1,14 +1,13 @@
 <nav class="menu color-menu">
-
+    <div [class]="mostrarSNV ? 'logo hidden' : 'logo' ">
+        <img class="icon-header" [src]="logo | imagen">
+    </div>
     <ul class="menu-items">
-        <li class="logo">
-            <img class="icon-header" [src]="logo | imagen">
-        </li>
-        <li [class]="mostrarSNV ? 'item responsive active' : 'item responsive'" *ngFor="let opt of optionsMenu">
+        <li [class]="mostrarSNV ? 'item responsive active' : 'item responsive'" routerLinkActive="is-active" *ngFor="let opt of optionsMenu">
             <a (click)="openSidenav()" routerLink="{{opt.router}}">{{opt.name}}</a>
         </li>
-        <li class="item" *ngFor="let opt of optionsMenu">
-            <a routerLink="{{opt.router}}">{{opt.name}}</a>
+        <li class="item"  routerLinkActive="is-active" *ngFor="let opt of optionsMenu">
+            <a routerLink="{{opt.router}}" >{{opt.name}}</a>
         </li>
         <li class="toggle">
             <a (click)="openSidenav()"><span class="bars"></span></a>

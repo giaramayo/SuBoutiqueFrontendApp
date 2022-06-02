@@ -1,21 +1,28 @@
 .icon-header {
   width: 140px;
-  position: absolute;
-  top: 15px;
-  left: 25px;
+  height: 100%;
+  border-radius: 25px;
 }
 
 .menu {
-  border-bottom: 5px solid #826a80;
   padding: 15px 15px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .color-menu {
-  background-color: #eee2ee;
+  background-color: #efa3e9;
+  background: linear-gradient(90deg, #d6c7d5 0%, #efa3e9 100%);
 }
 
 .logo {
-  flex: 1 1 auto;
+  border-radius: 15px;
+  background: #eee2ee;
+  padding: 2px 25px;
+}
+
+.logo.hidden {
+  display: none;
 }
 
 .menu-items {
@@ -23,13 +30,9 @@
 }
 
 a {
-  color: #4b2d49fb;
+  color: white;
+  letter-spacing: 1px;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-  transition: .5s;
 }
 
 .menu-items li {
@@ -51,14 +54,19 @@ a:hover {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
 .item {
   display: block;
+  transition: .5s;
+  border-radius: 15px;
+  margin: 0 5px;
 }
 
 .bars {
-  background: #999;
+  background: white;
   display: inline-block;
   height: 2px;
   position: relative;
@@ -68,7 +76,7 @@ a:hover {
 
 .bars::before,
 .bars::after {
-  background: #999;
+  background: white;
   content: "";
   display: inline-block;
   height: 2px;
@@ -103,10 +111,12 @@ a:hover {
   text-decoration: none;
   font-weight: bold;
 }
-
 .item:hover {
-  border-bottom: 2px solid rgb(103, 79, 79);
-  
+  background: #a678a5;
+}
+
+.item.is-active {
+  background: #c891c6;
 }
 
 

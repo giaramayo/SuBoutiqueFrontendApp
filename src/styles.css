@@ -1,9 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #fafafa; }
 
-.txt-titulo {
+h1.txt-titulo {
+    margin-top: 15px;
     text-align: center;
-    color: #8d7a8c;
+    padding: 0 20px;
+    color: #543353;
+    font-size: 2.5em;
+    font-style: italic;
+}
+
+h2 {
+  border-radius: 5px;
+  padding: 0 20px;
+  background: linear-gradient(90deg, #956592 0%, #efa3e9 100%);
+  color: white;
 }

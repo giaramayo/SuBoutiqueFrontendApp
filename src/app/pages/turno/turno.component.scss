@@ -1,15 +1,44 @@
-div{
+.turno-content {
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+  padding: 2%;
+  border-radius: 10px;
+  background: #f8e5f2;
+  background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
+  justify-content: center;
+  .container{
+    border-radius: 10px;
+   background: #f8e5f2;
+   background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
+   padding: 2%;
+   .btn-agregar {
+     width: 100%;
+   }
+   }
+  .row-turno {
+    display: flex;
+    flex-direction: row;
+ .dia-select {
+   width: 70%;
+   padding-right: 2%;
+ }
+ .calendar-card {
+   width: 30%;
 
+ }
+ .card-turno {
+   margin-bottom: 10px;
+ }
   .calendario-piker{
     display: block;
   }
   .calendario-card{
     display: none;
   }
-
 }
 
-
+}
 
 mat-panel-title {
   font-size: 18px;
@@ -22,7 +51,9 @@ mat-panel-title {
 }
 
 @media all and (min-width: 769px) {
-  div{
+.turno-content {
+
+  .container{
     .calendario-piker{
       display: none;
     }
@@ -50,8 +81,8 @@ mat-panel-title {
         width: 100%;
       }
     }
-   
   }
+}
 
 
 }

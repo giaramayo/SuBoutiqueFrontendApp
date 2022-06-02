@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'tratamientos', component: TratamientoComponent},
   { path: 'turnos', component: TurnoComponent},
   { path: 'estadisticas', component: EstadisticasComponent},
-  { path: '', component: HomeComponent },
+  { path: 'inicio', component: HomeComponent },
   { path: '**', component: ErrorPageComponent }
 ];
 

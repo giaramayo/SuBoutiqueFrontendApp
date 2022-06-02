@@ -24,7 +24,7 @@ export class MenuComponent  {
     this.optionsMenu = [
       {
         name  :'Inicio',
-        router:'/',
+        router:'./inicio',
       },
       {
         name  :'Pacientes',
