@@ -53,17 +53,7 @@
                                 {{turno.estado[0] ? turno.estado[0].descripcion : '-'}} - {{turno.tratamiento[0] ? turno.tratamiento[0].descripcion : '-'}}
                             </mat-panel-description>
                           </mat-expansion-panel-header>
-                          <div class="data-info-paciente">
-                            <div class="info">
-                                <p>{{turno.paciente[0] ? turno.paciente[0].apellido : '-'}}, {{turno.paciente[0] ? turno.paciente[0].nombre : '-'}}</p>
-                                <p>Teleno: {{turno.paciente[0] ? turno.paciente[0].telefono : '-'}} </p>
-                                <p>Email: {{turno.paciente[0] ? turno.paciente[0].correo : '-'}}</p>
-                              </div>
-                              <div class="info-icon">
-                                <mat-icon class="icon-person" aria-hidden="false">person</mat-icon>
-                              </div>
-                          </div>
-                          
+                          <app-card-persona [paciente]="turno.paciente[0]"></app-card-persona>                          
                         </mat-expansion-panel>
                     
                       </mat-accordion>

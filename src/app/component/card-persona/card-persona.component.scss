@@ -1,0 +1,37 @@
+
+
+.data-info-paciente {
+
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
+    justify-content: center;
+    background-color: #fafafa;
+
+    .info-icon {
+        padding: 2%;
+        
+        .icon-person {
+            font-size: 15vh;
+            color: #ba7fb6e6;
+            width: 40%;
+            align-items: center;
+        }
+    }
+
+    .info-paciente {
+        padding: 2%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        .nm-card {
+            color: #966593;
+            font-family: cursive;
+        }
+
+        p{
+            color: #7c6f80;
+        }
+    }
+}

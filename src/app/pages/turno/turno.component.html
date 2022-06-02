@@ -27,36 +27,8 @@
                       {{turno.tratamiento[0] ? turno.tratamiento[0].descripcion : '-'}}
                     </mat-panel-description>
                   </mat-expansion-panel-header>
-                  <div>
-                    <div>
-                      <mat-icon class="icon-person" aria-hidden="false">person</mat-icon>
-                    </div>
-                    <div>
-                      <mat-form-field class="form-field" color="accent">
-                        <mat-label>Nombre</mat-label>
-                        <input matInput type="text" readonly [(ngModel)]="turno.paciente[0].nombre">
-                      </mat-form-field>
-                      <mat-form-field class="form-field" color="accent">
-                        <mat-label>Apellido</mat-label>
-                        <input matInput type="text" readonly [(ngModel)]="turno.paciente[0].apellido">
-                      </mat-form-field>
-                      <mat-form-field class="form-field" color="accent">
-                        <mat-label>Documento</mat-label>
-                        <input matInput type="text" readonly [(ngModel)]="turno.paciente[0].documento">
-                      </mat-form-field>
-                      <mat-form-field class="form-field" color="accent">
-                        <mat-label>Telefono</mat-label>
-                        <input matInput type="text" readonly [(ngModel)]="turno.paciente[0].telefono">
-                      </mat-form-field>
-                      <mat-form-field class="form-field" color="accent">
-                        <mat-label>Email</mat-label>
-                        <input matInput type="text" readonly [(ngModel)]="turno.paciente[0].correo">
-                      </mat-form-field>
-                    </div>
-                    <div>
+                  <app-card-persona [paciente]="turno.paciente[0]"></app-card-persona>  
 
-                    </div>
-                  </div>
                   <div class="botonesLista">
                     <button mat-flat-button class="button-reprogramar" color="primary" (click)="reprogramar(turno)">
                       <mat-icon aria-hidden="false">edit_calendar</mat-icon>
