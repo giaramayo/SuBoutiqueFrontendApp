@@ -203,15 +203,15 @@ export class TurnoComponent {
 
     this.turnoService.modificarTurno(id, body)
         .subscribe( resul => {
-          if(resul) {
-            this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-              data: { icono: 'done', mensaje: resul.msg, titulo: 'Actualizado'},
-              duration: 4000,
-              horizontalPosition: "right",
-              verticalPosition: "bottom",
-              panelClass: ["snack-bar-ok"]
-            });
-          }
+          // if(resul) {
+          //   this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+          //     data: { icono: 'done', mensaje: resul.msg, titulo: 'Actualizado'},
+          //     duration: 4000,
+          //     horizontalPosition: "right",
+          //     verticalPosition: "bottom",
+          //     panelClass: ["snack-bar-ok"]
+          //   });
+          // }
         },
         () => {
           this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
