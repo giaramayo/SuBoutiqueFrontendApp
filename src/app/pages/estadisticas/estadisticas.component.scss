@@ -1,0 +1,17 @@
+.estadisticas-container {
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
+    padding: 2%;
+    border-radius: 10px;
+    background: #f8e5f2;
+    background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
+    justify-content: center;
+    .row {
+      padding: 15px 25px;
+    }
+    .estadisticas-box {
+      justify-content: center;
+      width: 100vh;
+    }
+  }
