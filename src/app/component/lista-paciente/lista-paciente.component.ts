@@ -6,6 +6,7 @@ import { DialogHistorialComponent } from '../dialog-historial/dialog-historial.c
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogSnackbarComponent } from '../dialog-snackbar/dialog-snackbar.component';
 import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-lista-paciente',
@@ -46,7 +47,7 @@ export class ListaPacienteComponent  {
   getPacientes() {
     this.pacienteService.getPacientes()
     .subscribe( resp => {
-          this.dataSource = resp;
+          this.dataSource = new MatTableDataSource(resp);
         });
   }
 
@@ -57,7 +58,6 @@ export class ListaPacienteComponent  {
             this.historial = resp;
             this.getAntecedente(element);
           }
-              
         },
         err => {
           this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
@@ -113,29 +113,4 @@ export class ListaPacienteComponent  {
                 };
     });
   }
-
-  // eliminar( element: any){
-  //   const dialogRef = this.dialog.open(ConfirmacionComponent, {
-  //     width: '270px',
-  //     data: {
-  //         msj: "¿Esta seguro que desea eliminar el paciente \"" + element.apellido + ", " + element.nombre + "\"?",
-  //         titulo: "Eliminar"
-  //       }
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //      if(result)
-  //        this.eliminarPaciente(element.documento);
-  //   });
-  // }
-  // eliminarPaciente(documento: number) {
-  //     this.pacienteService.eliminar(documento)
-  //       .subscribe(resp => {
-  //         console.log(resp);
-  //       },
-  //       () => undefined,
-  //       () => {
-  //         this.getPacientes();
-  //       });
-  // }
-
 }

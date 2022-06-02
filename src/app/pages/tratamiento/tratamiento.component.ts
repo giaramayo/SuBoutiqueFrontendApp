@@ -133,9 +133,7 @@ export class TratamientoComponent implements OnInit {
   }
 
   filtrar(event: Event) {
-    
     const filterValue = (event.target as HTMLInputElement).value;
-    console.log(filterValue)
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 

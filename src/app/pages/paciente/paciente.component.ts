@@ -3,6 +3,7 @@ import { FormControl, FormGroup} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { PacienteService } from 'src/app/service/paciente.service';
 import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -13,8 +14,7 @@ import { Router } from '@angular/router';
 
 export class PacienteComponent implements OnInit {
 
-  public pacientes: any;
-  public pacienteForm: FormGroup;
+  public dataSource: any;
   public botonFiltroLoading: boolean;
   public routerAgregar: string;
 
@@ -24,11 +24,7 @@ export class PacienteComponent implements OnInit {
 
     this.botonFiltroLoading = false;
     this.routerAgregar = '/paciente/agregar'
-     this.pacienteForm = new FormGroup({
-        nombre:  new FormControl(""),
-        apellido: new FormControl(""),
-        dni: new FormControl("")
-     });
+  
 
    }
 
@@ -38,36 +34,8 @@ export class PacienteComponent implements OnInit {
 
   getPacientes() {
     this.pacienteService.getPacientes().subscribe( resp => {
-          this.pacientes = resp;
+          this.dataSource = new MatTableDataSource(resp);
         });
-  }
-
-  buscarPacientes(){
-    this.botonFiltroLoading = true;
-    this.pacientes.filter()
-   /*
-    this.pacienteService.postFiltrarPaciente(
-      this.pacienteForm.get('nombre')?.value,
-      this.pacienteForm.get('apellido')?.value,
-      this.pacienteForm.get('dni')?.value
-    ).subscribe(resp => {
-      console.log(resp);
-      this.pacientes = resp;
-    },
-    error => {
-      this.botonFiltroLoading = false;
-      this.openSnackBar(error.error.error, '');
-    },
-    () => {
-      this.botonFiltroLoading = false;
-    });
-*/
-  }
-
-  validar(): boolean {
-    return!( this.pacienteForm.get('nombre')?.value 
-          || this.pacienteForm.get('apellido')?.value
-          || this.pacienteForm.get('dni')?.value);
   }
 
   openSnackBar(message: string, action: string) {
@@ -78,5 +46,8 @@ export class PacienteComponent implements OnInit {
     this.router.navigateByUrl(this.routerAgregar);
   }
 
-
+  filtrar(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
