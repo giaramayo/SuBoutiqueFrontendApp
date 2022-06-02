@@ -6,7 +6,7 @@
     <div class="home-content">
         <div class="estadistica">
             <mat-card>
-            <h2>Estadísticas del dia</h2>
+            <h2>Estadísticas del día</h2>
             <mat-tab-group>
                 <mat-tab label="Tratamiento">
                     <app-estadistica-de-torta></app-estadistica-de-torta>
@@ -34,16 +34,13 @@
                     Modificar Contraseña - FALTA
                 </button> -->
             </mat-card>
-
             </div>
             <div class="turnos">
                 <mat-card>
-                    <h2>Turnos Proximos</h2>
+                    <h2>Turnos Próximos</h2>
                     <mat-card-subtitle>{{hoy | date:'dd/MM/yyyy'}} </mat-card-subtitle>
                     <mat-card-content>
-    
                         <mat-accordion>
-    
                         <mat-expansion-panel *ngFor="let turno of turnosHoy">
                           <mat-expansion-panel-header>
                             <mat-panel-title>
@@ -55,15 +52,12 @@
                           </mat-expansion-panel-header>
                           <app-card-persona [paciente]="turno.paciente[0]"></app-card-persona>                          
                         </mat-expansion-panel>
-                    
                       </mat-accordion>
-    
                     </mat-card-content>               
                     <mat-card-footer>
                     </mat-card-footer>
                   </mat-card>
             </div>
-            
         </div>
     </div>
    
