@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     let fecha = this.hoy.getFullYear() + "-" + this.formatoVariable(mesM) + "-" + this.formatoVariable(this.hoy.getDate())
     //  fecha = "2022-05-23"  //TODO
     console.log(fecha)
-    this.turnoService.buscarTurnoPorFecha(fecha)
+    this.turnoService.buscarTurnoPoximo(fecha)
       .subscribe(resp => {
         if (resp) {
           this.turnosHoy = resp;

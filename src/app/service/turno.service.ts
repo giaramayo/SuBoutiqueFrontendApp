@@ -25,6 +25,11 @@ export class TurnoService {
     return this.http.get(this.turnoURL + '/buscar/fecha/' + fecha);
   }
 
+  buscarTurnoPoximo( fecha: string ) : Observable<any> {
+    return this.http.get(this.turnoURL + '/buscar/proximos/' + fecha);
+  }
+
+
   getEstados() : Observable<any> {
     return this.http.get(this.estadosURL);
   }
