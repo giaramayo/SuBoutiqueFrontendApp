@@ -8,7 +8,7 @@
         <div class="container form-detalle">
           <mat-accordion class="example-headers-align">
             <!-- Datos del paciente -->
-            <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel  [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   Datos del paciente
@@ -17,7 +17,7 @@
                   <mat-icon>account_circle</mat-icon>
                 </mat-panel-description>
               </mat-expansion-panel-header>
-    
+              <div class="contenido-panel"></div>
               <mat-form-field class="form-field" color="accent">
                 <mat-label>Nombre</mat-label>
                 <input matInput type="text" readonly [ngModel]="paciente.nombre">
@@ -42,10 +42,14 @@
               <mat-label>Fecha de Nacimiento</mat-label>
               <input matInput type="text" readonly [(ngModel)]="paciente.fecha_nacimiento">
             </mat-form-field> -->
+            <mat-action-row>
+              <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+              <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+            </mat-action-row>
     
             </mat-expansion-panel>
             <!-- Datos personales -->
-            <mat-expansion-panel>
+            <mat-expansion-panel  [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   Datos personales
@@ -54,20 +58,23 @@
                   <mat-icon>contact_mail</mat-icon>
                 </mat-panel-description>
               </mat-expansion-panel-header>
-    
-              <mat-form-field class="form-field" color="accent">
-                <mat-label>Telefono</mat-label>
-                <input matInput type="text" readonly [(ngModel)]="paciente.telefono">
-              </mat-form-field>
-    
-              <mat-form-field class="form-field" color="accent">
-                <mat-label>Email</mat-label>
-                <input matInput type="text" readonly [(ngModel)]="paciente.correo">
-              </mat-form-field>
-    
+              <div class="contenido-panel">
+                <mat-form-field class="form-field" color="accent">
+                  <mat-label>Telefono</mat-label>
+                  <input matInput type="text" readonly [(ngModel)]="paciente.telefono">
+                </mat-form-field>
+                <mat-form-field class="form-field" color="accent">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="text" readonly [(ngModel)]="paciente.correo">
+                </mat-form-field>
+              </div>
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+                <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+              </mat-action-row>    
             </mat-expansion-panel>
             <!-- Dirección -->
-            <mat-expansion-panel>
+            <mat-expansion-panel  [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   Dirección
@@ -76,30 +83,34 @@
                   <mat-icon>map</mat-icon>
                 </mat-panel-description>
               </mat-expansion-panel-header>
-    
-              <mat-form-field class="form-field" color="accent">
-                <mat-label>Calle</mat-label>
-                <input matInput type="text" readonly [(ngModel)]="paciente.calle">
-              </mat-form-field>
-    
-              <mat-form-field class="form-field" color="accent">
-                <mat-label>Altura</mat-label>
-                <input matInput type="text" readonly [(ngModel)]="paciente.numero">
-              </mat-form-field>
-    
-              <mat-form-field class="form-field" color="accent">
-                <mat-label>Localidad</mat-label>
-                <input matInput type="text" readonly [(ngModel)]="paciente.barrio.descripcion">
-              </mat-form-field>
-    
-              <mat-form-field class="form-field" color="accent">
-                <mat-label>Codigo Postal</mat-label>
-                <input matInput type="text" readonly [(ngModel)]="paciente.codigo_postal">
-              </mat-form-field>
-    
+              <div class="contenido-panel">
+                <mat-form-field class="form-field" color="accent">
+                  <mat-label>Calle</mat-label>
+                  <input matInput type="text" readonly [(ngModel)]="paciente.calle">
+                </mat-form-field>
+      
+                <mat-form-field class="form-field" color="accent">
+                  <mat-label>Altura</mat-label>
+                  <input matInput type="text" readonly [(ngModel)]="paciente.numero">
+                </mat-form-field>
+      
+                <mat-form-field class="form-field" color="accent">
+                  <mat-label>Localidad</mat-label>
+                  <input matInput type="text" readonly [(ngModel)]="paciente.barrio.descripcion">
+                </mat-form-field>
+      
+                <mat-form-field class="form-field" color="accent">
+                  <mat-label>Codigo Postal</mat-label>
+                  <input matInput type="text" readonly [(ngModel)]="paciente.codigo_postal">
+                </mat-form-field>
+              </div>
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+                <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+              </mat-action-row> 
             </mat-expansion-panel>
             <!-- Antecedentes Clinicos -->
-            <mat-expansion-panel>
+            <mat-expansion-panel  [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   Antecedentes Clinicos
@@ -108,15 +119,19 @@
                   <mat-icon>medical_information</mat-icon>
                 </mat-panel-description>
               </mat-expansion-panel-header>
-    
-              <app-antecedentes [antecedente]="paciente.antecedente"></app-antecedentes>
-    
+              <div class="contenido-panel">
+                <app-antecedentes [antecedente]="paciente.antecedente"></app-antecedentes>
+              </div>
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+                <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+              </mat-action-row>
             </mat-expansion-panel>
             <!-- Historial -->
-            <mat-expansion-panel>
+            <mat-expansion-panel  [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Historial - FALTA DETALLE DE TRATAMIENTO
+                  Historial
                 </mat-panel-title>
                 <mat-panel-description>
                   <mat-icon>history</mat-icon>
@@ -124,10 +139,13 @@
               </mat-expansion-panel-header>
     
               <app-lista-historial [dataSource]="historial"></app-lista-historial>
-    
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+                <!-- <button mat-button color="primary" (click)="nextStep()">Siguiente</button> -->
+              </mat-action-row>
             </mat-expansion-panel>
             <!-- Tratamiento -->
-            <mat-expansion-panel>
+            <!-- <mat-expansion-panel  [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   Turnos Pendientes -FALTA
@@ -138,8 +156,10 @@
               </mat-expansion-panel-header>
     
               <app-lista-historial [dataSource]="historial"></app-lista-historial>
-    
-            </mat-expansion-panel>
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+              </mat-action-row>
+            </mat-expansion-panel> -->
           </mat-accordion>
         </div>
         <div class="btn-detalle">

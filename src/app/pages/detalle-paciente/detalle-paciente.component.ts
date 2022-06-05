@@ -20,6 +20,7 @@ export class DetallePacienteComponent implements OnInit {
   public routerPaciente: any = "/paciente/modificar/";
   public paciente: any;
   public historial: any[];
+  public step: number;
 
   constructor(private router: Router,
               private routerAct: ActivatedRoute,
@@ -29,6 +30,7 @@ export class DetallePacienteComponent implements OnInit {
               public dialog: MatDialog) {
     this.idPaciente = this.routerAct.snapshot.paramMap.get('id');
     this.routerVolver = this.routerAct.snapshot.paramMap.get('pages');
+    this.step = 0;
     this.historial = [];
     this.paciente =  {
                   documento     : "",
@@ -210,6 +212,17 @@ export class DetallePacienteComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
     });
+  }
 
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
   }
 }
