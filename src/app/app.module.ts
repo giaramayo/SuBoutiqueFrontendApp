@@ -33,6 +33,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { EstadisticaTratamientosComponent } from './component/estadistica-tratamientos/estadistica-tratamientos.component';
 import { EstadisticaDeTortaComponent } from './component/estadistica-de-torta/estadistica-de-torta.component';
 import { CardPersonaComponent } from './component/card-persona/card-persona.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { CardPersonaComponent } from './component/card-persona/card-persona.comp
     DialogReprogramarComponent,
     EstadisticaTratamientosComponent,
     EstadisticaDeTortaComponent,
-    CardPersonaComponent
+    CardPersonaComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

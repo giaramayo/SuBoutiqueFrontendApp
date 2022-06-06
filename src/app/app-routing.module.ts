@@ -9,6 +9,7 @@ import { TratamientoComponent } from './pages/tratamiento/tratamiento.component'
 import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
 import { TurnoComponent } from './pages/turno/turno.component';
 import { DetallePacienteComponent } from './pages/detalle-paciente/detalle-paciente.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)   },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'turnos', component: TurnoComponent},
   { path: 'estadisticas', component: EstadisticasComponent},
   { path: 'inicio', component: HomeComponent },
-  { path: '**', component: ErrorPageComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '**', component: ErrorPageComponent },
 ];
 
 @NgModule({
