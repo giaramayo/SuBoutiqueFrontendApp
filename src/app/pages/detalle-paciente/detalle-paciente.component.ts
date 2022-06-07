@@ -21,6 +21,7 @@ export class DetallePacienteComponent implements OnInit {
   public paciente: any;
   public historial: any[];
   public step: number;
+  // public fechaNacimiento = new Date();
 
   constructor(private router: Router,
               private routerAct: ActivatedRoute,
@@ -70,8 +71,12 @@ export class DetallePacienteComponent implements OnInit {
               telefono      :  resp.telefono,
               correo        : resp.correo,
               fecha_nacimiento : resp.fecha_nacimiento,
+              edad          : resp.edad,
               antecedente   : { _id: resp.id_antecedente }
             };
+            // this.fechaNacimiento.setDate(resp.fecha_nacimiento.substring(8,10));
+            // this.fechaNacimiento.setMonth(resp.fecha_nacimiento.substring(5,7));
+            // this.fechaNacimiento.setFullYear(resp.fecha_nacimiento.substring(0,4));
           }
         },
         () => {

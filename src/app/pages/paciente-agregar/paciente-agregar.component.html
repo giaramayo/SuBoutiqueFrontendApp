@@ -52,14 +52,25 @@
                     {{formPaciente.get('documento')?.value}} no es válido
                   </mat-error>
                 </mat-form-field>
-                <mat-form-field class="fill" color="accent">
+                <mat-form-field  class="fill" color="accent" >
                   <mat-label>Fecha de Nacimiento</mat-label>
-                  <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento">
+                  <input matInput [matDatepicker]="picker"
+                         (dateInput)="calcularEdad($event)" formControlName="fecha_nacimiento" >
                   <mat-hint>MM/DD/YYYY</mat-hint>
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                  <mat-datepicker #picker startView="year" [startAt]="startDate" ></mat-datepicker>
                   <mat-error *ngIf="formPaciente.get('fecha_nacimiento')?.invalid">
                     Seleccione una fecha
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-field" color="accent">
+                  <mat-label>Edad</mat-label>
+                  <input matInput type="text" readonly formControlName="edad" [min]="MIN_EDAD" [max]="MAX_EDAD" [(ngModel)]="edad">
+                  <mat-error *ngIf="formPaciente.get('edad')?.invalid">
+                    La edad tiene que estar entre 14 y 99, verifique la fecha seleccionada
+                  </mat-error>
+                  <mat-error *ngIf="formPaciente.get('edad')?.hasError('required')">
+                    Este campo es requerido, seleccione la Fecha Nacimiento
                   </mat-error>
                 </mat-form-field>
               </div>

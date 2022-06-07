@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Paciente } from '../../interfaces/paciente.interfaces';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogSnackbarComponent } from '../../component/dialog-snackbar/dialog-snackbar.component';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 interface NameValue {
   value: number,
@@ -23,6 +24,9 @@ interface Localidad {
 })
 export class PacienteAgregarComponent {
 
+  public MAX_EDAD = 99;
+  public MIN_EDAD = 14;
+
   public disabledOK: boolean;
   public routerVolver: any;
   public step: number;
@@ -36,6 +40,7 @@ export class PacienteAgregarComponent {
 
   private paciente!: Paciente;
   public pacienteDetalle: any;
+  public edad: number;
 
   constructor(public _snackBar: MatSnackBar,
     private routerAct: ActivatedRoute,
@@ -47,6 +52,7 @@ export class PacienteAgregarComponent {
     // this.routerVolver = "/paciente";
     this.routerVolver = this.routerAct.snapshot.paramMap.get('pages');
     this.localidades = [];
+    this.edad = 0;
 
     this.formPaciente = new FormGroup({
       nombre: new FormControl('', Validators.required),
@@ -65,7 +71,8 @@ export class PacienteAgregarComponent {
       afeccion_cutanea: new FormControl(''),
       alergias: new FormControl(''),
       medicamentos: new FormControl(''),
-      tratamientos_clinicos: new FormControl('')
+      tratamientos_clinicos: new FormControl(''),
+      edad: new FormControl(0, [Validators.max(this.MAX_EDAD), Validators.min(this.MIN_EDAD)])
     });
 
     this.tiposDocumentos = [
@@ -126,6 +133,7 @@ export class PacienteAgregarComponent {
       telefono: this.formPaciente.get('telefono')?.value,
       correo: this.formPaciente.get('email')?.value,
       fecha_nacimiento: this.formPaciente.get('fecha_nacimiento')?.value,
+      edad: this.formPaciente.get('edad')?.value,
       antecedente: {
         biotipo: this.formPaciente.get('biotipo')?.value.name,
         fototipo: this.formPaciente.get('fototipo')?.value.name,
@@ -180,6 +188,11 @@ export class PacienteAgregarComponent {
             panelClass: ["snack-bar-err"]
           });
         });
+  }
+
+  calcularEdad(event: MatDatepickerInputEvent<Date>) {
+    let fechaSelect = Math.abs(Date.now() - event.value!.getTime());
+    this.edad = Math.floor((fechaSelect / (1000 * 3600 * 24))/365);
   }
 
 }

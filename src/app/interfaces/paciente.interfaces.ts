@@ -14,6 +14,7 @@ export interface Paciente {
     telefono      : string;
     correo        : string;
     fecha_nacimiento : Date;
+    edad          : number;
     antecedente   : antecedentesClinicos;
 }
   //  login         : Login;
