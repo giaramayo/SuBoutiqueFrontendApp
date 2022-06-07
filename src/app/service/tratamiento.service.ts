@@ -36,7 +36,8 @@ export class TratamientoService {
   crear(tratamiento: any): Observable<any> {
     let body = {
       descripcion: tratamiento.descripcion,
-      duracion: tratamiento.duracion,
+      // duracion: tratamiento.duracion,
+      duracion: 60,
       precio: tratamiento.precio
     }
     return this.http.post(this.tratamientoURL + '/crear', body);

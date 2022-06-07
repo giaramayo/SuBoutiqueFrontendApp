@@ -16,7 +16,7 @@ export class TratamientoComponent implements OnInit {
 
   public dataSource: any;
   public botonFiltroLoading: boolean;
-  public displayedColumns: string[] = ['descripcion', 'duracion', 'precio', 'modif', 'elim' ];
+  public displayedColumns: string[] = ['descripcion', 'precio', 'modif', 'elim' ];
 
   constructor(public _snackBar: MatSnackBar,
               public dialog: MatDialog,

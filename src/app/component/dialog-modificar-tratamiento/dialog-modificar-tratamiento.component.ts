@@ -27,7 +27,7 @@ export class DialogModificarTratamientoComponent {
           this.formTratamiento = new FormGroup({
             descripcion: new FormControl('', Validators.required),
             precio: new FormControl('', Validators.required),
-            duracion: new FormControl('', Validators.required),
+            // duracion: new FormControl('', Validators.required),
           });
   }
 
