@@ -30,11 +30,12 @@ export class HomeComponent {
       }
     }
   };
-  public pieChartData?: ChartData<'pie', number[], string | string[]>;
+  public pieChartTratamientos?: ChartData<'pie', number[], string | string[]>;
+  public pieChartEstados?: ChartData<'pie', number[], string | string[]>;
   public pieChartType: ChartType = 'pie';   //Tipo de grafico
 
   constructor(private turnoService: TurnoService,
-              private router: Router) {
+    private router: Router) {
     this.hoy = new Date();
     this.turnosHoy = [];
     this.routerAgregar = '/paciente/agregar/inicio';
@@ -47,33 +48,52 @@ export class HomeComponent {
   }
 
   consultarLosPrimeros() {
-    console.log(this.fecha)
     this.turnoService.buscarTurnoPoximo(this.fecha)
       .subscribe(resp => {
         if (resp) {
           this.turnosHoy = resp;
         }
-      }, 
+      },
+        (err) => {
+          console.log("error al consultar turnos del dia - Erros: ", err)
+        },
+        () => {
+          this.estadisticaDelDiaTratamiento();
+        });
+  }
+
+  estadisticaDelDiaTratamiento() {
+    this.turnoService.estadisticasPorFecha(this.fecha)
+      .subscribe(resp => {
+        if (resp) {
+          this.pieChartTratamientos = {
+            labels: resp.tratamientos,
+            datasets: [{
+              data: resp.contadores
+            }]
+          };
+        }
+      },
       (err) => {
         console.log("error al consultar turnos del dia - Erros: ", err)
       },
       () => {
-        this.estadisticaDelDiaTratamiento();
+        this.estadisticaDelDiaEstados();
       });
   }
 
-  estadisticaDelDiaTratamiento() {
-      this.turnoService.estadisticasPorFecha(this.fecha)
-            .subscribe(resp => {
-              if(resp){
-                this.pieChartData = {
-                  labels: resp.tratamientos,
-                  datasets: [ {
-                    data: resp.contadores
-                  } ]
-                 };
-              }
-            })
+  estadisticaDelDiaEstados() {
+    this.turnoService.estadisticaEstadoPorFecha(this.fecha)
+      .subscribe(resp => {
+        if (resp) {
+          this.pieChartEstados = {
+            labels: resp.estados,
+            datasets: [{
+              data: resp.contadores
+            }]
+          };
+        }
+      })
   }
 
   formatoVariable(valor: any): string {
