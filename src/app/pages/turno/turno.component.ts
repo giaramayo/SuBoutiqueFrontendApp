@@ -94,7 +94,15 @@ export class TurnoComponent {
     const dialogRef = this.dialog.open(DialogAgendarTurnoComponent, {
       width: '500px',
       data: {
-        fecha: this.selected
+          titulo: "Agendar nuevo turno",
+          turno: {
+            _id: null,
+            id_tratamiento: 0,
+            id_paciente: 0,
+            fecha: this.selected,
+            id_hora: 0,
+            hora: ''
+          }
         }
     });
     dialogRef.afterClosed().subscribe(result => {

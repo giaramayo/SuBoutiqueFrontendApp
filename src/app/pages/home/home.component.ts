@@ -3,6 +3,8 @@ import { TurnoService } from '../../service/turno.service';
 import { Router } from '@angular/router';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
+import { DialogAgendarTurnoComponent } from '../../component/dialog-agendar-turno/dialog-agendar-turno.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -35,6 +37,7 @@ export class HomeComponent {
   public pieChartType: ChartType = 'pie';   //Tipo de grafico
 
   constructor(private turnoService: TurnoService,
+    public dialog: MatDialog,
     private router: Router) {
     this.hoy = new Date();
     this.turnosHoy = [];
@@ -102,6 +105,27 @@ export class HomeComponent {
 
   agregarPaciente() {
     this.router.navigateByUrl(this.routerAgregar);
+  }
+
+  agendar() {
+    const dialogRef = this.dialog.open(DialogAgendarTurnoComponent, {
+      width: '500px',
+      data: {
+          titulo: "Agendar nuevo turno",
+          turno: {
+            _id: null,
+            id_tratamiento: 0,
+            id_paciente: 0,
+            fecha: this.hoy,
+            id_hora: 0,
+            hora: ''
+          }
+        }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+
   }
 
 }

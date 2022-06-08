@@ -2,7 +2,7 @@ import { Paciente } from './paciente.interfaces';
 import { Tratamiento } from './tratamiento.interfaces';
 
 export interface Turno {
-    id           : number;
+    _id           : number;
     paciente     : Paciente;
     tratamiento  : Tratamiento;
     estado       : Estado;

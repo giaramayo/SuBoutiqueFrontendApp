@@ -46,6 +46,10 @@ export class TurnoService {
   }
 
 
+  horariosDisponibles( fecha: string ) : Observable<any> {
+    return this.http.get(this.turnoURL + '/horariosDisponibles/' + fecha);
+  }
+
 //   eliminar(documento: number): Observable<any> {
 //     return this.http.delete(this.pacienteURL + '/borrar/' + documento)
 //   }
