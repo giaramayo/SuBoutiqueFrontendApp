@@ -89,17 +89,17 @@
               </mat-expansion-panel-header>
               <div class="contenido-panel">
                   <mat-form-field class="form-field" color="accent">
-                    <mat-label>Telefono</mat-label>
+                    <mat-label>Teléfono</mat-label>
                     <input matInput type="number" formControlName="telefono">
                     <mat-error *ngIf="formPaciente.get('telefono')?.hasError('minLength')">
-                      Minimo 10 caracteres
+                      Mínimo 10 caracteres
                     </mat-error>
                   </mat-form-field>
                   <mat-form-field class="form-field col-6" color="accent">
                     <mat-label>Email</mat-label>
                     <input matInput type="text" formControlName="email">
                     <mat-error *ngIf="formPaciente.get('email')?.hasError('pattern')">
-                      El email ingresado no es valido
+                      El email ingresado no es válido
                     </mat-error>
                   </mat-form-field>
               </div>
@@ -144,7 +144,7 @@
                   </mat-error>
                 </mat-form-field>
                 <mat-form-field class="form-field" color="accent">
-                  <mat-label>Codigo Postal</mat-label>
+                  <mat-label>Código Postal</mat-label>
                   <input matInput type="number" required formControlName="codigo_postal">
                   <mat-error *ngIf="formPaciente.get('codigo_postal')?.invalid">
                     Este campo es requerido
@@ -159,7 +159,7 @@
             <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Antecedentes Clinicos
+                  Antecedentes Clínicos
                 </mat-panel-title>
                 <mat-panel-description>
                   <mat-icon class="medical-icon">medical_information</mat-icon>
@@ -189,7 +189,7 @@
                   </mat-error>
                 </mat-form-field>
                 <mat-form-field class="form-field" color="accent">
-                  <mat-label>Afectacion Cutanea</mat-label>
+                  <mat-label>Afectación Cutánea</mat-label>
                   <input matInput type="text" formControlName="afeccion_cutanea">
                 </mat-form-field>
                 <mat-form-field class="form-field" color="accent">
