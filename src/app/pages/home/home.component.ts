@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TurnoService } from '../../service/turno.service';
 import { Router } from '@angular/router';
+import { BaseChartDirective } from 'ng2-charts';
+import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 
 
 @Component({
@@ -9,36 +11,69 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   public imag1: string = 'imag1';
   public hoy: Date;
   public turnosHoy: any[];
   public routerAgregar: string;
+  public fecha: string;
+
+  /// Estadisticas
+  public pieChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+      }
+    }
+  };
+  public pieChartData?: ChartData<'pie', number[], string | string[]>;
+  public pieChartType: ChartType = 'pie';   //Tipo de grafico
 
   constructor(private turnoService: TurnoService,
               private router: Router) {
     this.hoy = new Date();
     this.turnosHoy = [];
-    this.routerAgregar = '/paciente/agregar/inicio'
-  }
+    this.routerAgregar = '/paciente/agregar/inicio';
 
-  ngOnInit(): void {
+    let mes = this.hoy?.getMonth()
+    let mesM = mes ? (mes + 1).toString() : 0;
+    let fecha = this.hoy.getFullYear() + "-" + this.formatoVariable(mesM) + "-" + this.formatoVariable(this.hoy.getDate())
+    this.fecha = fecha;
     this.consultarLosPrimeros();
   }
 
   consultarLosPrimeros() {
-    let mes = this.hoy?.getMonth()
-    let mesM = mes ? (mes + 1).toString() : 0;
-    let fecha = this.hoy.getFullYear() + "-" + this.formatoVariable(mesM) + "-" + this.formatoVariable(this.hoy.getDate())
-    //  fecha = "2022-05-23"  //TODO
-    console.log(fecha)
-    this.turnoService.buscarTurnoPoximo(fecha)
+    console.log(this.fecha)
+    this.turnoService.buscarTurnoPoximo(this.fecha)
       .subscribe(resp => {
         if (resp) {
           this.turnosHoy = resp;
         }
+      }, 
+      (err) => {
+        console.log("error al consultar turnos del dia - Erros: ", err)
+      },
+      () => {
+        this.estadisticaDelDiaTratamiento();
       });
+  }
+
+  estadisticaDelDiaTratamiento() {
+      this.turnoService.estadisticasPorFecha(this.fecha)
+            .subscribe(resp => {
+              if(resp){
+                this.pieChartData = {
+                  labels: resp.tratamientos,
+                  datasets: [ {
+                    data: resp.contadores
+                  } ]
+                 };
+              }
+            })
   }
 
   formatoVariable(valor: any): string {

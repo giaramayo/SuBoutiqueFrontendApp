@@ -1,16 +1,19 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { TurnoService } from '../../service/turno.service';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-estadistica-de-torta',
   templateUrl: './estadistica-de-torta.component.html',
   styleUrls: ['./estadistica-de-torta.component.scss']
 })
-export class EstadisticaDeTortaComponent {
+export class EstadisticaDeTortaComponent{
 
+  @Input() fecha!: string;
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
-
+  
   // Pie
   public pieChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -21,69 +24,30 @@ export class EstadisticaDeTortaComponent {
       }
     }
   };
-  public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: [ [ 'Mesoterapia'], [ 'Limpieza Facial' ], 'Dermaplaning' ],
-    datasets: [ {
-      data: [ 300, 500, 100 ]
-    } ]
-  };
-  public pieChartType: ChartType = 'pie';
-  public pieChartPlugins = [  ];
-
-  // events
-  public chartClicked({ event, active }: { event: ChartEvent, active: {}[] }): void {
-    console.log(event, active);
+  
+  public pieChartData?: ChartData<'pie', number[], string | string[]>;
+  
+  public pieChartType: ChartType = 'pie';   //Tipo de grafico
+ 
+  constructor(private turnoService: TurnoService) {
+    console.log(this.fecha)
+    this.estadisticaDelDiaTratamiento(this.fecha)
   }
 
-  public chartHovered({ event, active }: { event: ChartEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
+  estadisticaDelDiaTratamiento(fecha: any) {
+    this.turnoService.estadisticasPorFecha(fecha)
+          .subscribe(resp => {
+            if(resp){
+             // this.valoresDiaDia = resp.contadores;
+             this.pieChartData = {
+              labels: resp.tratamientos,
+              datasets: [ {
+                data: [ 300, 500, 100 ]
+              } ]
+             };
+            }
+            console.log(this.pieChartData)
 
-  changeLabels(): void {
-    const words = [ 'hen', 'variable', 'embryo', 'instal', 'pleasant', 'physical', 'bomber', 'army', 'add', 'film',
-      'conductor', 'comfortable', 'flourish', 'establish', 'circumstance', 'chimney', 'crack', 'hall', 'energy',
-      'treat', 'window', 'shareholder', 'division', 'disk', 'temptation', 'chord', 'left', 'hospital', 'beef',
-      'patrol', 'satisfied', 'academy', 'acceptance', 'ivory', 'aquarium', 'building', 'store', 'replace', 'language',
-      'redeem', 'honest', 'intention', 'silk', 'opera', 'sleep', 'innocent', 'ignore', 'suite', 'applaud', 'funny' ];
-    const randomWord = () => words[Math.trunc(Math.random() * words.length)];
-    this.pieChartData.labels = new Array(3).map(_ => randomWord());
-
-    this.chart?.update();
-  }
-
-  addSlice(): void {
-    if (this.pieChartData.labels) {
-      this.pieChartData.labels.push([ 'Line 1', 'Line 2', 'Line 3' ]);
-    }
-
-    this.pieChartData.datasets[0].data.push(400);
-
-    this.chart?.update();
-  }
-
-  removeSlice(): void {
-    if (this.pieChartData.labels) {
-      this.pieChartData.labels.pop();
-    }
-
-    this.pieChartData.datasets[0].data.pop();
-
-    this.chart?.update();
-  }
-
-  changeLegendPosition(): void {
-    if (this.pieChartOptions?.plugins?.legend) {
-      this.pieChartOptions.plugins.legend.position = this.pieChartOptions.plugins.legend.position === 'left' ? 'top' : 'left';
-    }
-
-    this.chart?.render();
-  }
-
-  toggleLegend(): void {
-    if (this.pieChartOptions?.plugins?.legend) {
-      this.pieChartOptions.plugins.legend.display = !this.pieChartOptions.plugins.legend.display;
-    }
-
-    this.chart?.render();
+          })
   }
 }

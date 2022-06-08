@@ -46,7 +46,7 @@ export class TratamientoService {
   eliminar(id: number): Observable<any>{
     return this.http.delete(this.tratamientoURL + '/borrar/' + id);
   }
-  
+
 
 
 }

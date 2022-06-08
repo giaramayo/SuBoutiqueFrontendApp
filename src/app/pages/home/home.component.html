@@ -9,7 +9,16 @@
             <h2>Estadísticas del día</h2>
             <mat-tab-group>
                 <mat-tab label="Tratamiento">
-                    <app-estadistica-de-torta></app-estadistica-de-torta>
+                    <!-- <app-estadistica-de-torta [fecha]="fecha"></app-estadistica-de-torta> -->
+                    <div class="chart">
+                        <canvas baseChart
+                                [data]="pieChartData"
+                                [type]="pieChartType"
+                                [options]="pieChartOptions"
+                                >
+                        </canvas>
+                      </div>
+
                 </mat-tab>
                 <mat-tab label="Estados de Turnos"> 
                     Falta...

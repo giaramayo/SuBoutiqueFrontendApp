@@ -38,6 +38,10 @@ export class TurnoService {
     return this.http.put(this.turnoURL + '/modificar/' + id, body);
   }
 
+  estadisticasPorFecha( fecha: string ) : Observable<any> {
+    return this.http.get(this.turnoURL + '/estadisticasPorFecha/' + fecha);
+  }
+
 //   eliminar(documento: number): Observable<any> {
 //     return this.http.delete(this.pacienteURL + '/borrar/' + documento)
 //   }
