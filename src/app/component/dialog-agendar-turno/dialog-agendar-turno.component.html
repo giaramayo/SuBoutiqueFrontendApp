@@ -6,7 +6,7 @@
      
         <mat-form-field  appearance="fill"  class="form-field" color="accent">
           <mat-label>Fecha del Turno</mat-label>
-          <input matInput [matDatepicker]="picker">
+          <input matInput [matDatepicker]="picker" (dateInput)="seleccionarFecha($event)">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
@@ -15,21 +15,21 @@
         <mat-form-field appearance="fill"  class="form-field" color="accent">
           <mat-label>Seleccionar Horario</mat-label>
           <mat-select [(value)]="selectHorario">
-            <mat-option *ngFor="let horario of horarios" [value]="turno.hora">{{horario.horario}}</mat-option>
+            <mat-option *ngFor="let horario of horarios" [value]="horario.horario">{{horario.horario}}</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill"  class="form-field" color="accent">
           <mat-label>Seleccionar Tratamiento</mat-label>
           <mat-select [(value)]="selectTratamiento">
-            <mat-option *ngFor="let tratamiento of tratamientos" [value]="turno.id_tratamiento">{{tratamiento.descripcion}}</mat-option>
+            <mat-option *ngFor="let tratamiento of tratamientos" [value]="tratamiento._id">{{tratamiento.descripcion}}</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill"  class="form-field" color="accent">
           <mat-label>Selecciona un Paciente</mat-label>
           <mat-select [(value)]="selectPaciente">
-            <mat-option *ngFor="let pac of pacientes" [value]="turno.id_paciente">
+            <mat-option *ngFor="let pac of pacientes" [value]="pac._id">
               {{pac.apellido}}, {{pac.nombre}} - {{pac.documento}}
             </mat-option>
           </mat-select>

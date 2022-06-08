@@ -6,10 +6,20 @@ import { PacienteService } from '../../service/paciente.service';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { TurnoService } from '../../service/turno.service';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 export interface DialogData {
   titulo: string,
   turno: any
+}
+
+interface TurnoA {
+  id_paciente      : number,
+  id_tratamiento   : number,
+  id_estado        : number,
+  fecha_turno      : string,
+  hora             : string,
+  observacion      : string
 }
 
 interface PacienteTurno {
@@ -47,7 +57,8 @@ export class DialogAgendarTurnoComponent  {
   public selectHorario: number;
   public selectPaciente: number;
   public fechaAgendar: Date;
-
+  public turnoAgendar: TurnoA;
+  public fechaS: string;
 
   constructor(private dialogRef: MatDialogRef<DialogAgendarTurnoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -71,7 +82,16 @@ export class DialogAgendarTurnoComponent  {
     this.selectPaciente = this.turno.id_paciente;
     this.selectHorario = this.turno.id_hora
 
+    this.turnoAgendar = {
+      id_paciente      : 0,
+      id_tratamiento   : 0,
+      id_estado        : 0,
+      fecha_turno      : '',
+      hora             : '',
+      observacion      : ''
+    }
    
+    this.fechaS = ""
     this.buscarTratamientos();
   }
 
@@ -116,8 +136,9 @@ export class DialogAgendarTurnoComponent  {
   buscarHorarios() {
     let mes = this.fechaAgendar?.getMonth()
     let mesM = mes ? (mes + 1).toString() : 0;
-    let fecha = this.fechaAgendar?.getFullYear() + "-" + this.formatoVariable(mesM) + "-" +  this.formatoVariable(this.fechaAgendar?.getDate())
-
+    let dia = this.fechaAgendar?.getDate().toString();
+    let fecha = this.fechaAgendar?.getFullYear() + "-" + this.formatoVariable(mesM) + "-" +  this.formatoVariable(dia)
+    this.fechaS = fecha;
       this.turnosService.horariosDisponibles(fecha)
         .subscribe( resp => {
             this.horarios = resp.horariosDisponibles;
@@ -129,7 +150,25 @@ export class DialogAgendarTurnoComponent  {
   }
 
   confirmar() {
-    this.dialogRef.close(true);
+    this.turnoAgendar = {
+      id_paciente      : this.selectPaciente,
+      id_tratamiento   : this.selectTratamiento,
+      id_estado        : 1,
+      fecha_turno      : this.fechaS,
+      hora             : this.selectHorario.toString(),
+      observacion      : ''
+    }
+    console.log(this.turnoAgendar)
+    this.turnosService.guardarNuevoTurno(this.turnoAgendar)
+      .subscribe(resp => {
+        console.log(resp);
+      },
+      (err) => {
+        console.log("Error: ", err);
+      },
+      () => {
+        this.dialogRef.close(true);
+      });
   }
 
   cancelar() {
@@ -137,7 +176,19 @@ export class DialogAgendarTurnoComponent  {
   }
 
 
-
+  seleccionarFecha(event: MatDatepickerInputEvent<Date>) {
+    
+    let mes = event.value?.getMonth()
+    let mesM = mes ? (mes + 1).toString() : 0;
+    let dia = event.value?.getDate().toString();
+    let fecha = event.value?.getFullYear() + "-" + this.formatoVariable(mesM) + "-" +  this.formatoVariable(dia)
+    this.fechaS = fecha;
+    this.turnosService.horariosDisponibles(fecha)
+        .subscribe( resp => {
+            this.horarios = resp.horariosDisponibles;
+        })
+    // this.edad = Math.floor((fechaSelect / (1000 * 3600 * 24))/365);
+  }
 
 
   // cerrar(): void {

@@ -45,7 +45,8 @@ export class HomeComponent {
 
     let mes = this.hoy?.getMonth()
     let mesM = mes ? (mes + 1).toString() : 0;
-    let fecha = this.hoy.getFullYear() + "-" + this.formatoVariable(mesM) + "-" + this.formatoVariable(this.hoy.getDate())
+    let dia = this.hoy?.getDate().toString();
+    let fecha = this.hoy.getFullYear() + "-" + this.formatoVariable(mesM) + "-" + this.formatoVariable(dia)
     this.fecha = fecha;
     this.consultarLosPrimeros();
   }
@@ -123,7 +124,9 @@ export class HomeComponent {
         }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      if(result){
+        this.consultarLosPrimeros();
+      }
     });
 
   }

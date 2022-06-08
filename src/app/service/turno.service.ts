@@ -62,4 +62,9 @@ export class TurnoService {
  //   return this.http.post(this.pacienteURL + '/filtrar', {params});
  // }
 
+//  router.post( `${route}/crear`, turnoController.addTurno )
+  guardarNuevoTurno( turno: any ) : Observable<any> {
+    return this.http.post(this.turnoURL + '/crear', turno);
+  }
+
 }

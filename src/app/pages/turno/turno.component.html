@@ -25,10 +25,10 @@
                   <div class="card-paciente-detalle">
                     <app-card-persona [paciente]="turno.paciente[0]"></app-card-persona>
                     <div class="botonesLista">
-                      <button mat-flat-button class="button-reprogramar" color="primary" (click)="reprogramar(turno)">
+                      <!-- <button mat-flat-button class="button-reprogramar" color="primary" (click)="reprogramar(turno)">
                         <mat-icon aria-hidden="false">edit_calendar</mat-icon>
                         Reprogramar FALTA
-                      </button>
+                      </button> -->
                       <button mat-flat-button class="button-camb-est" (click)="cambiarEstado(turno)">
                         <mat-icon aria-hidden="false">free_cancellation</mat-icon>
                         Cambiar Estado
@@ -65,7 +65,7 @@
             <mat-card>
               <button class="btn-agregar" mat-flat-button color="accent" (click)="agendar()">
                 <mat-icon aria-hidden="false">event</mat-icon>
-                Agendar - FALTA
+                Agendar
               </button>
             </mat-card>
           </div>

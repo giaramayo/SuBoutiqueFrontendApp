@@ -60,13 +60,14 @@ export class TurnoComponent {
   editar() {
     console.log("das")
   }
+
   
   consultar() {
     let mes = this.selected?.getMonth()
     let mesM = mes ? (mes + 1).toString() : 0;
-    let fecha = this.selected?.getFullYear() + "-" + this.formatoVariable(mesM) + "-" +  this.formatoVariable(this.selected?.getDate())
+    let dia = this.selected?.getDate().toString();
+    let fecha = this.selected?.getFullYear() + "-" + this.formatoVariable(mesM) + "-" +  this.formatoVariable(dia)
   //  fecha = "2022-05-23"  //TODO
-  console.log(fecha)
     this.turnoService.buscarTurnoPorFecha(fecha)
       .subscribe( resp => {
         if(resp){
@@ -106,7 +107,9 @@ export class TurnoComponent {
         }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      if(result){
+        this.consultar();
+      }
     });
 
   }
