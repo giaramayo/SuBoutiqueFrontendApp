@@ -18,7 +18,6 @@ import { TratamientoComponent } from './pages/tratamiento/tratamiento.component'
 import { TurnoComponent } from './pages/turno/turno.component';
 import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
 import { DialogModificarTratamientoComponent } from './component/dialog-modificar-tratamiento/dialog-modificar-tratamiento.component';
-import { GraficoComponent } from './component/grafico/grafico.component';
 import { NumberPipe } from './pipes/number.pipe';
 import { ConfirmacionComponent } from './component/confirmacion/confirmacion.component';
 import { ListaHistorialComponent } from './component/lista-historial/lista-historial.component';
@@ -30,8 +29,6 @@ import { AntecedentesComponent } from './component/antecedentes/antecedentes.com
 import { DialogCambiarEstadoComponent } from './component/dialog-cambiar-estado/dialog-cambiar-estado.component';
 import { DialogReprogramarComponent } from './component/dialog-reprogramar/dialog-reprogramar.component';
 import { HomeComponent } from './pages/home/home.component';
-import { EstadisticaTratamientosComponent } from './component/estadistica-tratamientos/estadistica-tratamientos.component';
-import { EstadisticaDeTortaComponent } from './component/estadistica-de-torta/estadistica-de-torta.component';
 import { CardPersonaComponent } from './component/card-persona/card-persona.component';
 import { LoginComponent } from './pages/login/login.component';
 
@@ -52,7 +49,6 @@ import { LoginComponent } from './pages/login/login.component';
     HomeComponent,
     EstadisticasComponent,
     DialogModificarTratamientoComponent,
-    GraficoComponent,
     ConfirmacionComponent,
     ListaHistorialComponent,
     DialogHistorialComponent,
@@ -62,10 +58,8 @@ import { LoginComponent } from './pages/login/login.component';
     AntecedentesComponent,
     DialogCambiarEstadoComponent,
     DialogReprogramarComponent,
-    EstadisticaTratamientosComponent,
-    EstadisticaDeTortaComponent,
     CardPersonaComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

@@ -49,7 +49,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatNativeDateModule,
     NgChartsModule,
     MatProgressBarModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
   ],
   entryComponents: [MatProgressSpinner]
 })

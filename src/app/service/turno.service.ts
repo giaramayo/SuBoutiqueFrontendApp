@@ -44,7 +44,10 @@ export class TurnoService {
   estadisticaEstadoPorFecha( fecha: string ) : Observable<any> {
     return this.http.get(this.turnoURL + '/estadisticaEstadoPorFecha/' + fecha);
   }
-
+  
+  estadisticaTratamientoMasSolicitadoMes( ) : Observable<any> {
+    return this.http.get(this.turnoURL + '/estadisticaTratamientoMasSolicitadoMes');
+  }
 
   horariosDisponibles( fecha: string ) : Observable<any> {
     return this.http.get(this.turnoURL + '/horariosDisponibles/' + fecha);

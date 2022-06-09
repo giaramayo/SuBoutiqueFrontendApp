@@ -59,6 +59,7 @@ export class DialogAgendarTurnoComponent  {
   public fechaAgendar: Date;
   public turnoAgendar: TurnoA;
   public fechaS: string;
+  public hoy = new Date();
 
   constructor(private dialogRef: MatDialogRef<DialogAgendarTurnoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -95,11 +96,6 @@ export class DialogAgendarTurnoComponent  {
     this.buscarTratamientos();
   }
 
-  // private _filterPaciente(value: string): any[] {
-  //   const filterValue = value.toLowerCase();
-  //   return this.pacientes.filter(pac => pac.apellido.toLowerCase().includes(filterValue) );
-  // }
-
   buscarTratamientos() {
     this.tratamientoService.getAll()
       .subscribe( resp => {
@@ -116,30 +112,23 @@ export class DialogAgendarTurnoComponent  {
   buscarPacientes() {
       this.pacienteService.getPacientes()
       .subscribe( resp => {
-        this.pacientes = resp;
-        // console.log(this.pacientes)
-
-        // this.filteredOptionsPaciente = this.formTurno.valueChanges.pipe(
-        //   startWith(''),
-        //   map(pac => (pac ? this._filterPaciente(pac) : this.pacientes.slice())),
-        // );
-    
+        this.pacientes = resp;    
       },
       (err) => {
         console.log("Error: ", err);
       },
       () => {
+        let mes = this.fechaAgendar?.getMonth()
+        let mesM = mes ? (mes + 1).toString() : 0;
+        let dia = this.fechaAgendar?.getDate().toString();
+        let fecha = this.fechaAgendar?.getFullYear() + "-" + this.formatoVariable(mesM) + "-" +  this.formatoVariable(dia)
+        this.fechaS = fecha;
         this.buscarHorarios()
       });
   }
 
   buscarHorarios() {
-    let mes = this.fechaAgendar?.getMonth()
-    let mesM = mes ? (mes + 1).toString() : 0;
-    let dia = this.fechaAgendar?.getDate().toString();
-    let fecha = this.fechaAgendar?.getFullYear() + "-" + this.formatoVariable(mesM) + "-" +  this.formatoVariable(dia)
-    this.fechaS = fecha;
-      this.turnosService.horariosDisponibles(fecha)
+      this.turnosService.horariosDisponibles(this.fechaS)
         .subscribe( resp => {
             this.horarios = resp.horariosDisponibles;
         })
@@ -183,39 +172,6 @@ export class DialogAgendarTurnoComponent  {
     let dia = event.value?.getDate().toString();
     let fecha = event.value?.getFullYear() + "-" + this.formatoVariable(mesM) + "-" +  this.formatoVariable(dia)
     this.fechaS = fecha;
-    this.turnosService.horariosDisponibles(fecha)
-        .subscribe( resp => {
-            this.horarios = resp.horariosDisponibles;
-        })
-    // this.edad = Math.floor((fechaSelect / (1000 * 3600 * 24))/365);
+    this.buscarHorarios();
   }
-
-
-  // cerrar(): void {
-  //   this.dialogRef.close();
-  // }
-
-  // guardar(){
-  //   if(this.data._id)
-  //       this.modificar();
-  //   else 
-  //      this.crear();    
-  // }
-
-  // modificar() {
-  //   this.TratamientoService.modificar(this.tratamiento)
-  //   .subscribe( resp => {
-  //      this.dialogRef.close(resp);
-  //     });
-  // }
-
-  // crear() {
-  //   this.TratamientoService.crear(this.tratamiento)
-  //   .subscribe( resp => {
-  //     this.dialogRef.close(resp);
-  //   });
-  // }
-
-
-
 }
