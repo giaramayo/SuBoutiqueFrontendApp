@@ -5,28 +5,32 @@
         Estadísticas
       </h2>
       <div class="row estadisticas-box">
-        <!-- <app-grafico></app-grafico> -->
-
-        <mat-tab-group>
-          <mat-tab label="Tratamiento">
-            <mat-tab-group>
+        <mat-tab-group color="accent">
+          <mat-tab label="Tratamiento" >
+            <mat-tab-group color="accent">
               <mat-tab label="Más solicitados por mes">
-                <canvas baseChart [type]="lineChartType" [legend]="true" [datasets]="chartData" [labels]="chartLabels"
+                <canvas baseChart [type]="lineChartType" [legend]="true" [datasets]="chartTratamientoMes" [labels]="chartLabelsMes"
                   [options]="chartOptions">
                 </canvas>
-                <!-- <app-estadisticas-tratamiento-mas-solicitado></app-estadisticas-tratamiento-mas-solicitado> -->
               </mat-tab>
               <mat-tab label="Por Estación del Año">
                 Falta...
+                personas atendendias durante la estacion y no por tratamiento
+              
               </mat-tab>
-              <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
             </mat-tab-group>
           </mat-tab>
-          <mat-tab label="Localidad">
-            Falta...
-          </mat-tab>
-          <mat-tab label="Edad">
-            Falta...
+          <mat-tab label="Paciente">
+            <mat-tab-group color="accent">
+              <mat-tab label="Tratados por Edad">
+                <canvas baseChart [type]="lineChartType" [legend]="true" [datasets]="chartTratamientoMes" [labels]="chartLabelsMes"
+                  [options]="chartOptions">
+                </canvas>
+              </mat-tab>
+              <mat-tab label="Tratados por Localidad">
+                Falta...
+              </mat-tab>
+            </mat-tab-group>
           </mat-tab>
           <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
         </mat-tab-group>

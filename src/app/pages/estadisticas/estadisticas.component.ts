@@ -9,24 +9,15 @@ import { TurnoService } from '../../service/turno.service';
 })
 export class EstadisticasComponent {
 
-  public lineChartType: ChartType = 'line';
-  public chartData = [
+  public lineChartType: ChartType = 'line'; //tipo de grafico
+  public chartTratamientoMes = [
     {
       data: [],
       label: ''
     }
   ];
 
-  public chartLabels = [
-    'Enero',
-    'Febrero',
-    'Marzo',
-    'Abril',
-    'Mayo',
-    'Junio',
-    'Julio'
-  ];
-
+  public chartLabelsMes = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio'];
   public chartOptions = { responsive: true };
 
   constructor(private turnoService: TurnoService) {
@@ -36,8 +27,8 @@ export class EstadisticasComponent {
   estadisticaTratamientoMasSolicitadoMes() {
     this.turnoService.estadisticaTratamientoMasSolicitadoMes()
       .subscribe(resp => {
-        this.chartData = resp.arrayEstDesc;
-        console.log(this.chartData)
+        this.chartTratamientoMes = resp.arrayEstDesc;
+        console.log(this.chartTratamientoMes)
       })
   }
 
