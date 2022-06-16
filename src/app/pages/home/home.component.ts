@@ -5,6 +5,7 @@ import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import { DialogAgendarTurnoComponent } from '../../component/dialog-agendar-turno/dialog-agendar-turno.component';
 import { MatDialog } from '@angular/material/dialog';
+import { EstadisticaService } from '../../service/estadistica.service';
 
 
 @Component({
@@ -37,6 +38,7 @@ export class HomeComponent {
   public pieChartType: ChartType = 'pie';   //Tipo de grafico
 
   constructor(private turnoService: TurnoService,
+    private estadistica: EstadisticaService,
     public dialog: MatDialog,
     private router: Router) {
     this.hoy = new Date();
@@ -67,7 +69,7 @@ export class HomeComponent {
   }
 
   estadisticaDelDiaTratamiento() {
-    this.turnoService.estadisticasPorFecha(this.fecha)
+    this.estadistica.estadisticasPorFecha(this.fecha)
       .subscribe(resp => {
         if (resp) {
           this.pieChartTratamientos = {
@@ -87,7 +89,7 @@ export class HomeComponent {
   }
 
   estadisticaDelDiaEstados() {
-    this.turnoService.estadisticaEstadoPorFecha(this.fecha)
+    this.estadistica.estadisticaEstadoPorFecha(this.fecha)
       .subscribe(resp => {
         if (resp) {
           this.pieChartEstados = {

@@ -9,14 +9,31 @@
           <mat-tab label="Tratamiento" >
             <mat-tab-group color="accent">
               <mat-tab label="Más solicitados por mes">
-                <canvas baseChart [type]="lineChartType" [legend]="true" [datasets]="chartTratamientoMes" [labels]="chartLabelsMes"
+                <div style="display: block">
+                  <canvas baseChart [type]="lineChartType" [legend]="true" [datasets]="chartTratamientoMes" [labels]="chartLabelsMes"
                   [options]="chartOptions">
                 </canvas>
+                </div>
+                <!-- <div>
+                  <table class="table table-responsive table-condensed">
+                    <tr>
+                      <th *ngFor="let chartT of chartLabelsMes">{{chartT}}</th>
+                    </tr>
+                    <tr *ngFor="let cT of chartTratamientoMes; let i=index" [class]="'line-'+i">
+                      <td *ngFor="let data of cT.data; let j=index">{{data}}</td>
+                    </tr>
+                  </table>
+                </div> -->
               </mat-tab>
               <mat-tab label="Por Estación del Año">
-                Falta...
-                personas atendendias durante la estacion y no por tratamiento
-              
+
+                <div style="display: block">
+                  <canvas baseChart
+                    [data]="dataEstacion"
+                    [type]="barChartType">
+                  </canvas>
+                </div>
+
               </mat-tab>
             </mat-tab-group>
           </mat-tab>
