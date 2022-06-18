@@ -26,32 +26,31 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
-  exports: [
-    MatExpansionModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatTabsModule,
-    MatListModule,
-    MatMenuModule,
-    MatCardModule,
-    MatGridListModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatInputModule,
-    MatPaginatorModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    NgChartsModule,
-    MatProgressBarModule,
-    MatAutocompleteModule,
-  ],
-  entryComponents: [MatProgressSpinner]
+    exports: [
+        MatExpansionModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatTabsModule,
+        MatListModule,
+        MatMenuModule,
+        MatCardModule,
+        MatGridListModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatInputModule,
+        MatPaginatorModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        NgChartsModule,
+        MatProgressBarModule,
+        MatAutocompleteModule,
+    ]
 })
 
 export class MaterialModule { }
