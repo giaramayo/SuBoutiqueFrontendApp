@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'turnos', component: TurnoComponent},
   { path: 'estadisticas', component: EstadisticasComponent},
   { path: 'inicio', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', component: ErrorPageComponent },
 ];
