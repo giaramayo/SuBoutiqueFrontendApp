@@ -11,6 +11,8 @@ export class EstadisticasComponent {
 
   //Estadistica por Tratamiento
   public lineChartType: ChartType = 'line'; //tipo de grafico
+  public barChartType: ChartType = 'bar'; //tipo de grafico
+
   public chartTratamientoMes = [
     {
       data: [],
@@ -19,7 +21,6 @@ export class EstadisticasComponent {
   ];
   public chartLabelsMes = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio'];
   public chartOptions = { responsive: true };
-
   //Estadisitca por Estacion
   public dataEstacion: ChartData<'bar'> = {
     labels: [],
@@ -27,9 +28,7 @@ export class EstadisticasComponent {
       { data: [ ], label: 'Turnos' },
     ]
   };
-  public barChartType: ChartType = 'bar'; //tipo de grafico
-
-
+  
   constructor(private estadisticaService: EstadisticaService) {
     this.estadisticaTratamientoMasSolicitadoMes()
   }
@@ -54,6 +53,19 @@ export class EstadisticasComponent {
           console.log(resp)
           this.dataEstacion.labels = resp.estaciones;
           this.dataEstacion.datasets[0].data = resp.contadores
+      },
+      (err) => {
+        console.log(err)
+      },
+      ()=> {
+        this.estadisticaPorEdad();
+      })
+  }
+
+  estadisticaPorEdad() {
+    this.estadisticaService.estadisticaPorEdad()
+      .subscribe( resp => {
+        console.log(resp)
       })
   }
 

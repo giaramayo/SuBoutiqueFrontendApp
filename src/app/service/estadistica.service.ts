@@ -30,5 +30,8 @@ export class EstadisticaService {
     return this.http.get(this.turnoURL + '/tratamientoPorEstacion');
   }
 
+  estadisticaPorEdad() : Observable<any> {
+    return this.http.get(this.turnoURL + '/porEdad');
+  }
 
 }
