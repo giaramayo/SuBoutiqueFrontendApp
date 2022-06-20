@@ -12,7 +12,7 @@ import { DetallePacienteComponent } from './pages/detalle-paciente/detalle-pacie
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
-  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)   },
+  // { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)   },
   { path: 'paciente', component: PacienteComponent},
   { path: 'paciente/agregar/:pages', component: PacienteAgregarComponent},
   { path: 'paciente/detalle/:id/:pages', component: DetallePacienteComponent},
