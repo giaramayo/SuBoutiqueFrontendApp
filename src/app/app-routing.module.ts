@@ -10,18 +10,19 @@ import { EstadisticasComponent } from './pages/estadisticas/estadisticas.compone
 import { TurnoComponent } from './pages/turno/turno.component';
 import { DetallePacienteComponent } from './pages/detalle-paciente/detalle-paciente.component';
 import { LoginComponent } from './pages/login/login.component';
+import { UserActivateService } from './user-activate.service';
 
 const routes: Routes = [
   // { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)   },
-  { path: 'paciente', component: PacienteComponent},
-  { path: 'paciente/agregar/:pages', component: PacienteAgregarComponent},
-  { path: 'paciente/detalle/:id/:pages', component: DetallePacienteComponent},
-  { path: 'tratamientos', component: TratamientoComponent},
-  { path: 'turnos', component: TurnoComponent},
-  { path: 'estadisticas', component: EstadisticasComponent},
-  { path: 'inicio', component: HomeComponent },
+  { path: 'paciente', component: PacienteComponent, canActivate: [UserActivateService]},
+  { path: 'paciente/agregar/:pages', component: PacienteAgregarComponent, canActivate: [UserActivateService]},
+  { path: 'paciente/detalle/:id/:pages', component: DetallePacienteComponent, canActivate: [UserActivateService]},
+  { path: 'tratamientos', component: TratamientoComponent, canActivate: [UserActivateService]},
+  { path: 'turnos', component: TurnoComponent, canActivate: [UserActivateService]},
+  { path: 'estadisticas', component: EstadisticasComponent, canActivate: [UserActivateService]},
+  { path: 'inicio', component: HomeComponent, canActivate: [UserActivateService]},
   { path: 'login', component: LoginComponent },
-  { path: '**', component: ErrorPageComponent },
+  { path: '**', component: ErrorPageComponent},
 ];
 
 @NgModule({

@@ -37,6 +37,7 @@ constructor(private loginService: LoginService,
     this.loginService.ingresar(usuario)
       .subscribe( resp => {
         console.log(resp.data.token)
+        this.loginService.setToken(resp.data.token);
         this.router.navigateByUrl(this.home);
       }, 
       err => {

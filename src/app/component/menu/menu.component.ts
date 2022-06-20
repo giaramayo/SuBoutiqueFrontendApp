@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoginService } from 'src/app/service/login.service';
+import { Router } from '@angular/router';
 
 
 interface OptionMenu {
@@ -17,8 +19,10 @@ export class MenuComponent  {
   public logo: string;
   public mostrarSNV: boolean;
   public optionsMenu: OptionMenu[];
+  public routerSalir: string = '/login'
 
-  constructor() { 
+  constructor(private loginService: LoginService,
+              private router: Router) { 
     this.logo = 'nombreCm';
     this.mostrarSNV = false;
     this.optionsMenu = [
@@ -30,10 +34,6 @@ export class MenuComponent  {
         name  :'Pacientes',
         router:'./paciente',
       },
-      // {
-      //   name  :'Productos',
-      //   router:'./paciente',
-      // },
       {
         name  :'Turnos',
         router:'./turnos',
@@ -45,16 +45,16 @@ export class MenuComponent  {
       {
         name  :'Estadisticas',
         router:'./estadisticas',
-      },
-      {
-        name  :'Sing up',
-        router:'./paciente'
       }
     ];
   }
 
   openSidenav(){
-    this.mostrarSNV = !this.mostrarSNV;
+      this.mostrarSNV = !this.mostrarSNV;
   }
 
+  cerrarSeccion(){
+    this.loginService.setToken('');
+    this.router.navigateByUrl(this.routerSalir);
+  }
 }
