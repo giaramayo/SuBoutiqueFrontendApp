@@ -16,7 +16,7 @@ export class LoginService {
   constructor( private readonly http: HttpClient) { }
 
   ingresar( usuario: any ) : Observable<any> {
-    return this.http.get(this.turnoURL + '/login', usuario);
+    return this.http.post(this.turnoURL + '/login', usuario);
   }
 
   setToken(token: String) {
