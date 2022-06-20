@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../../service/login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogSnackbarComponent } from '../../component/dialog-snackbar/dialog-snackbar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,11 @@ export class LoginComponent {
 
 public logo: string;
 public formLogin: FormGroup;
+private home: string = "/inicio"
 
 constructor(private loginService: LoginService,
-            public _snackBar: MatSnackBar) { 
+            public _snackBar: MatSnackBar,
+            private router: Router) { 
   this.logo = 'assets/imagenLg.jpeg'
 
   this.formLogin = new FormGroup({
@@ -34,6 +37,7 @@ constructor(private loginService: LoginService,
     this.loginService.ingresar(usuario)
       .subscribe( resp => {
         console.log(resp.data.token)
+        this.router.navigateByUrl(this.home);
       }, 
       err => {
         console.log(err)
