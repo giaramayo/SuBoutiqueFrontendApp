@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { AuthService } from 'src/app/service/auth.service';
+import { LoginService } from '../../service/login.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ export class LoginComponent {
 public logo: string;
 public formLogin: FormGroup;
 
-constructor(private authService: AuthService) { 
+constructor(private loginService: LoginService) { 
   this.logo = 'assets/imagenLg.jpeg'
 
   this.formLogin = new FormGroup({
@@ -23,7 +23,10 @@ constructor(private authService: AuthService) {
 }
 
   ingresar() {
-    console.log(this.formLogin)
+    let email = this.formLogin.get('usuario')?.value
+    let password = this.formLogin.get('contrasenia')?.value
+    console.log(email)
+    console.log(password)
   }
 
 }

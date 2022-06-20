@@ -6,7 +6,6 @@
     <div class="container-lg">
       <div class="row ingreso-login">
         <h1>Ingresar</h1>
-     
         <form class="data-ingreso" [formGroup]="formLogin">
           <mat-form-field class="form-field" color="accent">
             <mat-label>Usuario</mat-label>
@@ -23,17 +22,12 @@
             </mat-error>
           </mat-form-field>
         </form>
-
         <mat-card-actions class="data-botones">
           <button mat-flat-button color="accent" [disabled]="formLogin.invalid" (click)="ingresar()">
             Ingresar
           </button>
         </mat-card-actions>
-
       </div>
-
     </div>
-
-
   </div>
 </div>
