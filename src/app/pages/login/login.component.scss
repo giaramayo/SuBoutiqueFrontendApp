@@ -1,54 +1,62 @@
 body {
-    background: #3b082b !important;
+    background: #f1dbea !important;
     justify-content: center;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    padding: 10%;
+    padding: 15vh;
     justify-content: center;
-
+    background: #f1dbea;
+    align-items: center;
     .login-container {
-
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         margin: 1%;
-        border-radius: 10px;
-        background: #f1dbea;
-        background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
+        width: 110vh;
+        background: #fef5fb;
         justify-content: center;
-        border: solid;
-        border-color: #e8b5c6;
-
-        .logo-login {
+        border: 15px solid #d0afd2;
+        .img-login {
             display: flex;
             flex-direction: row;
-            justify-content: center;
             align-items: center;
-            padding: 3%;
+            border-right: 10px solid #d0afd2;
             .icon-header {
-                width: 60px;
+                width: 45vh;
             }
         }
-
-        .ingreso-login {
+        .container-lg {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            margin: 3%;
-
-            .data-ingreso {
+            display: block;
+            margin: 2rem 0;
+            width: 100%;
+            padding: 2rem;
+            h1 {
+                color: #b08eba;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 250%
+                // color: #4CAF50;
+            }
+            .ingreso-login {
+                .data-ingreso {
+                    display: flex;
+                    flex-direction: column;
+                    mat-form-field {
+                        padding: 3%;
+                        // color: red;
+                    }
+                }
+            }
+            .data-botones {
                 display: flex;
                 flex-direction: column;
-               
             }
         }
-
-        .data-botones {
-            display: flex;
-            flex-direction: column;
-        }
     }
+
 }
