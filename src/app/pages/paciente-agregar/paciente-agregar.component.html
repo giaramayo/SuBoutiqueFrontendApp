@@ -50,8 +50,8 @@
                     Por favor, ingrese un DNI, CUIT o Pasaporte válido. Verifique que los datos ingresados sean correctos
                   </mat-error>
                   <mat-error *ngIf="formPaciente.get('documento')?.hasError('pattern')">
-                    {{formPaciente.get('documento')?.value}} no es válido
-                  </mat-error>
+                    {{formPaciente.get('documento')?.value}} no es válido. Verifique que los datos ingresados sean correcto
+                  </mat-error>                  
                 </mat-form-field>
                 <mat-form-field  class="fill" color="accent" >
                   <mat-label>Fecha de Nacimiento</mat-label>
@@ -175,7 +175,7 @@
                       {{tipo.name}}
                     </mat-option>
                   </mat-select>
-                  <mat-error *ngIf="formPaciente.get('biotipo')?.hasError('required')">Seleccionar un Biotipo
+                  <mat-error *ngIf="formPaciente.get('biotipo')?.hasError('required')">Por favor, seleccione un Biotipo
                   </mat-error>
                 </mat-form-field>
                 <mat-form-field class="form-field" color="accent">
@@ -186,7 +186,7 @@
                       {{tipo.name}}
                     </mat-option>
                   </mat-select>
-                  <mat-error *ngIf="formPaciente.get('fototipo')?.hasError('required')">Seleccionar un Fototipo
+                  <mat-error *ngIf="formPaciente.get('fototipo')?.hasError('required')">Por favor, seleccione un Fototipo
                   </mat-error>
                 </mat-form-field>
                 <mat-form-field class="form-field" color="accent">
