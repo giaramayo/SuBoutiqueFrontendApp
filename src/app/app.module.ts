@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ImagenPipe } from './pipes/imagen.pipe';
 import { MaterialModule } from './modules/material/material.module';
@@ -31,6 +31,7 @@ import { DialogReprogramarComponent } from './component/dialog-reprogramar/dialo
 import { HomeComponent } from './pages/home/home.component';
 import { CardPersonaComponent } from './component/card-persona/card-persona.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthInterceptor } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,11 @@ import { LoginComponent } from './pages/login/login.component';
     MaterialModule,
     MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [{
+    provide : HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi   : true,
+  }],
   entryComponents: [MatProgressSpinner],
   bootstrap: [AppComponent]
 })

@@ -14,9 +14,9 @@ export class LoginService {
   private nodeURL = environment.nodeURL;
   private turnoURL = this.nodeURL + '/user'
 
-  constructor( private readonly http: HttpClient, private cookies: CookieService) { }
+  constructor(private readonly http: HttpClient, private cookies: CookieService) { }
 
-  ingresar( usuario: any ) : Observable<any> {
+  ingresar(usuario: any): Observable<any> {
     return this.http.post(this.turnoURL + '/login', usuario);
   }
 
@@ -24,7 +24,7 @@ export class LoginService {
     this.cookies.set("token", token);
   }
   getToken() {
-     return this.cookies.get("token");
+    return this.cookies.get("token");
   }
 
   get isCheckLogeado() {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
@@ -19,7 +19,7 @@ export class PacienteService {
   constructor( private readonly http: HttpClient ) { }
 
   getPacientes(): Observable<any> {
-    return this.http.get(this.pacienteURL)
+    return this.http.get(this.pacienteURL);
   }
 
   eliminar(documento: number): Observable<any> {
