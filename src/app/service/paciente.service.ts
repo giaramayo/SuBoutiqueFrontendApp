@@ -12,8 +12,8 @@ import { Paciente } from '../interfaces/paciente.interfaces';
 export class PacienteService {
 
   private nodeURL = environment.nodeURL;
-  private pacienteURL = this.nodeURL + '/pacientes'
-  private localidadURL = this.nodeURL + '/barrios'
+  private pacienteURL = this.nodeURL + '/paciente'
+  private localidadURL = this.nodeURL + '/barrio'
   private antecedenteURL = this.nodeURL + '/antecedente'
 
   constructor( private readonly http: HttpClient ) { }

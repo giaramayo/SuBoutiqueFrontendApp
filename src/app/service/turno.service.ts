@@ -11,8 +11,8 @@ import { environment } from '../../environments/environment';
 export class TurnoService {
 
   private nodeURL = environment.nodeURL;
-  private turnoURL = this.nodeURL + '/turnos'
-  private estadosURL = this.nodeURL + '/estados'
+  private turnoURL = this.nodeURL + '/turno'
+  private estadosURL = this.nodeURL + '/estado'
 
   constructor( private readonly http: HttpClient ) { }
 

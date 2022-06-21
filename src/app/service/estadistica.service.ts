@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 export class EstadisticaService {
 
   private nodeURL = environment.nodeURL;
-  private turnoURL = this.nodeURL + '/estadisticas'
+  private turnoURL = this.nodeURL + '/estadistica'
 
   constructor( private readonly http: HttpClient ) { }
 
