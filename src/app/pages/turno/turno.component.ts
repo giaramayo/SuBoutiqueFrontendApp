@@ -56,11 +56,6 @@ export class TurnoComponent {
             this.estados = resp;
         });
   }
-
-  editar() {
-    console.log("das")
-  }
-
   
   consultar() {
     let mes = this.selected?.getMonth()
@@ -185,18 +180,19 @@ export class TurnoComponent {
   cambiarEstado(turno: any) {
     let estadoAnt = turno.id_estado;
     const dialogRef = this.dialog.open(DialogCambiarEstadoComponent, {
-      width: '270px',
+      width: '500px',
       data: {
         idEstado: turno.id_estado,
-        estados: this.estados
+        estados: this.estados,
+        comentario: turno.observacion
         }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-        if(result !== estadoAnt) {
-          console.log(result)
-          turno.id_estado = result;
-         this.modificarTurno( turno._id, turno );
+        if(result.id !== estadoAnt) {
+          turno.id_estado = result.id;
+          turno.observacion = result.comentario
+          this.modificarTurno( turno._id, turno );
         }
     });
   }
@@ -214,15 +210,15 @@ export class TurnoComponent {
 
     this.turnoService.modificarTurno(id, body)
         .subscribe( resul => {
-          // if(resul) {
-          //   this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-          //     data: { icono: 'done', mensaje: resul.msg, titulo: 'Actualizado'},
-          //     duration: 4000,
-          //     horizontalPosition: "right",
-          //     verticalPosition: "bottom",
-          //     panelClass: ["snack-bar-ok"]
-          //   });
-          // }
+          if(resul) {
+            this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+              data: { icono: 'done', mensaje: resul.msg, titulo: 'Actualizado'},
+              duration: 4000,
+              horizontalPosition: "right",
+              verticalPosition: "bottom",
+              panelClass: ["snack-bar-ok"]
+            });
+          }
         },
         () => {
           this._snackBar.openFromComponent(DialogSnackbarComponent,{ 

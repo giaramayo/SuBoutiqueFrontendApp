@@ -10,9 +10,18 @@
           <mat-option *ngFor="let est of data.estados" [value]="est._id">{{est.descripcion}}</mat-option>
         </mat-select>
       </mat-form-field>
+
+      <mat-form-field *ngIf="this.select === 3" appearance="fill"  class="form-field" color="accent">
+        <mat-label>Observación</mat-label>
+        <textarea matInput type="text" [(ngModel)]="data.comentario" required="this.select === 3"></textarea>
+        <mat-error *ngIf="!data.comentario && this.select === 3">
+          Por favor ingresar una observacion.
+        </mat-error>
+      </mat-form-field>
+
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
     <button mat-button (click)="cancelar()" > Cancelar </button>
-    <button mat-button color="accent" (click)="confirmar()"> Guardar </button>
+    <button mat-button color="accent" [disabled]="(!this.select) || (!data.comentario && this.select === 3)" (click)="confirmar()"> Guardar </button>
  </mat-dialog-actions>

@@ -29,7 +29,6 @@ export class TurnoService {
     return this.http.get(this.turnoURL + '/buscar/proximos/' + fecha);
   }
 
-
   getEstados() : Observable<any> {
     return this.http.get(this.estadosURL);
   }
@@ -38,42 +37,10 @@ export class TurnoService {
     return this.http.put(this.turnoURL + '/modificar/' + id, body);
   }
 
-  estadisticasPorFecha( fecha: string ) : Observable<any> {
-    return this.http.get(this.turnoURL + '/estadisticasPorFecha/' + fecha);
-  }
-  estadisticaEstadoPorFecha( fecha: string ) : Observable<any> {
-    return this.http.get(this.turnoURL + '/estadisticaEstadoPorFecha/' + fecha);
-  }
-  
-  estadisticaTratamientoMasSolicitadoMes( ) : Observable<any> {
-    return this.http.get(this.turnoURL + '/estadisticaTratamientoMasSolicitadoMes');
-  }
-
-  estadisticaTratamientoPorEstacion( ) : Observable<any> {
-    return this.http.get(this.turnoURL + '/estadisticaTratamientoPorEstacion');
-  }
-
-
-
-
-
   horariosDisponibles( fecha: string ) : Observable<any> {
     return this.http.get(this.turnoURL + '/horariosDisponibles/' + fecha);
   }
 
-//   eliminar(documento: number): Observable<any> {
-//     return this.http.delete(this.pacienteURL + '/borrar/' + documento)
-//   }
-
-//   getLocalidad() : Observable<any> {
-//     return this.http.get(this.localidadURL);
-//   }
- // postFiltrarPaciente( nombre: string, apellido: string, dni: number ) : Observable<any>{
- //   let params = new HttpParams().set('nombre', nombre).set('apellido', apellido).set('dni', dni);
- //   return this.http.post(this.pacienteURL + '/filtrar', {params});
- // }
-
-//  router.post( `${route}/crear`, turnoController.addTurno )
   guardarNuevoTurno( turno: any ) : Observable<any> {
     return this.http.post(this.turnoURL + '/crear', turno);
   }

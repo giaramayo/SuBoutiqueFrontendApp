@@ -20,7 +20,7 @@ export class LoginService {
     return this.http.post(this.turnoURL + '/login', usuario);
   }
 
-  setToken(token: any) {
+  setToken(token: string) {
     this.cookies.set("token", token);
   }
   

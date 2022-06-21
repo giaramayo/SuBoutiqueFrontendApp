@@ -3,7 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
   idEstado: number,
-  estados: any
+  estados: any,
+  comentario: string
 }
 
 @Component({
@@ -21,7 +22,7 @@ export class DialogCambiarEstadoComponent {
     }
 
     confirmar(){
-      this.dialogRef.close(this.select);
+      this.dialogRef.close({id: this.select, comentario: this.data.comentario});
     }
   
     cancelar(){
