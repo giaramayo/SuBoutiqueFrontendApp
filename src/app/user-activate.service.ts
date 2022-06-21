@@ -9,9 +9,7 @@ export class UserActivateService implements CanActivate {
 
   constructor(private authService: LoginService, private router: Router) { }
 
-  canActivate() {
-    // If the user is not logged in we'll send them back to the home page
-    
+  canActivate() {   
     if (!this.authService.getToken()) {
         console.log('No estás logueado');
         this.router.navigate(['/login']);
@@ -20,5 +18,7 @@ export class UserActivateService implements CanActivate {
 
     return true;
   };
+
+  
 
 }

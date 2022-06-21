@@ -1,4 +1,4 @@
-<nav class="menu color-menu">
+<nav class="menu color-menu" *ngIf="isLoggedIn$">
     <div [class]="mostrarSNV ? 'logo hidden' : 'logo' ">
         <img class="icon-header" [src]="logo | imagen">
     </div>

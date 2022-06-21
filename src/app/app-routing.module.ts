@@ -13,7 +13,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { UserActivateService } from './user-activate.service';
 
 const routes: Routes = [
-  // { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)   },
   { path: 'paciente', component: PacienteComponent, canActivate: [UserActivateService]},
   { path: 'paciente/agregar/:pages', component: PacienteAgregarComponent, canActivate: [UserActivateService]},
   { path: 'paciente/detalle/:id/:pages', component: DetallePacienteComponent, canActivate: [UserActivateService]},
