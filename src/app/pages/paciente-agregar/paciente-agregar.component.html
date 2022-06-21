@@ -39,14 +39,15 @@
                       {{tipo.name}}
                     </mat-option>
                   </mat-select>
-                  <mat-error *ngIf="formPaciente.get('tipo_documento')?.hasError('required')">Seleccionar un tipo de
-                    documento</mat-error>
+                  <mat-error *ngIf="formPaciente.get('tipo_documento')?.hasError('required')">
+                    Seleccionar un tipo de documento
+                  </mat-error>
                 </mat-form-field>
                 <mat-form-field class="form-field" color="accent">
                   <mat-label>Documento</mat-label>
                   <input matInput type="text" minlength="8" required formControlName="documento">
                   <mat-error *ngIf="formPaciente.get('documento')?.hasError('required')">
-                    Este campo es requerido
+                    Por favor, ingrese un DNI, CUIT o Pasaporte válido. Verifique que los datos ingresados sean correctos
                   </mat-error>
                   <mat-error *ngIf="formPaciente.get('documento')?.hasError('pattern')">
                     {{formPaciente.get('documento')?.value}} no es válido

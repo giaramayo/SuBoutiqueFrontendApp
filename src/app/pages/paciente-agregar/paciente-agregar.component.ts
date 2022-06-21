@@ -58,7 +58,8 @@ export class PacienteAgregarComponent {
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required),
       tipo_documento: new FormControl('', Validators.required),
-      documento: new FormControl('', [Validators.required, Validators.pattern(/^(20|23|24|27|30|33|34)([0-9]{9}|[0-9]{8})([0-9])$/g)]),
+      //documento: new FormControl('', [Validators.required, Validators.pattern(/^(20|23|24|27|30|33|34)([0-9]{9}|[0-9]{8})([0-9])$/g)]), // Solamente valida CUIT
+      documento: new FormControl('', [Validators.required, Validators.pattern(/^(20|23|24|27|30|33|34)([0-9]{9}|[0-9]{8})([0-9])$|^[0-9]{8}$/g)]),
       fecha_nacimiento: new FormControl('', Validators.required),
       telefono: new FormControl('', Validators.minLength(10)),
       email: new FormControl('', Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')),
