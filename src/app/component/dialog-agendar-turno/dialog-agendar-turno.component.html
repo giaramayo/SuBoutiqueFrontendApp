@@ -3,36 +3,47 @@
 
 <mat-dialog-content class="mat-typography">
     <div class="form" [formGroup]="formTurno">
-     FALTA VALIDACIONES
         <mat-form-field  appearance="fill"  class="form-field" color="accent">
           <mat-label>Fecha del Turno</mat-label>
-          <input matInput [min]="hoy" [matDatepicker]="picker" (dateInput)="seleccionarFecha($event)">
+          <input matInput [min]="hoy" [matDatepicker]="picker" (dateInput)="seleccionarFecha($event)" formControlName="fecha" required>
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="formTurno.get('fecha')?.invalid">
+            Por favor, seleccione una fecha válida para reservar el turno
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill"  class="form-field" color="accent">
           <mat-label>Seleccionar Horario</mat-label>
-          <mat-select [(value)]="selectHorario">
+          <mat-select [(value)]="selectHorario" formControlName="hora" required>
             <mat-option *ngFor="let horario of horarios" [value]="horario.horario">{{horario.horario}}</mat-option>
           </mat-select>
+          <mat-error *ngIf="formTurno.get('hora')?.hasError('required')">
+            Por favor, seleccione una hora válida para reservar el turno
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill"  class="form-field" color="accent">
           <mat-label>Seleccionar Tratamiento</mat-label>
-          <mat-select [(value)]="selectTratamiento">
+          <mat-select [(value)]="selectTratamiento" formControlName="tratamiento" required>
             <mat-option *ngFor="let tratamiento of tratamientos" [value]="tratamiento._id">{{tratamiento.descripcion}}</mat-option>
           </mat-select>
+          <mat-error *ngIf="formTurno.get('tratamiento')?.invalid"> 
+            Seleccione una tratamiento de la lista
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill"  class="form-field" color="accent">
           <mat-label>Selecciona un Paciente</mat-label>
-          <mat-select [(value)]="selectPaciente">
+          <mat-select [(value)]="selectPaciente" formControlName="paciente" required>
             <mat-option *ngFor="let pac of pacientes" [value]="pac._id">
               {{pac.apellido}}, {{pac.nombre}} - {{pac.documento}}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="formTurno.get('paciente')?.invalid"> 
+            Seleccione una paciente de la lista
+          </mat-error>
         </mat-form-field>
     </div>
 </mat-dialog-content>
@@ -40,5 +51,5 @@
 
 <mat-dialog-actions align="end">
   <button mat-button (click)="cancelar()"> Cancelar </button>
-  <button mat-button color="accent" (click)="confirmar()"> Guardar </button>
+  <button mat-button color="accent" [disabled]="formTurno.invalid" (click)="confirmar()"> Guardar </button>
 </mat-dialog-actions>
