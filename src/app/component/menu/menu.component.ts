@@ -45,7 +45,7 @@ export class MenuComponent implements OnInit, DoCheck {
         router:'./tratamientos',
       },
       {
-        name  :'Estadisticas',
+        name  :'Estadísticas',
         router:'./estadisticas',
       }
     ];
