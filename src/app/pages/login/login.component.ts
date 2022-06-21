@@ -33,10 +33,8 @@ constructor(private loginService: LoginService,
       email: this.formLogin.get('usuario')?.value,
       password: this.formLogin.get('contrasenia')?.value
     }
-    console.log(usuario)
     this.loginService.ingresar(usuario)
       .subscribe( resp => {
-        console.log(resp.data.token)
         this.loginService.setToken(resp.data.token);
         this.router.navigateByUrl(this.home);
       }, 
