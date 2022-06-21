@@ -189,11 +189,13 @@ export class TurnoComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if(result){
         if(result.id !== estadoAnt) {
           turno.id_estado = result.id;
           turno.observacion = result.comentario
           this.modificarTurno( turno._id, turno );
         }
+      }
     });
   }
 
