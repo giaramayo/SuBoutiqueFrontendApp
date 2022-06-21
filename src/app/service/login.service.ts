@@ -23,8 +23,13 @@ export class LoginService {
   setToken(token: any) {
     this.cookies.set("token", token);
   }
+  
   getToken() {
     return this.cookies.get("token");
+  }
+
+  cerrarSeccion() {
+    this.cookies.deleteAll()
   }
 
   get isCheckLogeado() {

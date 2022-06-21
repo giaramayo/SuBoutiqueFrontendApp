@@ -67,7 +67,7 @@ export class MenuComponent implements OnInit, DoCheck {
   }
 
   cerrarSeccion(){
-    this.loginService.setToken('');
+    this.loginService.cerrarSeccion();
     this.router.navigateByUrl(this.routerSalir);
   }
 }
