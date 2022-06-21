@@ -19,7 +19,7 @@ private home: string = "/inicio"
 constructor(private loginService: LoginService,
             public _snackBar: MatSnackBar,
             private router: Router) { 
-  this.logo = 'assets/imagenLg.jpeg'
+  this.logo = 'assets/animacionLg.gif'
 
   this.formLogin = new FormGroup({
     usuario: new FormControl('', Validators.required),
