@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'estadisticas', component: EstadisticasComponent, canActivate: [UserActivateService]},
   { path: 'inicio', component: HomeComponent, canActivate: [UserActivateService]},
   { path: 'login', component: LoginComponent },
-  { path: '**', component: ErrorPageComponent},
+  { path: '**', component: HomeComponent, canActivate: [UserActivateService]},
 ];
 
 @NgModule({
