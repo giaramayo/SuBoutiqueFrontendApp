@@ -41,7 +41,7 @@ constructor(private loginService: LoginService,
       err => {
         console.log(err)
         this._snackBar.openFromComponent(DialogSnackbarComponent, {
-          data: { icono: 'report', mensaje: "No se encontro el usuario ingresado", titulo: 'Usuario Incorrecto' },
+          data: { icono: 'report', mensaje: "No se encontró el usuario ingresado", titulo: 'Usuario Incorrecto' },
           duration: 4000,
           horizontalPosition: "right",
           verticalPosition: "bottom",

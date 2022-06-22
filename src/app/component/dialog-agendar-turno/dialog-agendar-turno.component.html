@@ -30,7 +30,7 @@
             <mat-option *ngFor="let tratamiento of tratamientos" [value]="tratamiento._id">{{tratamiento.descripcion}}</mat-option>
           </mat-select>
           <mat-error *ngIf="formTurno.get('tratamiento')?.invalid"> 
-            Seleccione una tratamiento de la lista
+            Seleccione un tratamiento de la lista
           </mat-error>
         </mat-form-field>
 
