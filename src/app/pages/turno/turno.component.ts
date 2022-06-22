@@ -72,7 +72,7 @@ export class TurnoComponent {
       err => {
         console.log(err);
         this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-          data: { icono: 'warning_amber', mensaje: "No se encontro turno para la fecha", titulo: 'Sin turnos'},
+          data: { icono: 'warning_amber', mensaje: "No se encontró turno para la fecha", titulo: 'Sin turnos'},
           duration: 4000,
           horizontalPosition: "right",
           verticalPosition: "bottom",
@@ -146,7 +146,7 @@ export class TurnoComponent {
             }
           },
           () => {
-            console.log("error al consultar antecedentes")
+            console.log("Error al consultar antecedentes")
           },
           () => {
             this.dialogConsultaHistorial();
@@ -224,7 +224,7 @@ export class TurnoComponent {
         },
         () => {
           this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-            data: { icono: 'report', mensaje: "Ocurrio un error al intentar modificar el turno", titulo: 'Error'},
+            data: { icono: 'report', mensaje: "Ocurrió un error al intentar modificar el turno", titulo: 'Error'},
             duration: 4000,
             horizontalPosition: "end",
             verticalPosition: "bottom",

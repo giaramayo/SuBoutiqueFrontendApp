@@ -30,6 +30,14 @@ export class EstadisticasComponent {
     ]
   };
   
+  public totalPacienteEdad: number = 0;
+  public dataEdadTratados: ChartData<'bar'> = {
+    labels: [],
+    datasets: [
+      { data: [ ], label: 'Edad' },
+    ]
+  };
+
   constructor(private estadisticaService: EstadisticaService) {
     this.estadisticaTratamientoMasSolicitadoMes()
   }
@@ -39,7 +47,21 @@ export class EstadisticasComponent {
       .subscribe(resp => {
         this.chartTratamientoMes = resp.arrayEstDesc;
         this.totalTurnosMes = resp.totalTurnos;
-        console.log(this.chartTratamientoMes)
+      },
+      (err) => {
+        console.log(err)
+      },
+      ()=> {
+        this.estadisticaPorEdad();
+      })
+  }
+  
+  estadisticaPorEdad() {
+    this.estadisticaService.estadisticaPorEdad()
+      .subscribe( resp => {
+        this.dataEdadTratados.labels = resp.rangos
+        this.dataEdadTratados.datasets[0].data = resp.edades
+        this.totalPacienteEdad = resp.totalPaciente
       },
       (err) => {
         console.log(err)
@@ -52,7 +74,6 @@ export class EstadisticasComponent {
   estadisticaTratamientoPorEstacion() {
     this.estadisticaService.estadisticaTratamientoPorEstacion()
       .subscribe( resp => {
-          console.log(resp)
           this.dataEstacion.labels = resp.estaciones;
           this.dataEstacion.datasets[0].data = resp.contadores
       },
@@ -60,14 +81,7 @@ export class EstadisticasComponent {
         console.log(err)
       },
       ()=> {
-        this.estadisticaPorEdad();
-      })
-  }
-
-  estadisticaPorEdad() {
-    this.estadisticaService.estadisticaPorEdad()
-      .subscribe( resp => {
-        console.log(resp)
+       // this.estadisticaPorEdad();
       })
   }
 

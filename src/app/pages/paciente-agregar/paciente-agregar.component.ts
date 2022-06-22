@@ -180,7 +180,7 @@ export class PacienteAgregarComponent {
         err => {
           console.log(err)
           this._snackBar.openFromComponent(DialogSnackbarComponent, {
-            data: { icono: 'report', mensaje: "Ocurrio un error al modificar el paciente", titulo: 'Error' },
+            data: { icono: 'report', mensaje: "Ocurrió un error al modificar el paciente", titulo: 'Error' },
             duration: 4000,
             horizontalPosition: "right",
             verticalPosition: "bottom",
@@ -196,7 +196,7 @@ export class PacienteAgregarComponent {
           this._snackBar.openFromComponent(DialogSnackbarComponent, {
             data: {
               icono: 'done',
-              mensaje: "Se dio de alta al paciente " + this.paciente.apellido + ", " + this.paciente.nombre,
+              mensaje: "Se dió de alta al paciente " + this.paciente.apellido + ", " + this.paciente.nombre,
               titulo: 'Guardar'
             },
             duration: 4000,
@@ -209,7 +209,7 @@ export class PacienteAgregarComponent {
       },
         err => {
           this._snackBar.openFromComponent(DialogSnackbarComponent, {
-            data: { icono: 'report', mensaje: "Ocurrio un error al guardar el paciente", titulo: 'Error' },
+            data: { icono: 'report', mensaje: "Ocurrió un error al guardar el paciente", titulo: 'Error' },
             duration: 4000,
             horizontalPosition: "right",
             verticalPosition: "bottom",
@@ -225,7 +225,7 @@ export class PacienteAgregarComponent {
       },
         err => {
           this._snackBar.openFromComponent(DialogSnackbarComponent, {
-            data: { icono: 'report', mensaje: "Ocurrio un error consultar Localidades", titulo: 'Error' },
+            data: { icono: 'report', mensaje: "Ocurrió un error consultar Localidades", titulo: 'Error' },
             duration: 4000,
             horizontalPosition: "right",
             verticalPosition: "bottom",

@@ -95,7 +95,7 @@ export class TratamientoComponent implements OnInit {
   eliminar( element: any){
     const dialogRef = this.dialog.open(ConfirmacionComponent, {
       data: {
-          msj: "¿Esta seguro que desea eliminar \"" + element.descripcion + "\"?",
+          msj: "¿Está seguro que desea eliminar \"" + element.descripcion + "\"?",
           titulo: "Eliminar"
         }
     });
@@ -120,7 +120,7 @@ export class TratamientoComponent implements OnInit {
         },
         () => {
           this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-            data: { icono: 'report', mensaje: "Ocurrio un error al eliminar el tratamiento indicado", titulo: 'Error'},
+            data: { icono: 'report', mensaje: "Ocurrió un error al eliminar el tratamiento indicado", titulo: 'Error'},
             duration: 4000,
             horizontalPosition: "right",
             verticalPosition: "bottom",
