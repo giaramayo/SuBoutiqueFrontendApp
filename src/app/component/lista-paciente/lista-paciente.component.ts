@@ -90,7 +90,7 @@ export class ListaPacienteComponent {
 
   dialogConsultaHistorial(element: any) {
     const dialogRef = this.dialog.open(DialogHistorialComponent, {
-      width: '700px',
+      // width: '700px',
       maxHeight: '90vh',
       data: {
         dataSource: this.historial,
