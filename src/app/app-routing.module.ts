@@ -15,6 +15,7 @@ import { UserActivateService } from './user-activate.service';
 const routes: Routes = [
   { path: 'paciente', component: PacienteComponent, canActivate: [UserActivateService]},
   { path: 'paciente/agregar/:pages', component: PacienteAgregarComponent, canActivate: [UserActivateService]},
+  { path: 'paciente/modificar/:id/:pages', component: PacienteAgregarComponent, canActivate: [UserActivateService]},
   { path: 'paciente/detalle/:id/:pages', component: DetallePacienteComponent, canActivate: [UserActivateService]},
   { path: 'tratamientos', component: TratamientoComponent, canActivate: [UserActivateService]},
   { path: 'turnos', component: TurnoComponent, canActivate: [UserActivateService]},

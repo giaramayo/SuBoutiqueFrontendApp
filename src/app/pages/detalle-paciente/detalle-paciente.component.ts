@@ -17,7 +17,7 @@ export class DetallePacienteComponent implements OnInit {
 
   public idPaciente: any;
   public routerVolver: any;
-  public routerPaciente: any = "/paciente/modificar/";
+  public routerPaciente: any = "/paciente/modificar";
   public paciente: any;
   public historial: any[];
   public step: number;
@@ -163,7 +163,7 @@ export class DetallePacienteComponent implements OnInit {
   }
 
   modificar() {
-    //this.router.navigateByUrl(this.routerPaciente + this.idPaciente + '/detalle');    
+    this.router.navigateByUrl(this.routerPaciente + "/" + this.idPaciente + "/detalle");    
   }
 
   eliminar() {

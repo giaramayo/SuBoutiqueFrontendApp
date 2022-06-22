@@ -24,11 +24,13 @@ interface Localidad {
 })
 export class PacienteAgregarComponent {
 
+
   public MAX_EDAD = 99;
   public MIN_EDAD = 14;
 
   public disabledOK: boolean;
   public routerVolver: any;
+  public idPaciente: any;
   public step: number;
   public tiposDocumentos: NameValue[];
   public formPaciente: FormGroup;
@@ -42,6 +44,7 @@ export class PacienteAgregarComponent {
   public pacienteDetalle: any;
   public edad: number;
 
+
   constructor(public _snackBar: MatSnackBar,
     private routerAct: ActivatedRoute,
     private pacienteService: PacienteService,
@@ -49,8 +52,9 @@ export class PacienteAgregarComponent {
 
     this.disabledOK = true;
     this.step = 0;
-    // this.routerVolver = "/paciente";
     this.routerVolver = this.routerAct.snapshot.paramMap.get('pages');
+    this.idPaciente = this.routerAct.snapshot.paramMap.get('id');
+    
     this.localidades = [];
     this.edad = 0;
 
@@ -58,7 +62,7 @@ export class PacienteAgregarComponent {
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required),
       tipo_documento: new FormControl('', Validators.required),
-      documento: new FormControl('', [Validators.required, Validators.pattern(/^(20|23|24|27|30|33|34)([0-9]{9}|[0-9]{8})([0-9])$/g)]),
+      documento: new FormControl('', Validators.required),//, Validators.pattern(/^(20|23|24|27|30|33|34)([0-9]{9}|[0-9]{8})([0-9])$/g)]),
       fecha_nacimiento: new FormControl('', Validators.required),
       telefono: new FormControl('', Validators.minLength(10)),
       email: new FormControl('', Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')),
@@ -112,31 +116,34 @@ export class PacienteAgregarComponent {
     this.step--;
   }
 
-
   volver() {
-    this.router.navigateByUrl(this.routerVolver);
+    let router = this.routerVolver
+    if(this.idPaciente){
+        router = "paciente/" + this.routerVolver + "/" + this.idPaciente + "/paciente"
+    }
+    this.router.navigateByUrl(router);
   }
 
   guardar() {
     this.paciente = {
       documento: this.formPaciente.get('documento')?.value,
-      tipo_documento: this.formPaciente.get('tipo_documento')?.value.name,
+      tipo_documento: this.formPaciente.get('tipo_documento')?.value,
       nombre: this.formPaciente.get('nombre')?.value,
       apellido: this.formPaciente.get('apellido')?.value,
       calle: this.formPaciente.get('calle')?.value,
       numero: this.formPaciente.get('numero')?.value,
       codigo_postal: this.formPaciente.get('codigo_postal')?.value,
       barrio: {
-        _id: this.formPaciente.get('localidad')?.value._id,
-        descripcion: this.formPaciente.get('localidad')?.value.descripcion,
+        _id: this.formPaciente.get('localidad')?.value,
+        descripcion: this.formPaciente.get('localidad')?.value,
       },
       telefono: this.formPaciente.get('telefono')?.value,
       correo: this.formPaciente.get('email')?.value,
       fecha_nacimiento: this.formPaciente.get('fecha_nacimiento')?.value,
       edad: this.formPaciente.get('edad')?.value,
       antecedente: {
-        biotipo: this.formPaciente.get('biotipo')?.value.name,
-        fototipo: this.formPaciente.get('fototipo')?.value.name,
+        biotipo: this.formPaciente.get('biotipo')?.value,
+        fototipo: this.formPaciente.get('fototipo')?.value,
         afeccion_cutanea: this.formPaciente.get('afeccion_cutanea')?.value,
         alergias: this.formPaciente.get('alergias')?.value,
         medicamentos: this.formPaciente.get('medicamentos')?.value,
@@ -144,6 +151,44 @@ export class PacienteAgregarComponent {
       }
     }
 
+    if(this.idPaciente) {
+      this.modificar()
+    }else {
+      this.agregarRegistro()
+    }
+  }
+
+  modificar() {
+    this.pacienteService.modificar(this.paciente, this.idPaciente)
+        .subscribe(resp => {
+          if (resp) {
+            this._snackBar.openFromComponent(DialogSnackbarComponent, {
+              data: {
+                icono: 'done',
+                mensaje: "Se modifico el paciente " + this.paciente.apellido + ", " + this.paciente.nombre,
+                titulo: 'Modificado'
+              },
+              duration: 4000,
+              horizontalPosition: "right",
+              verticalPosition: "bottom",
+              panelClass: ["snack-bar-ok"]
+            });
+            this.volver();
+          }
+        },
+        err => {
+          console.log(err)
+          this._snackBar.openFromComponent(DialogSnackbarComponent, {
+            data: { icono: 'report', mensaje: "Ocurrio un error al modificar el paciente", titulo: 'Error' },
+            duration: 4000,
+            horizontalPosition: "right",
+            verticalPosition: "bottom",
+            panelClass: ["snack-bar-err"]
+          });
+        });
+  }
+
+  agregarRegistro() {
     this.pacienteService.agregarPaciente(this.paciente)
       .subscribe(resp => {
         if (resp) {
@@ -162,7 +207,6 @@ export class PacienteAgregarComponent {
         }
       },
         err => {
-          console.log(err);
           this._snackBar.openFromComponent(DialogSnackbarComponent, {
             data: { icono: 'report', mensaje: "Ocurrio un error al guardar el paciente", titulo: 'Error' },
             duration: 4000,
@@ -171,7 +215,6 @@ export class PacienteAgregarComponent {
             panelClass: ["snack-bar-err"]
           });
         });
-
   }
 
   getLocalidad() {
@@ -187,6 +230,59 @@ export class PacienteAgregarComponent {
             verticalPosition: "bottom",
             panelClass: ["snack-bar-err"]
           });
+        },
+        () => {
+          if(this.idPaciente){
+            this.getPaciente();
+          }
+        });
+  }
+
+  getPaciente() {
+    let idAntecedente = 0;
+    this.pacienteService.consultarPaciente( this.idPaciente )
+        .subscribe( resp => {
+          if( resp ){
+            this.formPaciente.get('documento')?.setValue(resp.documento);
+            this.formPaciente.get('tipo_documento')?.setValue(resp.tipo_documento);
+            this.formPaciente.get('nombre')?.setValue(resp.nombre);
+            this.formPaciente.get('apellido')?.setValue(resp.apellido);
+            this.formPaciente.get('calle')?.setValue(resp.calle);
+            this.formPaciente.get('numero')?.setValue(resp.numero);
+            this.formPaciente.get('codigo_postal')?.setValue(resp.codigo_postal);
+            this.formPaciente.get('localidad')?.setValue(resp.id_barrio)
+            this.formPaciente.get('telefono')?.setValue(resp.telefono);
+            this.formPaciente.get('email')?.setValue(resp.correo);
+            this.formPaciente.get('fecha_nacimiento')?.setValue(resp.fecha_nacimiento);
+            this.formPaciente.get('edad')?.setValue(resp.edad);
+           idAntecedente = resp.id_antecedente
+          }
+        },
+        () => {
+          this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
+            data: { icono: 'report', mensaje: "Error al consultar paciente", titulo: 'Error'},
+            duration: 4000,
+            horizontalPosition: "right",
+            verticalPosition: "bottom",
+            panelClass: ["snack-bar-err"]
+          });    
+        },
+        () => {
+          this.getAntecedente(idAntecedente);
+        });
+  }
+
+  getAntecedente(idAntecedente: number) {
+    this.pacienteService.consultarAntecedentes(idAntecedente)
+        .subscribe( resp => {
+          if(resp){
+            this.formPaciente.get('biotipo')?.setValue(resp.biotipo)
+            this.formPaciente.get('fototipo')?.setValue(resp.fototipo)
+            this.formPaciente.get('afeccion_cutanea')?.setValue(resp.afeccion_cutanea);
+            this.formPaciente.get('alergias')?.setValue(resp.alergias);
+            this.formPaciente.get('medicamentos')?.setValue(resp.medicamentos);
+            this.formPaciente.get('tratamientos_clinicos')?.setValue(resp.tratamientos_clinicos);
+          }
         });
   }
 

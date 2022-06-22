@@ -58,4 +58,9 @@ export class PacienteService {
     return this.http.get(this.antecedenteURL + '/buscarPorPaciente/' + id);
     }
 
+  modificar(paciente: Paciente, id: number) {
+ //   router.put( `${route}/modificar/:id`, pacienteController.updatePaciente ) //modifica un paciente
+    return this.http.put(this.pacienteURL + '/modificar/' + id, paciente);
+  }
+
 }
