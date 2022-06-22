@@ -6,10 +6,12 @@
       </h2>
       <div class="row estadisticas-box">
         <mat-tab-group color="accent">
-          <mat-tab label="Tratamiento" >
+          <mat-tab label="TRATAMIENTO" >
             <mat-tab-group color="accent">
               <mat-tab label="Más solicitados por mes">
                 <div style="display: block">
+                  <p style="text-align:center;"> <b> Tratamientos más solicitados por mes (por semestre): </b></p> 
+                  <p style="text-align:center;"> Se muestra a continuación un gráfico que detalla la cantidad de tratamientos solicitados según mes: </p> 
                   <canvas baseChart [type]="lineChartType" [legend]="true" [datasets]="chartTratamientoMes" [labels]="chartLabelsMes"
                   [options]="chartOptions">
                 </canvas>
@@ -17,35 +19,45 @@
               </mat-tab>
             </mat-tab-group>
           </mat-tab>
-          <mat-tab label="Paciente">
+          <mat-tab label="PACIENTE">
             <mat-tab-group color="accent">
               <mat-tab label="Tratados por Edad">
-                <canvas baseChart [type]="lineChartType" [legend]="true" [datasets]="chartTratamientoMes" [labels]="chartLabelsMes"
-                  [options]="chartOptions">
-                </canvas>
+                <div style="display: block">
+                  <p style="text-align:center;"> <b> Pacientes tratados según rango etario: </b></p> 
+                  <p style="text-align:center;"> Se muestra a continuación un gráfico que detalla la cantidad de pacientes tratados según su rango etario: </p> 
+                  FALTA FE de GRAFICO CANVAS CORRECTO
+                  <canvas baseChart [type]="lineChartType" [legend]="true" [datasets]="chartTratamientoMes" [labels]="chartLabelsMes"
+                    [options]="chartOptions">
+                  </canvas>
+                </div>
               </mat-tab>
               <mat-tab label="Tratados por Localidad">
-                Falta...
+                <div style="display: block">
+                  <p style="text-align:center;"> <b> Pacientes tratados por Localidad: </b></p> 
+                  <p style="text-align:center;"> Se muestra a continuación un gráfico que detalla la cantidad de pacientes tratados, agrupados por localidad o barrio: </p> 
+                  FALTA FE de GRAFICO CANVAS
+                </div>
               </mat-tab>
             </mat-tab-group>
           </mat-tab>
-          <mat-tab label="Turno">
+          <mat-tab label="TURNO">
             <mat-tab-group color="accent">
               <mat-tab label="Por Estación del Año">
-
                 <div style="display: block">
-                  SACAR LOS QUE NO SE COMPLETARON 
+                  <p style="text-align:center;"> <b> Turnos por Estación del Año: </b></p> 
+                  <p style="text-align:center;"> Se muestra a continuación un gráfico que detalla la cantidad de turnos solicitados según estación del año: </p>
                   <canvas baseChart
                     [data]="dataEstacion"
                     [type]="barChartType">
                   </canvas>
                 </div>
-
               </mat-tab>
-              <mat-tab label="Por ESTADOS">
 
+              <mat-tab label="Por Estados">
                 <div style="display: block">
-                  graficos para todos los estados 
+                  <p style="text-align:center;"> <b> Turnos por Estado: </b></p> 
+                  <p style="text-align:center;"> Se muestra a continuación un gráfico que detalla la cantidad de turnos según su estado: </p> 
+                  FALTA BE y FE de ESTADISTICA para GRAFICO CANVAS
                   <!-- <canvas baseChart
                     [data]="dataEstacion"
                     [type]="barChartType">
