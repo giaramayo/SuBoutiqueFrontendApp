@@ -36,11 +36,51 @@
       color: rgb(151, 155, 155);
       font-size: 12px;
     }
+    .grafico-ds{
+      width: 80vh;
+      display: block;
+      margin: 2em auto;
+    }
+    .grafico-localidad{
+      width: 50vh;
+      display: block;
+      margin: 2em auto;
+    }
     h3 {
       padding: 0 20px;
       text-align: center;
       color: #874284;
       font-weight: bold;
+    }
+    .tabla-valores {
+      justify-content: center;
+      display: flex;
+      margin: 1%;
+      padding: 4%;
+      background: #fff7fded;
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+        .text-center{
+          color: #874284;
+        }
+        .td-description{
+          color: #874284;
+          text-align: justify;
+        }
+        .text-valores{
+          text-align: center;
+          justify-content: center;
+        }
+        .td-label{
+          justify-content: right;
+        }
+        .thead-light {
+          background-color: #f4dff3;
+          font-size: 18px;
+        }
+      }
     }
   }
  
