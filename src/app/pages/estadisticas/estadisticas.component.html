@@ -5,10 +5,9 @@
         Estadísticas
       </h2>
       <div class="row estadisticas-box">
+
         <mat-tab-group color="accent">
           <mat-tab label="TRATAMIENTO" >
-            <!-- <mat-tab-group color="accent"> -->
-              <!-- <mat-tab label="Más solicitados por mes"> -->
                 <div class="grafico-box">
                   <h3> Tratamientos más solicitados por mes (por semestre):</h3> 
                   <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla la cantidad de tratamientos solicitados según mes </p> 
@@ -16,8 +15,6 @@
                   <canvas baseChart [type]="lineChartType" [legend]="true" [datasets]="chartTratamientoMes" [labels]="chartLabelsMes"
                   [options]="chartOptions">
                   </canvas>
-
-
 
                   <table class="table m-0">
                     <thead class="thead-light">
@@ -34,46 +31,41 @@
                     </tbody>
                   </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
-              <!-- </mat-tab> -->
-            <!-- </mat-tab-group> -->
           </mat-tab>
+        
           <mat-tab label="PACIENTE">
-            <mat-tab-group color="accent">
+
+            <mat-tab-group color="accent" class="mat-tab-box">
+
               <mat-tab label="Tratados por Edad">
                 <div class="grafico-box">
                   <h3>Pacientes tratados según rango etario:</h3> 
-                  <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla la cantidad de pacientes tratados según su rango etario: </p> 
-                  FALTA FE de GRAFICO CANVAS CORRECTO
-                  <canvas baseChart [type]="lineChartType" [legend]="true" [datasets]="chartTratamientoMes" [labels]="chartLabelsMes"
-                    [options]="chartOptions">
+                  <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla la cantidad de pacientes tratados según su rango etario </p> 
+                  <p class="descripcion-p anio">Total de Pacientes: {{totalPacienteEdad}}</p>
+                  <canvas baseChart
+                    [data]="dataEdadTratados"
+                    [type]="barChartType">
                   </canvas>
+
+                  <table class="table m-0">
+                    <thead class="thead-light">
+                    <tr>
+                      <th scope="col" class="text-center"></th>
+                      <th *ngFor="let data of dataEdadTratados.labels" class="font-weight-bold td-description" >{{data ? data : "-"}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-td-description">Total</td>
+                        <td *ngFor="let data of dataEdadTratados.datasets[0].data" class="font-weight-bold td-description" >{{data ? data : "0"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
                 </div>
               </mat-tab>
+              
               <mat-tab label="Tratados por Localidad">
                 <div class="grafico-box">
                   <h3>Pacientes tratados por Localidad:</h3> 
@@ -81,10 +73,15 @@
                   FALTA FE de GRAFICO CANVAS
                 </div>
               </mat-tab>
+
             </mat-tab-group>
+
           </mat-tab>
+
           <mat-tab label="TURNO">
-            <mat-tab-group color="accent">
+
+            <mat-tab-group color="accent" class="mat-tab-box">
+
               <mat-tab label="Por Estación del Año">
                 <div class="grafico-box">
                   <h3>Turnos por Estación del Año:</h3> 
@@ -106,8 +103,8 @@
                     [type]="barChartType">
                   </canvas> -->
                 </div>
-
               </mat-tab>
+
             </mat-tab-group>
           </mat-tab>
           <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
