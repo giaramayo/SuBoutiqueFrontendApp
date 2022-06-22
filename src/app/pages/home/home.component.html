@@ -10,6 +10,9 @@
             <mat-tab-group>
                 <mat-tab label="Tratamiento">
                     <!-- <app-estadistica-de-torta [fecha]="fecha"></app-estadistica-de-torta> -->
+                    <h3>Tratamiento</h3>
+                    <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla la cantidad de tratamientos </p>
+                    <p class="descripcion-p anio"> Dia: {{hoy | date:'dd/MM/yyyy'}} - Total de turnos: {{totalTurnos}}</p>
                     <div class="chart">
                         <canvas baseChart
                                 [data]="pieChartTratamientos"
@@ -17,9 +20,12 @@
                                 [options]="pieChartOptions"
                                 >
                         </canvas>
-                      </div>
+                     </div>
                 </mat-tab>
                 <mat-tab label="Estados de Turnos"> 
+                    <h3>Estados de Turnos</h3>
+                    <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla los estados de los turnos tomados </p>
+                    <p class="descripcion-p anio"> Dia: {{hoy | date:'dd/MM/yyyy'}} - Total de turnos: {{totalTurnos}}</p>
                     <div class="chart">
                         <canvas baseChart
                                 [data]="pieChartEstados"

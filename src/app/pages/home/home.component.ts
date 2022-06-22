@@ -22,6 +22,7 @@ export class HomeComponent {
   public turnosHoy: any[];
   public routerAgregar: string;
   public fecha: string;
+  public totalTurnos: number = 0;
 
   /// Estadisticas
   public pieChartOptions: ChartConfiguration['options'] = {
@@ -78,6 +79,7 @@ export class HomeComponent {
               data: resp.contadores
             }]
           };
+          this.totalTurnos = resp.total;
         }
       },
       (err) => {
