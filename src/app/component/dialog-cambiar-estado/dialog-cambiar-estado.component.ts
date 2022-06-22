@@ -4,7 +4,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export interface DialogData {
   idEstado: number,
   estados: any,
-  comentario: string
+  comentario: string,
+  paciente: string,
+  fecha: string
 }
 
 @Component({

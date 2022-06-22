@@ -180,15 +180,19 @@ export class TurnoComponent {
 
   cambiarEstado(turno: any) {
     let estadoAnt = turno.id_estado;
+    let paciente = turno.paciente[0].apellido + ", " + turno.paciente[0].nombre 
+    let fecha = turno.fecha_turno + " " + turno.hora;
     const dialogRef = this.dialog.open(DialogCambiarEstadoComponent, {
       width: '500px',
       data: {
         idEstado: turno.id_estado,
         estados: this.estados,
-        comentario: turno.observacion
+        comentario: turno.observacion,
+        paciente,
+        fecha
         }
     });
-
+console.log(turno)
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         if(result.id !== estadoAnt) {
