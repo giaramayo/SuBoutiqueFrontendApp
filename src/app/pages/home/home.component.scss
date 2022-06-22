@@ -9,7 +9,7 @@
     background: #f8e5f2;
     background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
     justify-content: center;
-    height: 89vh;
+    height: 97vh;
     .estadistica {
       padding: 2%;
       max-height: 500px;
@@ -29,9 +29,37 @@
         font-size: 12px;
       }
       .chart{
-        width: 50vh;
+        width: 40vh;
       display: block;
       margin: 2em auto;
+      }
+      .tabla-valores {
+        justify-content: center;
+        display: flex;
+        margin: 1%;
+        padding: 4%;
+        background: #fff7fded;
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          text-align: center;
+          .text-center{
+            color: #874284;
+          }
+          .td-description{
+            color: #874284;
+            text-align: left;
+          }
+          .td-valores{
+            color: #874284;
+            text-align: center;
+            justify-content: center;
+          }
+          .thead-light {
+            background-color: #f4dff3;
+            font-size: 18px;
+          }
+        }
       }
     }
     .eventos {
