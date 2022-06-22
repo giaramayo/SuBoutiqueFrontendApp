@@ -21,6 +21,7 @@ export class EstadisticasComponent {
       label: ''
     }
   ];
+  public totalTurnosTemporada: number = 0;
   public totalTurnosMes: number = 0;
   public chartLabelsMes = ['Enero','Febrero','Marzo','Abril','Mayo','Junio'];
   public chartOptions = { responsive: true };
@@ -118,6 +119,7 @@ export class EstadisticasComponent {
   estadisticaTratamientoPorEstacion() {
     this.estadisticaService.estadisticaTratamientoPorEstacion()
       .subscribe( resp => {
+          this.totalTurnosTemporada = resp.total;
           this.dataEstacion.labels = resp.estaciones;
           this.dataEstacion.datasets[0].data = resp.contadores;
       },

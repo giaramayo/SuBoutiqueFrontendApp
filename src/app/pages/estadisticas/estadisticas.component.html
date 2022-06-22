@@ -59,7 +59,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="text-td-description">Total</td>
+                        <td class="text-td-description">Valores: </td>
                         <td *ngFor="let data of dataEdadTratados.datasets[0].data" class="font-weight-bold td-description" >{{data ? data : "0"}}</td>
                       </tr>
                     </tbody>
@@ -70,7 +70,7 @@
               <mat-tab label="Tratados por Localidad">
                 <div class="grafico-box">
                   <h3>Pacientes tratados por Localidad:</h3> 
-                  <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla la cantidad de pacientes tratados, agrupados por localidad o barrio: </p> 
+                  <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla la cantidad de pacientes tratados, agrupados por localidad o barrio </p> 
                   <p class="descripcion-p anio">Total de Pacientes: {{totalPacienteEdad}}</p>
                   <!-- <canvas baseChart
                     [data]="dataLocalidad"
@@ -109,11 +109,28 @@
               <mat-tab label="Por Estación del Año">
                 <div class="grafico-box">
                   <h3>Turnos por Estación del Año:</h3> 
-                  <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla la cantidad de turnos solicitados según estación del año: </p>
+                  <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla la cantidad de turnos solicitados según estación del año</p>
+                  <p class="descripcion-p anio">Año: 2022 - Total de turnos: {{totalTurnosTemporada}}</p>
                   <canvas baseChart
                     [data]="dataEstacion"
                     [type]="barChartType">
                   </canvas>
+
+                  <table class="table m-0">
+                    <thead class="thead-light">
+                    <tr>
+                      <th scope="col" class="text-center"></th>
+                      <th *ngFor="let data of dataEstacion.labels" class="font-weight-bold td-description" >{{data ? data : "-"}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-td-description">Valores: </td>
+                        <td *ngFor="let data of dataEstacion.datasets[0].data" class="font-weight-bold td-description" >{{data ? data : "0"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
                 </div>
               </mat-tab>
 
