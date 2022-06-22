@@ -22,11 +22,18 @@ export class EstadisticasComponent {
     }
   ];
   public totalTurnosTemporada: number = 0;
+  public totalTurnosEstado: number = 0;
   public totalTurnosMes: number = 0;
   public chartLabelsMes = ['Enero','Febrero','Marzo','Abril','Mayo','Junio'];
   public chartOptions = { responsive: true };
   //Estadisitca por Estacion
   public dataEstacion: ChartData<'bar'> = {
+    labels: [],
+    datasets: [
+      { data: [ ], label: 'Turnos' },
+    ]
+  };
+  public dataEstadoHist: ChartData<'bar'> = {
     labels: [],
     datasets: [
       { data: [ ], label: 'Turnos' },
@@ -127,9 +134,23 @@ export class EstadisticasComponent {
         console.log(err)
       },
       ()=> {
-       // this.estadisticaPorEdad();
+       this.estadisticaPorEstagoHist();
       })
   }
 
+  estadisticaPorEstagoHist() {
+    this.estadisticaService.estadisticaPorEstagoHist()
+      .subscribe( resp => {
+          this.totalTurnosEstado = resp.total;
+          this.dataEstadoHist.labels = resp.estadosDes;
+          this.dataEstadoHist.datasets[0].data = resp.contador;
+      },
+      (err) => {
+        console.log(err)
+      },
+      ()=> {
+       // this.estadisticaPorEdad();
+      })
+  }
 
 }

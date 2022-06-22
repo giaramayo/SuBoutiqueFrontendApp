@@ -146,11 +146,27 @@
                   <h3>Turnos por Estado:</h3>
                   <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla la cantidad de turnos según
                     su estado: </p>
-                  FALTA BE y FE de ESTADISTICA para GRAFICO CANVAS
-                  <!-- <canvas baseChart
-                    [data]="dataEstacion"
-                    [type]="barChartType">
-                  </canvas> -->
+                  
+                  <div class="grafico-ds">
+                    <canvas baseChart [data]="dataEstadoHist" [type]="barChartType"></canvas>
+                  </div>
+                  <div class="tabla-valores">
+                    <table class="table m-0">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col" class="text-center"></th>
+                          <th *ngFor="let data of dataEstadoHist.labels" class="font-weight-bold text-center">{{data ? data : "-"}}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="font-weight-bold td-description">Valores: </td>
+                          <td *ngFor="let data of dataEstadoHist.datasets[0].data" class="font-weight-bold text-valores">
+                            {{data ? data : "0"}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </mat-tab>
 
