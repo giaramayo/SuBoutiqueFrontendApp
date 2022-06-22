@@ -19,7 +19,8 @@ export class EstadisticasComponent {
       label: ''
     }
   ];
-  public chartLabelsMes = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio'];
+  public totalTurnosMes: number = 0;
+  public chartLabelsMes = ['Enero','Febrero','Marzo','Abril','Mayo','Junio'];
   public chartOptions = { responsive: true };
   //Estadisitca por Estacion
   public dataEstacion: ChartData<'bar'> = {
@@ -37,6 +38,7 @@ export class EstadisticasComponent {
     this.estadisticaService.estadisticaTratamientoMasSolicitadoMes()
       .subscribe(resp => {
         this.chartTratamientoMes = resp.arrayEstDesc;
+        this.totalTurnosMes = resp.totalTurnos;
         console.log(this.chartTratamientoMes)
       },
       (err) => {
