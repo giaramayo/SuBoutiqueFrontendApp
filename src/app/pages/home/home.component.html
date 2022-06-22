@@ -8,9 +8,9 @@
             <mat-card>
             <h2>Estadísticas del día</h2>
             <mat-tab-group>
-                <mat-tab label="Tratamiento">
+                <mat-tab label="Tratamientos">
                     <!-- <app-estadistica-de-torta [fecha]="fecha"></app-estadistica-de-torta> -->
-                    <h3>Tratamiento</h3>
+                    <h3>Tratamientos del día</h3>
                     <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla la cantidad y tipos de tratamientos agendados para el día: </p>
                     <p class="descripcion-p anio"> Dia: {{hoy | date:'dd/MM/yyyy'}} - Total de turnos: {{totalTurnos}}</p>
                     <div class="chart">
@@ -39,8 +39,8 @@
                       </div>
 
                 </mat-tab>
-                <mat-tab label="Estados de Turnos"> 
-                    <h3>Estados de Turnos</h3>
+                <mat-tab label="Turnos"> 
+                    <h3>Estados de turnos del día</h3>
                     <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla los estados de los turnos tomados para el día de hoy:     </p>
                     <p class="descripcion-p anio"> Dia: {{hoy | date:'dd/MM/yyyy'}} - Total de turnos: {{totalTurnos}}</p>
                     <div class="chart">
