@@ -10,6 +10,13 @@
     background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
     justify-content: center;
     height: 110vh;
+
+    mat-panel-title {
+      font-size: 18px;
+      font-weight: initial;
+      color: #973d8f;
+    }
+    
     .estadistica {
       padding: 2%;
       max-height: 500px;
