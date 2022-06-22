@@ -12,8 +12,11 @@
                   <h3> Tratamientos más solicitados por mes (por semestre):</h3> 
                   <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla la cantidad de tratamientos solicitados según mes </p> 
                   <p class="descripcion-p anio"> Año: 2022 - Total de turnos Evaluados: {{totalTurnosMes}}</p>
-                  <canvas baseChart [type]="lineChartType" [legend]="true" [datasets]="chartTratamientoMes" [labels]="chartLabelsMes"
-                  [options]="chartOptions">
+                  <canvas baseChart [type]="lineChartType" 
+                    [legend]="true" 
+                    [datasets]="chartTratamientoMes" 
+                    [labels]="chartLabelsMes"
+                    [options]="chartOptions">
                   </canvas>
 
                   <table class="table m-0">
@@ -47,7 +50,6 @@
                     [data]="dataEdadTratados"
                     [type]="barChartType">
                   </canvas>
-
                   <table class="table m-0">
                     <thead class="thead-light">
                     <tr>
@@ -62,7 +64,6 @@
                       </tr>
                     </tbody>
                   </table>
-
                 </div>
               </mat-tab>
               
@@ -70,7 +71,30 @@
                 <div class="grafico-box">
                   <h3>Pacientes tratados por Localidad:</h3> 
                   <p class="descripcion-p"> Se muestra a continuación un gráfico que detalla la cantidad de pacientes tratados, agrupados por localidad o barrio: </p> 
-                  FALTA FE de GRAFICO CANVAS
+                  <p class="descripcion-p anio">Total de Pacientes: {{totalPacienteEdad}}</p>
+                  <!-- <canvas baseChart
+                    [data]="dataLocalidad"
+                    [type]="barChartType">
+                  </canvas> -->
+                    <canvas baseChart
+                                [data]="dataLocalidad"
+                                [type]="pieChartType"
+                                [options]="pieChartOptions"
+                    ></canvas>
+                  <table class="table m-0">
+                    <thead class="thead-light">
+                    <tr>
+                      <th scope="col" class="text-center">Localidad</th>
+                      <th scope="col" class="text-center">Valor</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let localidad of dataLocalidadCompleto">
+                        <td class="font-weight-bold td-description" >{{localidad.label}}</td>
+                        <td class="font-weight-bold td-description" >{{localidad.valor}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </mat-tab>
 
@@ -107,7 +131,6 @@
 
             </mat-tab-group>
           </mat-tab>
-          <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
         </mat-tab-group>
       </div>
     </mat-card>

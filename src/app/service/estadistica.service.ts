@@ -34,4 +34,8 @@ export class EstadisticaService {
     return this.http.get(this.turnoURL + '/porEdad');
   }
 
+  estadisticaPorLocalidad() : Observable<any> {
+    return this.http.get(this.turnoURL + '/porLocalidad');
+  }
+
 }
