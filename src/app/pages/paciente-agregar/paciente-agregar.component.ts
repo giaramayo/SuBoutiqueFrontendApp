@@ -166,7 +166,7 @@ export class PacienteAgregarComponent {
             this._snackBar.openFromComponent(DialogSnackbarComponent, {
               data: {
                 icono: 'done',
-                mensaje: "Se modifico el paciente " + this.paciente.apellido + ", " + this.paciente.nombre,
+                mensaje: "Se modificó el paciente " + this.paciente.apellido + ", " + this.paciente.nombre,
                 titulo: 'Modificado'
               },
               duration: 4000,

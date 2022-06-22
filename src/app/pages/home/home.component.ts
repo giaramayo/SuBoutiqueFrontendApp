@@ -61,7 +61,7 @@ export class HomeComponent {
         }
       },
         (err) => {
-          console.log("error al consultar turnos del dia - Erros: ", err)
+          console.log("Error al consultar turnos del dia - Error: ", err)
         },
         () => {
           this.estadisticaDelDiaTratamiento();
@@ -81,7 +81,7 @@ export class HomeComponent {
         }
       },
       (err) => {
-        console.log("error al consultar turnos del dia - Erros: ", err)
+        console.log("Error al consultar turnos del dia - Error: ", err)
       },
       () => {
         this.estadisticaDelDiaEstados();
