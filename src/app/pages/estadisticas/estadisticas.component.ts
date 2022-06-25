@@ -49,7 +49,7 @@ export class EstadisticasComponent {
   };
 
   public dataLocalidad: ChartData<'pie'> = {
-    labels: ['Localidad'],
+    labels: [],
     datasets: [
       { data: [ ] }
     ]
