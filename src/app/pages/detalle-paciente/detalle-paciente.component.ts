@@ -163,7 +163,7 @@ export class DetallePacienteComponent implements OnInit {
   }
 
   modificar() {
-    this.router.navigateByUrl(this.routerPaciente + "/" + this.idPaciente + "/detalle");    
+    this.router.navigateByUrl(this.routerPaciente + "/" + this.idPaciente + "/" + this.routerVolver);    
   }
 
   eliminar() {

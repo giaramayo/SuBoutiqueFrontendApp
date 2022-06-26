@@ -120,7 +120,7 @@ export class PacienteAgregarComponent {
   volver() {
     let router = this.routerVolver
     if(this.idPaciente){
-        router = "paciente/" + this.routerVolver + "/" + this.idPaciente + "/paciente"
+        router = "paciente/detalle/" + this.idPaciente + "/" + this.routerVolver
     }
     this.router.navigateByUrl(router);
   }
