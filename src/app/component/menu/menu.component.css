@@ -136,6 +136,10 @@ a {
 
 @media all and (min-width: 769px) {
 
+  .menu {
+    display: flex;
+}
+
   .item {
     display: block;
     width: auto;
@@ -170,4 +174,17 @@ a {
     max-height: 66px;
   }
 
+
+
+}
+
+
+@media all and (max-width: 769px) {
+
+.menu-items{
+  display: flex;
+    flex-direction: column;
+    width: 98%;
+    align-items: end;
+}
 }

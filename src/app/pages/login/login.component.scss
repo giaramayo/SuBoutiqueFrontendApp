@@ -21,8 +21,6 @@ body {
         justify-content: center;
         border: 15px solid #d0afd2;
 
-   
-
         .img-login {
             display: flex;
             flex-direction: row;
@@ -72,13 +70,13 @@ body {
         justify-content: center;
         .login-container {
             flex-direction: column;
-            width: 96%;
+            width: 90%;
             padding: 2%;
-            border: none;
+           border: none;
             .img-login {
             border: none;
             width: 20%;
-            border: 10px solid #d0afd2;
+            border: 5px solid #d0afd2;
 
                 .icon-header {
                     margin: 0 auto;
@@ -100,7 +98,7 @@ body {
         justify-content: flex-start;
         .login-container {
             .img-login {
-            width: 70%;
+            width: 50%;
             }
             .container-lg {
                 width: 100%;
