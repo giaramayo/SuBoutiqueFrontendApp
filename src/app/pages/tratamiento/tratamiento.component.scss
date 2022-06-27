@@ -12,7 +12,7 @@
   }
   .tratamiento-box {
     justify-content: center;
-    width: 100vh;
+   // width: 100%;
     .form-tratamiento {
       mat-form-field {
         margin-right: 12px;
@@ -50,3 +50,18 @@
   }
   
 }
+
+
+@media all and (max-width: 768px) {
+  .container {
+    .tratamiento-container {
+      .tratamiento-box {
+
+      }
+    }
+  }
+
+}
+
+
+@media all and (max-width: 430px) {}

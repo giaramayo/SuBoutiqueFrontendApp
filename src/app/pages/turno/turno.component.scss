@@ -21,28 +21,36 @@
     .card-paciente-detalle {
       display: flex;
       justify-content: center;
-      app-card-persona{
-        width: 70%;
+
+      app-card-persona {
+        width: 100%;
         padding: 2%;
       }
+
       .botonesLista {
         display: flex;
         flex-direction: column;
+
         button {
           text-align: center !important;
         }
+
         .button-camb-est {
           background-color: rgba(190, 137, 240, 0.922);
           color: #fff;
         }
+
         .button-reprogramar {
           background-color: rgb(62, 195, 164);
           color: #fff;
         }
+
         .mat-button-base {
           margin: 8px 8px 8px 0;
         }
       }
+
+
     }
   }
 
@@ -60,17 +68,15 @@
 
     }
 
+    .calendario-piker {
+      display: none;
+    }
+
     .card-turno {
       margin-bottom: 10px;
     }
 
-    .calendario-piker {
-      display: block;
-    }
 
-    .calendario-card {
-      display: none;
-    }
   }
 
   mat-panel-description {
@@ -93,42 +99,41 @@ mat-panel-title {
   margin-right: 15px;
 }
 
-@media all and (min-width: 769px) {
-  .turno-content {
-
-    .container {
-      .calendario-piker {
-        display: none;
-      }
-
-      .calendario-card {
-        display: block;
-      }
-
+@media all and (max-width: 768px) {
+  .container {
+    .turno-content {
       .row-turno {
-        display: flex;
-        flex-direction: row-reverse;
-        padding: 15px 25px;
-      }
+        flex-direction: column-reverse;
 
-      .calendar-card {
-        width: 30%;
-      }
-
-      .dia-select {
-        width: 70%;
-        overflow-y: auto;
-      }
-
-      .card {
-        margin: 1vh;
-
-        button {
+        .dia-select {
           width: 100%;
+
+          .card-paciente-detalle {
+            flex-direction: column;
+            .data-info-paciente {
+              justify-content: flex-start;
+            }
+          }
         }
+
+        .calendar-card {
+          width: 100%;
+          padding-bottom: 1%;
+
+          .calendario-piker {
+            display: block;
+          }
+
+          .calendario-card {
+            display: none;
+          }
+        }
+
       }
     }
   }
 
-
 }
+
+
+@media all and (max-width: 430px) {}
