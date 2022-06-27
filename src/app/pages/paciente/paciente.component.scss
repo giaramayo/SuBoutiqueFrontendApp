@@ -1,33 +1,61 @@
+.container {
+  .paciente-content {
+    display: flex;
+    flex-direction: row;
+    margin: 1%;
+    padding: 2%;
+    border-radius: 10px;
+    background: #f8e5f2;
+    background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
+    justify-content: center;
 
-.paciente-content {
-  display: flex;
-  flex-direction: row;
-  margin: 1%;
-  padding: 2%;
-  border-radius: 10px;
-  background: #f8e5f2;
-  background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
-  justify-content: center;
+    mat-card {
+      width: 100%;
+
+      .row {
+        padding: 15px 25px;
+      }
+
+      .mat-form-field {
+        margin-right: 12px;
+        width: 68%;
+      }
+
+      button {
+        margin-right: 12px;
+        height: 3em;
+        padding: 6px 40px;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.15);
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
 }
 
-.row{
-  padding: 15px 25px;
-}
+@media all and (max-width: 430px) {
+  .container {
+    .paciente-content {
+      width: 100%;
+      justify-content: flex-start;
 
-.mat-form-field {
-  margin-right: 12px;
-  width: 70%;
-}
+      mat-card {
+        width: 86%;
 
-button {
-  margin-right: 12px;
-  height: 3em;
-  padding: 6px 40px;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.15);
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+        .form {
+          display: flex;
+          flex-direction: row;
+        }
+
+        section {
+          overflow: auto;
+        }
+
+      }
+    }
+  }
 }

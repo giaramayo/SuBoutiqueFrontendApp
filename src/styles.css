@@ -12,6 +12,7 @@ h1.txt-titulo {
     font-style: italic;
 }
 
+
 h2 {
   border-radius: 5px;
   padding: 0 20px;
@@ -19,3 +20,9 @@ h2 {
   color: white;
 }
 
+
+@media all and (max-width: 430px) {
+  h1.txt-titulo {
+    font-size: 30px;
+  }
+}

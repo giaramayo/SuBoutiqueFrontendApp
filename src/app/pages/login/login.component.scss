@@ -10,6 +10,7 @@ body {
     justify-content: center;
     background: #f1dbea;
     align-items: center;
+   
     .login-container {
         display: flex;
         flex-direction: row;
@@ -19,6 +20,9 @@ body {
         background: #fef5fb;
         justify-content: center;
         border: 15px solid #d0afd2;
+
+   
+
         .img-login {
             display: flex;
             flex-direction: row;
@@ -59,4 +63,49 @@ body {
         }
     }
 
+}
+
+@media all and (max-width: 768px) {
+    .container {
+        padding: 10px;
+        height: 100vh;
+        justify-content: center;
+        .login-container {
+            flex-direction: column;
+            width: 96%;
+            padding: 2%;
+            border: none;
+            .img-login {
+            border: none;
+            width: 20%;
+            border: 10px solid #d0afd2;
+
+                .icon-header {
+                    margin: 0 auto;
+                    width: 100%;
+                }
+            }
+             .container-lg {
+                padding: 0;
+                width: 60%;
+            }
+        }
+    }
+   
+}
+
+
+@media all and (max-width: 430px) {
+    .container {
+        justify-content: flex-start;
+        .login-container {
+            .img-login {
+            width: 70%;
+            }
+            .container-lg {
+                width: 100%;
+            }
+        }
+    }
+   
 }

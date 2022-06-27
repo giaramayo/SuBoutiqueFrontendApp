@@ -38,7 +38,7 @@
         mat-icon {
           color: #debadc;
         }
-      }      
+      }
     }
 
     .btn-detalle {
@@ -57,3 +57,16 @@
 }
 
 
+
+@media all and (max-width: 430px) {
+  .container {
+    .detalle-paciente-container {
+      .detalle-paciente-box {
+        .btn-detalle {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}

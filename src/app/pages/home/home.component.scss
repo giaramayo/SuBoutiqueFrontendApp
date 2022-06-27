@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+
   .home-content {
     display: flex;
     flex-direction: row;
@@ -16,10 +17,11 @@
       font-weight: initial;
       color: #973d8f;
     }
-    
+
     .estadistica {
       padding: 2%;
-      max-height: 500px;
+
+      //  max-height: 500px;
       h3 {
         padding: 0 20px;
         margin: 1%;
@@ -27,41 +29,50 @@
         color: #874284;
         font-weight: bold;
       }
+
       .descripcion-p {
         text-align: center;
       }
-      .anio{
+
+      .anio {
         font-weight: bold;
         color: rgb(151, 155, 155);
         font-size: 12px;
       }
-      .chart{
+
+      .chart {
         width: 40vh;
-      display: block;
-      margin: 2em auto;
+        display: block;
+        margin: 2em auto;
       }
+
       .tabla-valores {
         justify-content: center;
         display: flex;
         margin: 1%;
         padding: 4%;
         background: #fff7fded;
+
         table {
           border-collapse: collapse;
           width: 100%;
           text-align: center;
-          .text-center{
+
+          .text-center {
             color: #874284;
           }
-          .td-description{
+
+          .td-description {
             color: #874284;
             text-align: left;
           }
-          .td-valores{
+
+          .td-valores {
             color: #874284;
             text-align: center;
             justify-content: center;
           }
+
           .thead-light {
             background-color: #f4dff3;
             font-size: 18px;
@@ -69,20 +80,61 @@
         }
       }
     }
+
     .eventos {
       padding: 2%;
       max-height: 500px;
+      display: flex;
+      flex-direction: column;
+
       .acciones {
         text-align: center;
         margin-bottom: 5%;
-        button {
-          margin: 0 5px;
+
+        mat-card {
+          display: flex;
+          flex-direction: row;
+
+          button {
+            margin: 0 5px;
+          }
         }
       }
     }
+
     mat-card-subtitle {
       text-align: right;
       color: #976694;
+    }
+  }
+}
+
+
+@media all and (max-width: 768px) {
+  .container {
+    width: 100%;
+
+    .home-content {
+      width: 98%;
+      margin: none;
+
+      .estadistica {
+        width: 45%;
+      }
+    }
+  }
+}
+
+
+@media all and (max-width: 430px) {
+  .container {
+    .home-content {
+      flex-direction: column-reverse;
+      height: 105vh;
+
+      .estadistica {
+        width: 96%;
+      }
     }
   }
 }

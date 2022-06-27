@@ -55,3 +55,17 @@
     }
   }
 }
+
+
+@media all and (max-width: 430px) {
+  .container {
+    .agregar-paciente-container {
+      .agregar-paciente-box {
+        .btn-agregar {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+      }
+    }
+  }
+}
