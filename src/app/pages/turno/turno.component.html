@@ -55,10 +55,10 @@
                 <mat-calendar [minDate]="hoy" [(selected)]="selected" color="accent" (click)="consultar()">
                 </mat-calendar>
               </div>
-              <mat-form-field class="calendario-piker" appearance="fill">
+              <mat-form-field class="calendario-piker" color="accent">
                 <mat-label>Fecha</mat-label>
-                <input matInput [matDatepicker]="picker" color="accent">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <input matInput [min]="hoy" [matDatepicker]="picker" color="accent" (dateInput)="consultarTurno($event)">
+                <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
             </mat-card>

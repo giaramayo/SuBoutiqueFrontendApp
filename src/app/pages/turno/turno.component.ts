@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 import { DialogCambiarEstadoComponent } from '../../component/dialog-cambiar-estado/dialog-cambiar-estado.component';
 import { DialogReprogramarComponent } from '../../component/dialog-reprogramar/dialog-reprogramar.component';
 
-
 @Component({
   selector: 'app-turno',
   templateUrl: './turno.component.html',
@@ -255,5 +254,10 @@ console.log(turno)
           this.modificarTurno( turno._id, turno );
         }
     });
+  }
+
+  consultarTurno(event: any) {
+      this.selected = event.value
+      this.consultar()
   }
 }
