@@ -35,3 +35,15 @@
         }
     }
 }
+
+
+@media all and (max-width: 430px) {
+
+    .data-info-paciente {
+        .info-icon {
+            .icon-person {
+                font-size: 10vh
+            }
+        }
+    }  
+  }
