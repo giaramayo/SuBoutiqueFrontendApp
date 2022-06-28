@@ -14,6 +14,7 @@ export class EstadisticasComponent {
   public barChartType: ChartType = 'bar'; //tipo de grafico
   public pieChartType: ChartType = 'pie';   //Tipo de grafico
   // public pieChartTratamientos?: ChartData<'pie', number[], string | string[]>;
+  public cargando: boolean;
 
   public chartTratamientoMes = [
     {
@@ -67,6 +68,7 @@ export class EstadisticasComponent {
 
   constructor(private estadisticaService: EstadisticaService) {
     this.dataLocalidadCompleto = [];
+    this.cargando = true;
     this.estadisticaTratamientoMasSolicitadoMes()
   }
 
@@ -78,6 +80,7 @@ export class EstadisticasComponent {
       },
       (err) => {
         console.log(err)
+        this.cargando = false;
       },
       ()=> {
         this.estadisticaPorEdad();
@@ -92,7 +95,8 @@ export class EstadisticasComponent {
         this.totalPacienteEdad = resp.totalPaciente
       },
       (err) => {
-        console.log(err)
+        console.log(err);
+        this.cargando = false;
       },
       ()=> {
         this.estadisticaPorLocalidad();
@@ -116,7 +120,8 @@ export class EstadisticasComponent {
           })
         },
         err =>{
-          console.log(err)
+          console.log(err);
+          this.cargando = false;
         },
         () => {
           this.estadisticaTratamientoPorEstacion();
@@ -131,14 +136,15 @@ export class EstadisticasComponent {
           this.dataEstacion.datasets[0].data = resp.contadores;
       },
       (err) => {
-        console.log(err)
+        console.log(err);
+        this.cargando = false;
       },
       ()=> {
-       this.estadisticaPorEstagoHist();
+       this.estadisticaPorEstadoHist();
       })
   }
 
-  estadisticaPorEstagoHist() {
+  estadisticaPorEstadoHist() {
     this.estadisticaService.estadisticaPorEstagoHist()
       .subscribe( resp => {
           this.totalTurnosEstado = resp.total;
@@ -147,9 +153,11 @@ export class EstadisticasComponent {
       },
       (err) => {
         console.log(err)
+        this.cargando = false;
       },
       ()=> {
        // this.estadisticaPorEdad();
+       this.cargando = false;
       })
   }
 

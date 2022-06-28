@@ -16,7 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatProgressSpinner, MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -50,6 +50,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     NgChartsModule,
     MatProgressBarModule,
     MatAutocompleteModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [MatProgressSpinner]
 })

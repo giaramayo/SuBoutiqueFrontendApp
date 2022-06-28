@@ -17,6 +17,7 @@ export class PacienteComponent implements OnInit {
   public dataSource: any;
   public botonFiltroLoading: boolean;
   public routerAgregar: string;
+  public cargando: boolean;
 
   constructor( private _snackBar: MatSnackBar,
                private pacienteService: PacienteService,
@@ -24,6 +25,7 @@ export class PacienteComponent implements OnInit {
 
     this.botonFiltroLoading = false;
     this.routerAgregar = '/paciente/agregar/paciente';
+    this.cargando = true;
    }
 
   ngOnInit(): void {
@@ -33,6 +35,13 @@ export class PacienteComponent implements OnInit {
   getPacientes() {
     this.pacienteService.getPacientes().subscribe( resp => {
           this.dataSource = new MatTableDataSource(resp);
+        },
+        err => {
+          console.log(err);
+          this.cargando = false;
+        },
+        () => {
+          this.cargando = false;
         });
   }
 

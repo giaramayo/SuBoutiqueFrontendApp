@@ -27,7 +27,7 @@ export class PacienteAgregarComponent {
 
   public MAX_EDAD = 99;
   public MIN_EDAD = 14;
-
+  public cargando: boolean;
   public disabledOK: boolean;
   public routerVolver: any;
   public idPaciente: any;
@@ -49,7 +49,7 @@ export class PacienteAgregarComponent {
     private routerAct: ActivatedRoute,
     private pacienteService: PacienteService,
     private router: Router) {
-
+    this.cargando = true;
     this.disabledOK = true;
     this.step = 0;
     this.routerVolver = this.routerAct.snapshot.paramMap.get('pages');
@@ -231,10 +231,13 @@ export class PacienteAgregarComponent {
             verticalPosition: "bottom",
             panelClass: ["snack-bar-err"]
           });
+          this.cargando = false;
         },
         () => {
           if(this.idPaciente){
             this.getPaciente();
+          }else {
+            this.cargando = false;
           }
         });
   }
@@ -267,6 +270,7 @@ export class PacienteAgregarComponent {
             verticalPosition: "bottom",
             panelClass: ["snack-bar-err"]
           });    
+          this.cargando = false;
         },
         () => {
           this.getAntecedente(idAntecedente);
@@ -284,6 +288,13 @@ export class PacienteAgregarComponent {
             this.formPaciente.get('medicamentos')?.setValue(resp.medicamentos);
             this.formPaciente.get('tratamientos_clinicos')?.setValue(resp.tratamientos_clinicos);
           }
+        },
+        err => {
+          console.log(err);
+          this.cargando = false;
+        },
+        () => {
+          this.cargando = false;
         });
   }
 

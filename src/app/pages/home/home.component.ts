@@ -25,6 +25,7 @@ export class HomeComponent {
   public totalTurnos: number = 0;
   public tratamientos: any = [];
   public turnosDia: any = [];
+  public cargando: boolean = false;
 
   /// Estadisticas
   public pieChartOptions: ChartConfiguration['options'] = {
@@ -44,6 +45,7 @@ export class HomeComponent {
     private estadistica: EstadisticaService,
     public dialog: MatDialog,
     private router: Router) {
+    this.cargando = true;
     this.hoy = new Date();
     this.turnosHoy = [];
     this.routerAgregar = '/paciente/agregar/inicio';
@@ -65,13 +67,16 @@ export class HomeComponent {
       },
         (err) => {
           console.log("Error al consultar turnos del dia - Error: ", err)
+          this.cargando = false;
         },
         () => {
           this.estadisticaDelDiaTratamiento();
+          this.cargando = false;
         });
   }
 
   estadisticaDelDiaTratamiento() {
+    this.cargando = true;
     this.estadistica.estadisticasPorFecha(this.fecha)
       .subscribe(resp => {
         if (resp) {
@@ -88,13 +93,16 @@ export class HomeComponent {
       },
       (err) => {
         console.log("Error al consultar turnos del dia - Error: ", err)
+        this.cargando = false;
       },
       () => {
         this.estadisticaDelDiaEstados();
+        this.cargando = false;
       });
   }
 
   estadisticaDelDiaEstados() {
+    this.cargando = true;
     this.estadistica.estadisticaEstadoPorFecha(this.fecha)
       .subscribe(resp => {
         if (resp) {
@@ -106,6 +114,13 @@ export class HomeComponent {
           };
           this.turnosDia = resp.tablaTurno
         }
+      },
+      err => {
+        console.log(err)
+        this.cargando = false;
+      },
+      () => {
+        this.cargando = false;
       })
   }
 

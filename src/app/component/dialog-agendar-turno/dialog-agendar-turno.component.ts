@@ -60,6 +60,7 @@ export class DialogAgendarTurnoComponent  {
   public turnoAgendar: TurnoA;
   public fechaS: string;
   public hoy = new Date();
+  public cargando: boolean;
 
   constructor(private dialogRef: MatDialogRef<DialogAgendarTurnoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -67,6 +68,7 @@ export class DialogAgendarTurnoComponent  {
     private pacienteService: PacienteService,
     private turnosService: TurnoService
     ) {
+      this.cargando = true
     dialogRef.disableClose = true;
     this.turno = data.turno;
     this.fechaAgendar = data.turno.fecha;
@@ -103,9 +105,10 @@ export class DialogAgendarTurnoComponent  {
       },
       (err) => {
         console.log("Error: ", err);
+        this.cargando = false;
       },
       () => {
-        this.buscarPacientes()
+        this.buscarPacientes();
       });
   }
 
@@ -116,6 +119,7 @@ export class DialogAgendarTurnoComponent  {
       },
       (err) => {
         console.log("Error: ", err);
+        this.cargando = false;
       },
       () => {
         let mes = this.fechaAgendar?.getMonth()
@@ -128,9 +132,17 @@ export class DialogAgendarTurnoComponent  {
   }
 
   buscarHorarios() {
+    this.cargando = true;
       this.turnosService.horariosDisponibles(this.fechaS)
         .subscribe( resp => {
             this.horarios = resp.horariosDisponibles;
+        },
+        err => {
+          console.log(err)
+          this.cargando = false;
+        },
+        () => {
+          this.cargando = false;
         })
   }
 

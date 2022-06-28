@@ -16,32 +16,36 @@ export class TratamientoComponent implements OnInit {
 
   public dataSource: any;
   public botonFiltroLoading: boolean;
-  public displayedColumns: string[] = ['descripcion', 'precio', 'modif', 'elim' ];
+  public displayedColumns: string[] = ['descripcion', 'precio', 'modif', 'elim'];
+  public cargando: boolean;
 
   constructor(public _snackBar: MatSnackBar,
-              public dialog: MatDialog,
-              private tratamientoService: TratamientoService) { 
+    public dialog: MatDialog,
+    private tratamientoService: TratamientoService) {
     this.botonFiltroLoading = false;
-    
+    this.cargando = true;
+
   }
 
   ngOnInit(): void {
     this.getTratamientos();
   }
 
-  getTratamientos(){
-    this.tratamientoService.getAll().subscribe( resp => {
+  getTratamientos() {
+    this.tratamientoService.getAll().subscribe(resp => {
       this.dataSource = new MatTableDataSource(resp);
     },
-    () => {
-      this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-        data: { icono: 'report', mensaje: "Error al consultar tratamientos", titulo: 'Error'},
-        duration: 4000,
-        horizontalPosition: "right",
-        verticalPosition: "bottom",
-        panelClass: ["snack-bar-err"]
-      });
-    });
+      () => {
+        this._snackBar.openFromComponent(DialogSnackbarComponent, {
+          data: { icono: 'report', mensaje: "Error al consultar tratamientos", titulo: 'Error' },
+          duration: 4000,
+          horizontalPosition: "right",
+          verticalPosition: "bottom",
+          panelClass: ["snack-bar-err"]
+        });
+        this.cargando = false;
+      },
+      () => { this.cargando = false; });
   }
 
   agregar() {
@@ -58,30 +62,30 @@ export class TratamientoComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-          data: { icono: 'done', mensaje: result.msg, titulo: 'Guardar'},
+      if (result) {
+        this._snackBar.openFromComponent(DialogSnackbarComponent, {
+          data: { icono: 'done', mensaje: result.msg, titulo: 'Guardar' },
           duration: 4000,
           horizontalPosition: "right",
           verticalPosition: "bottom",
           panelClass: ["snack-bar-ok"]
         });
         this.getTratamientos();
-      }        
+      }
     });
   }
 
-  modificar( element: any){
+  modificar(element: any) {
     element.titulo = 'Modificar Tratamiento';
     const dialogRef = this.dialog.open(DialogModificarTratamientoComponent, {
       width: '300px',
       data: element
     });
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result) {
         this.getTratamientos();
-        this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-          data: { icono: 'done', mensaje: result.msg, titulo: 'Modificado'},
+        this._snackBar.openFromComponent(DialogSnackbarComponent, {
+          data: { icono: 'done', mensaje: result.msg, titulo: 'Modificado' },
           duration: 4000,
           horizontalPosition: "right",
           verticalPosition: "bottom",
@@ -92,40 +96,42 @@ export class TratamientoComponent implements OnInit {
     });
   }
 
-  eliminar( element: any){
+  eliminar(element: any) {
     const dialogRef = this.dialog.open(ConfirmacionComponent, {
       data: {
-          msj: "¿Está seguro que desea eliminar \"" + element.descripcion + "\"?",
-          titulo: "Eliminar"
-        }
+        msj: "¿Está seguro que desea eliminar \"" + element.descripcion + "\"?",
+        titulo: "Eliminar"
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
-        if(result)
-          this.elimitarTratamiento(element._id)
+      if (result)
+        this.elimitarTratamiento(element._id)
     });
   }
 
   elimitarTratamiento(id: number) {
-      this.tratamientoService.eliminar(id)
-        .subscribe(resp => {
-          if(resp){
-            this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-              data: { icono: 'done', mensaje: resp.msg, titulo: 'Eliminado'},
-              duration: 4000,
-              horizontalPosition: "right",
-              verticalPosition: "bottom",
-              panelClass: ["snack-bar-ok"]
-            });
-          }
-        },
+    this.cargando = true;
+    this.tratamientoService.eliminar(id)
+      .subscribe(resp => {
+        if (resp) {
+          this._snackBar.openFromComponent(DialogSnackbarComponent, {
+            data: { icono: 'done', mensaje: resp.msg, titulo: 'Eliminado' },
+            duration: 4000,
+            horizontalPosition: "right",
+            verticalPosition: "bottom",
+            panelClass: ["snack-bar-ok"]
+          });
+        }
+      },
         () => {
-          this._snackBar.openFromComponent(DialogSnackbarComponent,{ 
-            data: { icono: 'report', mensaje: "Ocurrió un error al eliminar el tratamiento indicado", titulo: 'Error'},
+          this._snackBar.openFromComponent(DialogSnackbarComponent, {
+            data: { icono: 'report', mensaje: "Ocurrió un error al eliminar el tratamiento indicado", titulo: 'Error' },
             duration: 4000,
             horizontalPosition: "right",
             verticalPosition: "bottom",
             panelClass: ["snack-bar-err"]
           });
+          this.cargando = false;
         },
         () => {
           this.getTratamientos();

@@ -32,6 +32,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CardPersonaComponent } from './component/card-persona/card-persona.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthInterceptor } from './service/auth.service';
+import { CargandoComponent } from './component/cargando/cargando.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { AuthInterceptor } from './service/auth.service';
     DialogReprogramarComponent,
     CardPersonaComponent,
     LoginComponent,
+    CargandoComponent,
   ],
   imports: [
     BrowserModule,
