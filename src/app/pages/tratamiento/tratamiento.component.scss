@@ -2,17 +2,21 @@
   display: flex;
   flex-direction: row;
   margin: 1%;
-  padding: 2%;
   border-radius: 10px;
   background: #f8e5f2;
   background: linear-gradient(90deg, #f8e5f2 0%, #f4dff3 100%);
   justify-content: center;
-  .row {
-    padding: 15px 25px;
+  padding: 2%;
+
+  mat-card{
+    width: 100%;
   }
+
+  // .row {
+  //   padding: 15px 25px;
+  // }
   .tratamiento-box {
     justify-content: center;
-   // width: 100%;
     .form-tratamiento {
       mat-form-field {
         margin-right: 12px;
@@ -28,7 +32,7 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 20%;
+        width: 30%;
       }
     }
     .tratamiento-table {
@@ -50,18 +54,3 @@
   }
   
 }
-
-
-@media all and (max-width: 768px) {
-  .container {
-    .tratamiento-container {
-      .tratamiento-box {
-
-      }
-    }
-  }
-
-}
-
-
-@media all and (max-width: 430px) {}
