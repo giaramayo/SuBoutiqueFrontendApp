@@ -15,13 +15,13 @@ export class UserActivateService implements CanActivate {
 
   canActivate() {   
     if (!this.authService.getToken()) {
-        this._snackBar.openFromComponent(DialogSnackbarComponent, {
-          data: { icono: 'report', mensaje: "No se encuentra logeado, por favor ingresar un usuario y contraseña.", titulo: 'Usuario no Autenticado' },
-          duration: 4000,
-          horizontalPosition: "right",
-          verticalPosition: "bottom",
-          panelClass: ["snack-bar-war"]
-        });
+        // this._snackBar.openFromComponent(DialogSnackbarComponent, {
+        //   data: { icono: 'report', mensaje: "No se encuentra logeado, por favor ingresar un usuario y contraseña.", titulo: 'Usuario no Autenticado' },
+        //   duration: 4000,
+        //   horizontalPosition: "right",
+        //   verticalPosition: "bottom",
+        //   panelClass: ["snack-bar-war"]
+        // });
         this.router.navigate(['/login']);
         return false;
     }
