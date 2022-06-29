@@ -126,11 +126,11 @@
 }
 
 
-@media all and (max-width: 430px) {
+@media all and (max-width: 755px) {
   .container {
     .home-content {
       flex-direction: column-reverse;
-      height: 105vh;
+     // height: 105vh;
 
       .estadistica {
         width: 96%;

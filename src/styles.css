@@ -21,7 +21,7 @@ h2 {
 }
 
 
-@media all and (max-width: 430px) {
+@media all and (max-width: 500px) {
   h1.txt-titulo {
     font-size: 30px;
   }
