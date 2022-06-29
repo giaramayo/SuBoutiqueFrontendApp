@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 
 export class EstadisticaService {
 
-  private nodeURL = environment.nodeURL;
+  private nodeURL = environment.url;
   private turnoURL = this.nodeURL + '/estadistica'
 
   constructor( private readonly http: HttpClient ) { }

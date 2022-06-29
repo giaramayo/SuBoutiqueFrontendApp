@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 
 export class TratamientoService {
 
-  private nodeURL = environment.nodeURL;
+  private nodeURL = environment.url;
   private tratamientoURL = this.nodeURL + '/tratamiento'
 
   constructor( private readonly http: HttpClient ) { }

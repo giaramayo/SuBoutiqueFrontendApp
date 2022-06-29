@@ -11,7 +11,7 @@ import { Paciente } from '../interfaces/paciente.interfaces';
 
 export class PacienteService {
 
-  private nodeURL = environment.nodeURL;
+  private nodeURL = environment.url;
   private pacienteURL = this.nodeURL + '/paciente'
   private localidadURL = this.nodeURL + '/barrio'
   private antecedenteURL = this.nodeURL + '/antecedente'

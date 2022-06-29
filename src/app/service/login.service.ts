@@ -11,7 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 export class LoginService {
 
-  private nodeURL = environment.nodeURL;
+  private nodeURL = environment.url;
   private turnoURL = this.nodeURL + '/user'
 
   constructor(private readonly http: HttpClient, private cookies: CookieService) { }
