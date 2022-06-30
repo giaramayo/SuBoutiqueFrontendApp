@@ -47,22 +47,22 @@ export class TurnoComponent {
       tratamientos_clinicos: ''
     };
     this.consultar();
-    this.obtenerEstados();
+    // this.obtenerEstados();
   }
 
-  obtenerEstados() {
-    this.turnoService.getEstados()
-      .subscribe(resp => {
-        if (resp)
-          this.estados = resp;
-      },
-        err => {
-          console.log(err)
-        },
-        () => {
-          this.cargando = false;
-        });
-  }
+  // obtenerEstados() {
+  //   this.turnoService.getEstados()
+  //     .subscribe(resp => {
+  //       if (resp)
+  //         this.estados = resp;
+  //     },
+  //       err => {
+  //         console.log(err)
+  //       },
+  //       () => {
+  //         this.cargando = false;
+  //       });
+  // }
 
   consultar() {
     let mes = this.selected?.getMonth()
@@ -191,27 +191,52 @@ export class TurnoComponent {
     });
   }
 
+  // cambiarEstadoBKP(turno: any) {
+  //   let estadoAnt = turno.id_estado;
+  //   let paciente = turno.paciente[0].apellido + ", " + turno.paciente[0].nombre
+  //   let fecha = turno.fecha_turno + " " + turno.hora;
+  //   const dialogRef = this.dialog.open(DialogCambiarEstadoComponent, {
+  //     width: '500px',
+  //     data: {
+  //       idEstado: turno.id_estado,
+  //       estados: this.estados,
+  //       comentario: turno.observacion,
+  //       paciente,
+  //       fecha
+  //     }
+  //   });
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if (result) {
+  //       if (result.id !== estadoAnt) {
+  //         turno.id_estado = result.id;
+  //         turno.observacion = result.comentario
+  //         this.modificarTurno(turno._id, turno);
+  //       }
+  //     }
+  //   });
+  // }
+
   cambiarEstado(turno: any) {
-    let estadoAnt = turno.id_estado;
-    let paciente = turno.paciente[0].apellido + ", " + turno.paciente[0].nombre
-    let fecha = turno.fecha_turno + " " + turno.hora;
-    const dialogRef = this.dialog.open(DialogCambiarEstadoComponent, {
+    const dialogRef = this.dialog.open(DialogAgendarTurnoComponent, {
       width: '500px',
       data: {
-        idEstado: turno.id_estado,
-        estados: this.estados,
-        comentario: turno.observacion,
-        paciente,
-        fecha
+        titulo: "Editar Turno",
+        turno: {
+          _id: turno._id,
+          id_tratamiento: turno.id_tratamiento,
+          id_paciente: turno.id_paciente,
+          fecha: this.selected,
+          id_hora: 0,
+          hora: turno.hora,
+          id_estado: turno.id_estado,
+          observacion: turno.observacion 
+        }
       }
     });
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
       if (result) {
-        if (result.id !== estadoAnt) {
-          turno.id_estado = result.id;
-          turno.observacion = result.comentario
-          this.modificarTurno(turno._id, turno);
-        }
+        this.consultar();
       }
     });
   }
