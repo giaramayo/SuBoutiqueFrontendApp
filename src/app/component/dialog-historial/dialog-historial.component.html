@@ -1,24 +1,27 @@
-
-
 <div class="container">
-    <div class="historial-container">  
-            <h2 class="txt-titulo" mat-dialog-title>{{data.titulo}}</h2>
-            <div class="row historial-box">
-                <div class="data-antecedente">
-                    <div class="icon-antecedente">
-                        <mat-icon>medical_information</mat-icon>
-                    </div>
-                    <div class="inf-antecedente">
-                        <app-antecedentes [antecedente]="data.antecedente" ></app-antecedentes>
-                    </div>
+    <div class="historial-container">
+        <h2 class="txt-titulo" mat-dialog-title>{{data.titulo}}</h2>
+        <div class="row historial-box">
+            <div class="data-antecedente">
+                <div class="icon-antecedente">
+                    <mat-icon>medical_information</mat-icon>
                 </div>
-                <div class="tabla-historial">
+                <div class="inf-antecedente">
+                    <app-antecedentes [antecedente]="data.antecedente"></app-antecedentes>
+                </div>
+            </div>
+            <div class="tabla-historial">
+                <div class="contenido-panel">
+                    <mat-form-field color="accent" class="cls-filtro">
+                        <mat-label>Buscar historial</mat-label>
+                        <input matInput (keyup)="filtrar($event)" #input>
+                    </mat-form-field>
                     <app-lista-historial [dataSource]="data.dataSource"></app-lista-historial>
                 </div>
             </div>
-            <mat-dialog-actions align="end">
-                <button mat-button (focus)="true" (click)="cancelar()" > Cerrar </button>
-             </mat-dialog-actions>
+        </div>
+        <mat-dialog-actions align="end">
+            <button mat-button (focus)="true" (click)="cancelar()"> Cerrar </button>
+        </mat-dialog-actions>
     </div>
 </div>
-

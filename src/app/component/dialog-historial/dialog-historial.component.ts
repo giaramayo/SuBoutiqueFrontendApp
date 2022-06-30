@@ -14,9 +14,15 @@ export interface DialogData {
 })
 
 export class DialogHistorialComponent {
-
+  public panelOpenState = true;
+  
   constructor( private dialogRef: MatDialogRef<DialogHistorialComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { 
+    }
+
+    filtrar(event: Event) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.data.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
     confirmar(){

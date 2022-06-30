@@ -7,6 +7,7 @@ import { TurnoService } from '../../service/turno.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmacionComponent } from '../../component/confirmacion/confirmacion.component';
 import { DialogAgendarTurnoComponent } from '../../component/dialog-agendar-turno/dialog-agendar-turno.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-detalle-paciente',
@@ -19,7 +20,7 @@ export class DetallePacienteComponent implements OnInit {
   public routerVolver: any;
   public routerPaciente: any = "/paciente/modificar";
   public paciente: any;
-  public historial: any[];
+  public historial: any;
   public step: number;
   public cargando: boolean;
   // public fechaNacimiento = new Date();
@@ -34,7 +35,7 @@ export class DetallePacienteComponent implements OnInit {
     this.idPaciente = this.routerAct.snapshot.paramMap.get('id');
     this.routerVolver = this.routerAct.snapshot.paramMap.get('pages');
     this.step = 0;
-    this.historial = [];
+   // this.historial = [];
     this.paciente = {
       documento: "",
       tipo_documento: "",
@@ -150,7 +151,7 @@ export class DetallePacienteComponent implements OnInit {
     this.turnoService.buscarHistorialDelPaciente(this.idPaciente)
       .subscribe(resp => {
         if (resp) {
-          this.historial = resp;
+          this.historial = new MatTableDataSource(resp);
         }
       },
         () => {
@@ -245,4 +246,10 @@ export class DetallePacienteComponent implements OnInit {
   prevStep() {
     this.step--;
   }
+
+  filtrar(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.historial.filter = filterValue.trim().toLowerCase();
+  }
+
 }

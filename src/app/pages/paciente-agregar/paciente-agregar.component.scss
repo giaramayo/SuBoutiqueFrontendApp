@@ -22,11 +22,11 @@
 
     .form-agregar {
       
-      mat-form-field {
-        margin-right: 12px;
-        width: 60%;
+      // mat-form-field {
+      //   margin-right: 12px;
+      //   width: 60%;
         
-      }
+      // }
 
       mat-panel-title {
         color: rgb(65, 3, 44);
@@ -39,6 +39,22 @@
         mat-icon {
           color: #debadc;
         }
+      }
+      .contenido-panel {
+        .row-cols-2 {
+          display: flex;
+          flex-direction: row;
+          mat-form-field {
+            margin-right: 20px;
+            width: 50%;
+          }
+        }
+      }
+      
+      .antecedentes-datos {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
       }
     }
 
@@ -64,6 +80,16 @@
         .btn-agregar {
           display: flex;
           flex-direction: column-reverse;
+        }
+        .form-agregar {
+          .contenido-panel {
+            .row-cols-2 {
+              flex-direction: column;
+              mat-form-field {
+                width: 100%;
+              }
+            }
+          }
         }
       }
     }
