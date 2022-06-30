@@ -26,6 +26,7 @@ export class TurnoComponent {
   public antecedente: any;
   public estados: any;
   public cargando: boolean;
+  private tituloHistorial: string = "";
 
   constructor(private turnoService: TurnoService,
     private pacienteService: PacienteService,
@@ -123,7 +124,9 @@ export class TurnoComponent {
     this.router.navigateByUrl(this.routerDetalle + "/" + id + "/turnos");
   }
 
-  consultarHistorial(id: number) {
+  consultarHistorial(turno: any) {
+    const id = turno.id_paciente
+    this.tituloHistorial = 'Historial de ' + turno.paciente[0].apellido + ", " + turno.paciente[0].nombre
     this.cargando = true;
     this.turnoService.buscarHistorialDelPaciente(id)
       .subscribe(resp => {
@@ -169,17 +172,19 @@ export class TurnoComponent {
   dialogConsultaHistorial() {
     const dialogRef = this.dialog.open(DialogHistorialComponent, {
       // width: '700px',
-      maxHeight: '90vh',
+    //  maxHeight: '90vh',
+      width: '90%',
       data: {
         dataSource: this.historial,
         antecedente: this.antecedente,
-        titulo: 'Historial'
+        titulo: this.tituloHistorial
       }
     });
 
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
+      this.tituloHistorial = "";
       this.historial = [];
       this.antecedente = {
         biotipo: '',
