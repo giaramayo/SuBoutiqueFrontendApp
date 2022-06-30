@@ -63,6 +63,7 @@ export class DialogAgendarTurnoComponent {
   public fechaS: string;
   public hoy = new Date();
   public cargando: boolean;
+  public clickGuardar: boolean = false;
 
   constructor(private dialogRef: MatDialogRef<DialogAgendarTurnoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -188,6 +189,7 @@ export class DialogAgendarTurnoComponent {
   }
 
   confirmar() {
+    this.clickGuardar = true;
     if (this.data.turno._id)
       this.guardarModificado();
     else
@@ -241,8 +243,10 @@ export class DialogAgendarTurnoComponent {
         (err) => {
           console.log("Error: ", err);
           this.cargando = false;
+          this.dialogRef.close(true); 
         },
         () => {
+          this.cargando = false;
           this.dialogRef.close(true); 
         });
   }

@@ -39,6 +39,7 @@ export class PacienteAgregarComponent {
   public biotipos: NameValue[];
   public fototipos: NameValue[];
   public tienealergias = false;
+  public clickGuardar: boolean = false;
 
   private paciente!: Paciente;
   public pacienteDetalle: any;
@@ -126,6 +127,7 @@ export class PacienteAgregarComponent {
   }
 
   guardar() {
+    this.clickGuardar = true;
     this.paciente = {
       documento: this.formPaciente.get('documento')?.value,
       tipo_documento: this.formPaciente.get('tipo_documento')?.value,
@@ -179,6 +181,7 @@ export class PacienteAgregarComponent {
         },
         err => {
           console.log(err)
+          this.clickGuardar = false;
           this._snackBar.openFromComponent(DialogSnackbarComponent, {
             data: { icono: 'report', mensaje: "Ocurrió un error al modificar el paciente", titulo: 'Error' },
             duration: 4000,
@@ -208,6 +211,7 @@ export class PacienteAgregarComponent {
         }
       },
         err => {
+          this.clickGuardar = false;
           this._snackBar.openFromComponent(DialogSnackbarComponent, {
             data: { icono: 'report', mensaje: "Ocurrió un error al guardar el paciente", titulo: 'Error' },
             duration: 4000,
