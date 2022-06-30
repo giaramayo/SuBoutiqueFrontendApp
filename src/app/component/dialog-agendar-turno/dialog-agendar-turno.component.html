@@ -1,14 +1,20 @@
-<!-- <h2 class="txt-titulo" mat-dialog-title>Agendar Turno - FALTA</h2> -->
+
 <app-cargando [cargando]="cargando"></app-cargando>
 
-<h2 class="txt-titulo" mat-dialog-title>{{data.titulo}}</h2>
+<div class="container">
+  <div class="container-agendar-turno">
+    
+    <!-- <div class="cancelar-action">
+      <button mat-mini-fab (click)="cancelar()"> <mat-icon aria-hidden="false">cancel</mat-icon> </button>
+    </div> -->
 
-<mat-dialog-content class="mat-typography">
-    <div class="form" [formGroup]="formTurno">
-        <mat-form-field  appearance="fill"  class="form-field" color="accent">
+    <h2 class="txt-titulo" mat-dialog-title>{{data.titulo}}</h2>
+    <mat-dialog-content class="mat-typography">
+      <div class="form" [formGroup]="formTurno">
+        <mat-form-field appearance="fill" class="form-field" color="accent">
           <mat-label>Fecha del Turno</mat-label>
-          <input matInput [min]="hoy" [matDatepicker]="picker" (dateInput)="seleccionarFecha($event)" formControlName="fecha" 
-          [required]="selectEstados !== 3" [disabled]="selectEstados === 3">
+          <input matInput [min]="hoy" [matDatepicker]="picker" (dateInput)="seleccionarFecha($event)"
+            formControlName="fecha" [required]="selectEstados !== 3" [disabled]="selectEstados === 3">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
@@ -16,60 +22,60 @@
             Por favor, seleccione una fecha válida para reservar el turno
           </mat-error>
         </mat-form-field>
-
-        <mat-form-field appearance="fill"  class="form-field" color="accent">
+        <mat-form-field appearance="fill" class="form-field" color="accent">
           <mat-label>{{ selectEstados !== 3 ? 'Selecciona Horario' : 'Horario' }}</mat-label>
-          <mat-select [(value)]="selectHorario" formControlName="hora" [required]="selectEstados !== 3" [disabled]="selectEstados === 3">
+          <mat-select [(value)]="selectHorario" formControlName="hora" [required]="selectEstados !== 3"
+            [disabled]="selectEstados === 3">
             <mat-option *ngFor="let horario of horarios" [value]="horario.horario">{{horario.horario}}</mat-option>
           </mat-select>
           <mat-error *ngIf="formTurno.get('hora')?.hasError('required')">
             Por favor, seleccione una hora válida para reservar el turno
           </mat-error>
         </mat-form-field>
-
-        <mat-form-field appearance="fill"  class="form-field" color="accent">
+        <mat-form-field appearance="fill" class="form-field" color="accent">
           <mat-label>{{ selectEstados !== 3 ? 'Selecciona Tratamiento' : 'Tratamiento' }}</mat-label>
-          <mat-select [(value)]="selectTratamiento" formControlName="tratamiento" [required]="selectEstados !== 3" [disabled]="selectEstados === 3">
-            <mat-option *ngFor="let tratamiento of tratamientos" [value]="tratamiento._id">{{tratamiento.descripcion}}</mat-option>
+          <mat-select [(value)]="selectTratamiento" formControlName="tratamiento" [required]="selectEstados !== 3"
+            [disabled]="selectEstados === 3">
+            <mat-option *ngFor="let tratamiento of tratamientos" [value]="tratamiento._id">{{tratamiento.descripcion}}
+            </mat-option>
           </mat-select>
-          <mat-error *ngIf="formTurno.get('tratamiento')?.invalid"> 
+          <mat-error *ngIf="formTurno.get('tratamiento')?.invalid">
             Seleccione un tratamiento de la lista
           </mat-error>
         </mat-form-field>
-
-          <mat-form-field appearance="fill"  class="form-field" color="accent">
-            <mat-label>{{ selectEstados !== 3 ? 'Selecciona un Paciente' : 'Paciente' }}</mat-label>
-            <mat-select [(value)]="selectPaciente" formControlName="paciente" [required]="selectEstados !== 3" [disabled]="selectEstados === 3">
-              <mat-option *ngFor="let pac of pacientes" [value]="pac._id">
-                {{pac.apellido}}, {{pac.nombre}} - {{pac.documento}}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="formTurno.get('paciente')?.invalid"> 
-              Seleccione una paciente de la lista
-            </mat-error>
-          </mat-form-field>
-
+        <mat-form-field appearance="fill" class="form-field" color="accent">
+          <mat-label>{{ selectEstados !== 3 ? 'Selecciona un Paciente' : 'Paciente' }}</mat-label>
+          <mat-select [(value)]="selectPaciente" formControlName="paciente" [required]="selectEstados !== 3"
+            [disabled]="selectEstados === 3">
+            <mat-option *ngFor="let pac of pacientes" [value]="pac._id">
+              {{pac.apellido}}, {{pac.nombre}} - {{pac.documento}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="formTurno.get('paciente')?.invalid">
+            Seleccione una paciente de la lista
+          </mat-error>
+        </mat-form-field>
         <div *ngIf="data.turno._id">
-          <mat-form-field appearance="fill"  class="form-field" color="accent">
+          <mat-form-field appearance="fill" class="form-field" color="accent">
             <mat-label>Seleccionar estado</mat-label>
-            <mat-select [(value)]="selectEstados" >
+            <mat-select [(value)]="selectEstados">
               <mat-option *ngFor="let est of estados" [value]="est._id">{{est.descripcion}}</mat-option>
             </mat-select>
           </mat-form-field>
-      
-            <mat-form-field *ngIf="selectEstados === 3" appearance="fill"  class="form-field" color="accent">
-              <mat-label>Observación</mat-label>
-              <textarea matInput type="text" formControlName="observacion" required="selectEstados === 3"></textarea>
-              <mat-error *ngIf="!formTurno.get('observacion')?.value && selectEstados === 3">
-                Por favor, ingresar una observación.
-              </mat-error>
-            </mat-form-field>
+          <mat-form-field *ngIf="selectEstados === 3" appearance="fill" class="form-field" color="accent">
+            <mat-label>Observación</mat-label>
+            <textarea matInput type="text" formControlName="observacion" required="selectEstados === 3"></textarea>
+            <mat-error *ngIf="!formTurno.get('observacion')?.value && selectEstados === 3">
+              Por favor, ingresar una observación.
+            </mat-error>
+          </mat-form-field>
         </div>
-    </div>
-</mat-dialog-content>
-
-
-<mat-dialog-actions align="end">
-  <button mat-button (click)="cancelar()"> Cancelar </button>
-  <button mat-button color="accent" [disabled]="formTurno.invalid || clickGuardar" (click)="confirmar()"> Guardar </button>
-</mat-dialog-actions>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button [disabled]="clickGuardar" (click)="cancelar()"> Cancelar </button>
+      <button mat-button color="accent" [disabled]="formTurno.invalid || clickGuardar" (click)="confirmar()"> Guardar
+      </button>
+    </mat-dialog-actions>
+  </div>
+</div>

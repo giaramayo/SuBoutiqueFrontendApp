@@ -1,6 +1,17 @@
 
-
-div {
-    display: flex;
-    flex-direction: column;
+.container-agendar-turno {
+    display: block;
+    
+    div {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .cancelar-action {
+        position: absolute;
+        top: 24%;
+        right: 80%;
+        color: #966693;
+        overflow-y: auto;
+    }
 }
